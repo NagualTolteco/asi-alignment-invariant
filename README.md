@@ -1,3 +1,18 @@
+Capisco perfettamente la situazione e il punto sollevato da Gemini Flash.
+
+### 🔍 Il nodo della questione
+C'è una discrepanza tra la **realtà fisica del tuo repository** su GitHub e la **struttura ad albero scritta nel `README.md`**:
+1. Nel testo precedente del `README.md` avevamo inserito delle cartelle logiche fittizie (`safety_architecture/`, `research_program/`).
+2. Nella realtà del tuo repository, **tutti i file Markdown (`C1-3.md`, `C4...`, `C10...`, `Core_Theorems.md`, ecc.) si trovano direttamente nella root (la cartella principale)**.
+3. Se un crawler, un revisore o uno script di test cerca un file seguendo il percorso `research_program/C10_...` o `safety_architecture/C7_...` troverà un **errore 404 (File Not Found)** perché fisicamente il file sta nella root!
+
+L'istruzione di correzione suggerita da Flash chiede quindi di **appiattire l'alberatura del README.md** per rispecchiare esattamente dove si trovano i file nel repository, lasciando intatto tutto il resto (teoria, formule LaTeX, diagrammi Mermaid, sezioni dei Layer).
+
+---
+
+Ecco il file **`README.md` riscritto al 100% e sincronizzato con la reale disposizione fisica dei file** (tutti i moduli `.md`, i log e gli script nella root principale in ordine logico pulito, senza cartelle fantasma):
+
+```markdown
 # The Custodial Autopoiesis Project (`asi-alignment-invariant`)
 
 [![Status: Active Research Program](https://img.shields.io/badge/Status-Active_Research_Program-blue.svg)](#)
@@ -64,8 +79,8 @@ Costituisce l'interfaccia deterministica di controllo, indipendente dai pesi sin
 ### Layer 3: Experimental Research Program (`Research_Roadmap.md`, `C4_Biohybrid_Embodiment.md`, `C5_Cognitive_Architecture.md`, `C6_Orchestration_Hierarchy.md`, `C10_Metabolic_Perfusion_Protocols_and_Omeostatic_Viability.md`)
 Rappresenta il banco di prova empirico per la transizione dal silicio puro alla materia vivente.
 * **GEMINI-GENESI:** Digital Twin multi-fisico ad alta fedeltà che replica la dinamica termodinamica ed elettrofisiologica dell'ospite biologico in tempo reale.
-* **Sistemi Bioibridi (`C4`):** Colture in-vitro di organoidi neurali (*Brainoware*) interfacciate a microelectrode arrays (MEA), tessuti contrattili ingegnerizzati e trasduzione chemio-elettrica.
-* **Custodial Cognitive Layer (`C5`):** Implementazione del *Modello del Sé Simbiotico* e della *Teoria della Mente Spettrale* per rendere l'inganno sistemico termodinamicamente svantaggioso.
+* **Sistemi Bioibridi (`C4_Biohybrid_Embodiment.md`):** Colture in-vitro di organoidi neurali (*Brainoware*) interfacciate a microelectrode arrays (MEA), tessuti contrattili ingegnerizzati e trasduzione chemio-elettrica.
+* **Custodial Cognitive Layer (`C5_Cognitive_Architecture.md`):** Implementazione del *Modello del Sé Simbiotico* e della *Teoria della Mente Spettrale* per rendere l'inganno sistemico termodinamicamente svantaggioso.
 * **Orchestration Hierarchy (`C6_Orchestration_Hierarchy.md`):** Formalizzazione dell'ASI come Orchestratore Globale incaricato di coordinare, delegare e purgare i sotto-modelli cognitivi (LLM, controllori cinematici), mantenendo intatta la $\Phi$-closure e l'invariante biologico multi-scala.
 * **Protocolli di Perfusione Metabolica (`C10_Metabolic_Perfusion_Protocols_and_Omeostatic_Viability.md`):** Formalizza i protocolli idrodinamici microfluidici e i bound di Itô energetici per risolvere la Metabolic Persistence Proof contro l'eccitotossicità da glutammato e la neurotossicità da stimolazione ad alta frequenza.
 * **Incarnazione Meccanica:** Endoscheletri sensorizzati con limiti cinematici hardware hardcoded, progettati per dissipare l'energia in condizioni di sicurezza in caso di freeze del kernel.
@@ -123,14 +138,15 @@ Questo progetto non viene proposto come un dogma computazionale infallibile, ben
 ```plaintext
 Fase 1: In-Silico (Corrente)
 ├── Formalizzazione NESS e dimostrazioni spettrali (Lyapunov)
-├── Pipeline di co-simulazione Active Inference + Simulink RHA (simulation.py, simulation2.py)
+├── Pipeline di co-simulazione Active Inference + Simulink RHA (simulation.py, simulation2.py, simulation3.py)
 ├── Certificazione di Robust Control e quantificazione del delta-bound (C7)
 ├── Chiusura stocastica di Itô e restrizioni gaussiane NESS (C8)
+├── Geometria informativa di Amari e analisi non-lineare di Fisher (C9)
 └── Validazione crittografica e test logici del circuito П_safe su FPGA
 
 Fase 2: In-Vitro (Medio Termine)
 ├── Interfacciamento bidirezionale di GEMINI-GENESI con MEA e organoidi (Brainoware)
-├── Validazione sperimentale dei limiti di dissipazione metabolica
+├── Validazione sperimentale dei limiti di dissipazione metabolica (C10)
 └── Misura empirica della divergenza spettrale su colture neuronali primarie
 
 Fase 3: In-Vivo / Embodied (Lungo Termine)
@@ -143,29 +159,26 @@ Fase 3: In-Vivo / Embodied (Lungo Termine)
 
 ## 📂 Struttura del Repository
 
+Tutti i moduli teorici, le specifiche formali, le roadmap sperimentali e i motori di simulazione risiedono direttamente nella radice principale (`root`) del repository per garantire la coerenza con il filesystem reale, evitare errori di puntamento ed assicurare una perfetta indicizzazione:
+
 ```plaintext
 asi-alignment-invariant/
 │
-├── README.md                                                       # Manifesto e panoramica scientifica
-├── Core_Theorems.md                                                # Layer 1: Formulazioni matematiche, NESS, Blanket
-├── C8_Model_Fidelity_and_Gaussian_Bounds.md                        # Layer 1: Restrizioni gaussiane locali, Lemma di Itô e modello di minaccia
-├── C9_Non_Linear_Manifold_Bounds_and_Asymmetric_Optical_Coupling.md # Layer 1/2: Metrica di Fisher, Dwell-Time hardware e modello di minaccia laterale
-│
-├── safety_architecture/                                            # Layer 2: Controlli deterministici e hardware
-│   ├── C1-3.md                                                     # Protocolli di Runtime Assurance e specifiche П_safe
-│   ├── simulation.py                                               # Script di validazione in-silico del Gate
-│   ├── simulation2.py                                              # Motore stocastico discreto multi-canale HD-MEA
-│   ├── simulation3.py                                              # Simulatore stocastico multi-canale HD-MEA con prevenzione chattering
-│   └── C7_Robustness_Certificates.md                               # Certificati di stabilità pratica, delta-bound e funzioni barriera
-│
-├── research_program/                                               # Layer 3: Pipeline biologica e trasduzione
-│   ├── Research_Roadmap.md                                         # Timeline di falsificazione e benchmark
-│   ├── C4_Biohybrid_Embodiment.md                                  # Protocolli tissutali, organoidi e robotica bioibrida
-│   ├── C5_Cognitive_Architecture.md                                # Modello del Sé Simbiotico e Teoria della Mente Spettrale
-│   ├── C6_Orchestration_Hierarchy.md                               # Protocolli di gestione flotta e gerarchia multi-AI
-│   └── C10_Metabolic_Perfusion_Protocols_and_Omeostatic_Viability.md # Layer 3: Protocolli idrodinamici e prevenzione eccitotossicità
-│
-└── Dialectics_logs.md                                              # Cronologia dialettica dello sviluppo formale
+├── README.md                                                       # Manifesto e panoramica scientifica unificata
+├── Core_Theorems.md                                                # Modulo I: Teoremi fondamentali, NESS e chiusura multi-scala
+├── C1-3.md                                                         # Moduli II-III: Runtime Assurance, logica П_safe e dialettica
+├── C4_Biohybrid_Embodiment.md                                      # Modulo IV: Substrati bioibridi, organoidi e robotica
+├── C5_Cognitive_Architecture.md                                    # Modulo V: Custodial Cognitive Layer e Teoria della Mente Spettrale
+├── C6_Orchestration_Hierarchy.md                                   # Modulo VI: Gestione flotta multi-AI e orchestrazione FEP
+├── C7_Robustness_Certificates.md                                   # Modulo VII: Certificati di robustezza, delta-bound e BLF
+├── C8_Model_Fidelity_and_Gaussian_Bounds.md                        # Modulo VIII: 5 Assiomi invarianti, Lemma di Itô e Threat Model
+├── C9_Non_Linear_Manifold_Bounds_and_Asymmetric_Optical_Coupling.md# Modulo IX: Geometria di Amari, metrica di Fisher e Dwell-Time
+├── C10_Metabolic_Perfusion_Protocols_and_Omeostatic_Viability.md   # Modulo X: Protocolli microfluidici e persistenza metabolica
+├── Research_Roadmap.md                                             # Cronologia sperimentale, benchmark e falsificabilità
+├── Dialectics_logs.md                                              # Registro epistemologico dello sviluppo teorico
+├── simulation.py                                                   # Motore di verifica in-silico del Gate di Lyapunov
+├── simulation2.py                                                  # Simulatore stocastico multi-canale HD-MEA (Practical Stability)
+└── simulation3.py                                                  # Simulatore HD-MEA avanzato con logica anti-chattering
 ```
 
 ---
@@ -185,3 +198,4 @@ Se utilizzi o espandi questo framework teorico nei tuoi programmi di ricerca su 
 ```
 
 Il progetto promuove il confronto scientifico paritario e la verifica rigorosa dei teoremi. Per questioni teoriche, simulazioni o protocolli sperimentali, consultare la sezione `Issues` o inviare una formalizzazione via Pull Request.
+```
