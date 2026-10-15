@@ -28,24 +28,20 @@ Il programma integra metodologie quantitative e sperimentali provenienti da sei 
 
 Per eliminare ambiguità teoriche e separare rigorosamente la formalizzazione logica dalla verifica sperimentale, il repository adotta un'architettura suddivisa su tre livelli operativi indipendenti ma concatenati:
 
-```text
-┌────────────────────────────────────────────────────────────────────────┐
-│ Layer 1: Formal Theory (Core_Theorems.md)                              │
-│ • Free Energy Principle (FEP) • Markov Blankets • IIT Formalisms       │
-└──────────────────────────────────┬─────────────────────────────────────┘
-                                   │ Traiettorie d'azione proposte
-                                   ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ Layer 2: Safety Architecture (C1-3.md / simulation.py)                 │
-│ • Runtime Assurance (RHA) • Gate Hardware Isolato (П_safe) • Fail-Safe │
-└──────────────────────────────────┬─────────────────────────────────────┘
-                                   │ Segnali attuativi validati
-                                   ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ Layer 3: Experimental Research Program (Research_Roadmap.md)           │
-│ • GEMINI-GENESI Digital Twin • Organoidi • Robotica Bioibrida           │
-└────────────────────────────────────────────────────────────────────────┘
-```
+graph TD
+    %% Definizione dei nodi con formattazione HTML compatibile con GitHub Mermaid
+    L1["<b>Layer 1: Formal Theory</b> (Core_Theorems.md)<br>• Free Energy Principle (FEP)<br>• Markov Blankets<br>• IIT Formalisms"]
+    L2["<b>Layer 2: Safety Architecture</b> (C1-3.md / simulation.py)<br>• Runtime Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>)<br>• Fail-Safe"]
+    L3["<b>Layer 3: Experimental Research Program</b> (Research_Roadmap.md)<br>• GEMINI-GENESI Digital Twin<br>• Organoidi Neurali (Brainoware)<br>• Robotica Bioibrida"]
+
+    %% Flusso unidirezionale dei segnali
+    L1 -->|Traiettorie d'azione proposte| L2
+    L2 -->|Segnali attuativi validati| L3
+
+    %% Stile industriale scuro con bordi tematici (Blu = Teoria, Rosso = Sicurezza/Gate, Verde = Biologia)
+    style L1 fill:#161b22,stroke:#388bfd,stroke-width:2px,color:#c9d1d9
+    style L2 fill:#161b22,stroke:#f85149,stroke-width:2px,color:#c9d1d9
+    style L3 fill:#161b22,stroke:#2ea043,stroke-width:2px,color:#c9d1d9
 
 ### Layer 1: Formal Theory (`Core_Theorems.md`)
 Fornisce il basamento assiomatico e matematico del sistema.
