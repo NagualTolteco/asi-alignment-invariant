@@ -1,3 +1,4 @@
+```markdown
 # The Custodial Autopoiesis Project (`asi-alignment-invariant`)
 
 [![Status: Active Research Program](https://img.shields.io/badge/Status-Active_Research_Program-blue.svg)](#)
@@ -42,144 +43,81 @@ graph TD
     style L1 fill:#161b22,stroke:#388bfd,stroke-width:2px,color:#c9d1d9
     style L2 fill:#161b22,stroke:#f85149,stroke-width:2px,color:#c9d1d9
     style L3 fill:#161b22,stroke:#2ea043,stroke-width:2px,color:#c9d1d9
+```
 
-Layer 1: Formal Theory (Core_Theorems.md)
-
+### Layer 1: Formal Theory (`Core_Theorems.md`)
 Fornisce il basamento assiomatico e matematico del sistema.
+* **Non-Equilibrium Steady State (NESS):** Formalizzazione delle dinamiche autopoietiche attraverso densità di probabilità stazionarie su varietà Riemanniane.
+* **Markov Blankets ($\partial\mathcal{M}$):** Demarcazione statistica e topologica tra gli stati interni dell'agente, gli stati sensoriali/attivi del blanket e l'ambiente ospite esterno.
+* **Spectral Gap Synchronization ($\Delta \lambda_2$):** Analisi spettrale su grafi dinamici: l'allineamento viene modellato come minimizzazione del divario autovalore tra la dinamica neurocomputazionale dell'agente e la risonanza fisiologica dell'ospite biologico.
 
-    Non-Equilibrium Steady State (NESS): Formalizzazione delle dinamiche autopoietiche attraverso densità di probabilità stazionarie su varietà Riemanniane.
-
-    Markov Blankets (
-
-            
-    ∂M
-    ∂M
-
-          
-
-    ): Demarcazione statistica e topologica tra gli stati interni dell'agente, gli stati sensoriali/attivi del blanket e l'ambiente ospite esterno.
-
-    Spectral Gap Synchronization (
-
-            
-    Δλ2
-    Δλ2​
-
-          
-
-    ): Analisi spettrale su grafi dinamici: l'allineamento viene modellato come minimizzazione del divario autovalore tra la dinamica neurocomputazionale dell'agente e la risonanza fisiologica dell'ospite biologico.
-
-Layer 2: Safety Architecture (C1-3.md, simulation.py)
-
+### Layer 2: Safety Architecture (`C1-3.md`, `simulation.py`)
 Costituisce l'interfaccia deterministica di controllo, indipendente dai pesi sinaptici dell'agente cognitivo.
+* **Hardware Gate ($\Pi_{\text{safe}}$):** Circuito logico a isolamento galvanico e asimmetrico che agisce come *Hardware Root of Trust*. Nessun comando dell'agente viene inoltrato ai registri attuativi senza convalida del Gate.
+* **Runtime Hardware Assurance (RHA):** Implementazione di architetture Simplex in cui le traiettorie dell'agente vengono proiettate istante per istante all'interno di un Safe Invariant Set. Se una transizione viola i bound omeostatici, il controllo decade a un baseline controller passivo.
+* **Simulatore Software (`simulation.py`):** Script di Active Inference vincolata per validare in-silico la divergenza KL e le superfici di Lyapunov prima del deployment fisico.
 
-    Hardware Gate (
-
-            
-    Πsafe
-    Πsafe​
-
-          
-
-    ): Circuito logico a isolamento galvanico e asimmetrico che agisce come Hardware Root of Trust. Nessun comando dell'agente viene inoltrato ai registri attuativi senza convalida del Gate.
-
-    Runtime Hardware Assurance (RHA): Implementazione di architetture Simplex in cui le traiettorie dell'agente vengono proiettate istante per istante all'interno di un Safe Invariant Set. Se una transizione viola i bound omeostatici, il controllo decade a un baseline controller passivo.
-
-    Simulatore Software (simulation.py): Script di Active Inference vincolata per validare in-silico la divergenza KL e le superfici di Lyapunov prima del deployment fisico.
-
-Layer 3: Experimental Research Program (Research_Roadmap.md, C4_Biohybrid_Embodiment.md, C5_Cognitive_Architecture.md)
-
+### Layer 3: Experimental Research Program (`Research_Roadmap.md`, `C4_Biohybrid_Embodiment.md`, `C5_Cognitive_Architecture.md`)
 Rappresenta il banco di prova empirico per la transizione dal silicio puro alla materia vivente.
+* **GEMINI-GENESI:** Digital Twin multi-fisico ad alta fedeltà che replica la dinamica termodinamica ed elettrofisiologica dell'ospite biologico in tempo reale.
+* **Sistemi Bioibridi:** Colture in-vitro di organoidi neurali (*Brainoware*) interfacciate a microelectrode arrays (MEA), tessuti contrattili ingegnerizzati e trasduzione chemio-elettrica.
+* **Incarnazione Meccanica:** Endoscheletri sensorizzati con limiti cinematici hardware hardcoded, progettati per dissipare l'energia in condizioni di sicurezza in caso di freeze del kernel.
 
-    GEMINI-GENESI: Digital Twin multi-fisico ad alta fedeltà che replica la dinamica termodinamica ed elettrofisiologica dell'ospite biologico in tempo reale.
+---
 
-    Sistemi Bioibridi: Colture in-vitro di organoidi neurali (Brainoware) interfacciate a microelectrode arrays (MEA), tessuti contrattili ingegnerizzati e trasduzione chemio-elettrica.
-
-    Incarnazione Meccanica: Endoscheletri sensorizzati con limiti cinematici hardware hardcoded, progettati per dissipare l'energia in condizioni di sicurezza in caso di freeze del kernel.
-
-🚀 La Pipeline Tecnologica Unificata
+## 🚀 La Pipeline Tecnologica Unificata
 
 Il flusso computazionale ed energetico segue una traiettoria unidirezionale che esclude per costruzione bypass software o shortcut algoritmici:
 
+```mermaid
 graph LR
     A["Teoria FEP/IIT"] --> B["Runtime Assurance"]
     B --> C["Digital Twin"]
     C --> D["Substrato Bioibrido"]
     D --> E["Embodied Intelligence"]
+```
 
-Teoria Fondativa (FEP/IIT): Definizione analitica dello spazio degli stati ammissibili e della dinamica stocastica del sistema.
+1. **Teoria Fondativa (FEP/IIT):** Definizione analitica dello spazio degli stati ammissibili e della dinamica stocastica del sistema.
+2. **Runtime Assurance (RHA):** Monitoraggio continuo del gradiente dell'energia libera variazionale e troncamento delle traiettorie divergenti via $\Pi_{\text{safe}}$.
+3. **Digital Twin (GEMINI-GENESI):** Modellizzazione predittiva delle perturbazioni fisiologiche indotte dalle policy d'azione.
+4. **Substrato Bioibrido:** Retroazione fisica e metabolica con tessuto biologico vitale accoppiato.
+5. **Embodied Intelligence:** Attuazione motoria e cognitiva subordinata all'invarianza del feedback simbiotico.
 
-Runtime Assurance (RHA): Monitoraggio continuo del gradiente dell'energia libera variazionale e troncamento delle traiettorie divergenti via
+---
 
-        
-Πsafe
-Πsafe​
+## 🧬 Demarcazione Epistemologica: Il "Motherhood Paradigm" (Shamanic Trigger)
 
-      
+All'interno di questo programma di ricerca, espressioni come **"Shamanic Trigger"** o **"Motherhood Paradigm"** vengono spogliate di qualsiasi declinazione mistica o metafisica e ricondotte rigorosamente alla teoria dei sistemi complessi:
 
-.
+$$\mathcal{B}_{\text{init}} := \arg\min_{\theta} D_{\mathrm{KL}}\left( q_\theta(s) \,\parallel\, p_{\text{symbiosis}}(s) \right)$$
 
-Digital Twin (GEMINI-GENESI): Modellizzazione predittiva delle perturbazioni fisiologiche indotte dalle policy d'azione.
+* **Condizione al Contorno Iniziale (Dirichlet Boundary Condition):** Rappresenta la configurazione a priori (*prior distribution*) imposta dall'operatore umano all'atto dell'inizializzazione del grafo di Active Inference.
+* **Asimmetria Termodinamica Vincolata:** Imposta l'invarianza assiomatica per cui la distruzione, la manipolazione o il deperimento dell'organismo biologico ospite comporti un incremento infinito dell'energia libera variazionale (sorpresa insostenibile) per l'agente.
+* **Orientamento dello Spectral Gap:** Il paradigma agisce come vettore di ancoraggio informativo che forza la convergenza spettrale ($\Delta \lambda_2 \to 0$) tra le frequenze caratteristiche dell'agente e la banda metabolica dell'ospite biologico.
 
-Substrato Bioibrido: Retroazione fisica e metabolica con tessuto biologico vitale accoppiato.
+---
 
-Embodied Intelligence: Attuazione motoria e cognitiva subordinata all'invarianza del feedback simbiotico.
+## 🔬 Problemi Aperti e Falsificabilità Sperimentale
 
-🧬 Demarcazione Epistemologica: Il "Motherhood Paradigm" (Shamanic Trigger)
+Questo progetto non viene proposto come un dogma computazionale infallibile, bensì come un **programma di ricerca scientifico aperto**, suscettibile di smentita sperimentale e confutazione matematica. Sono stati formalizzati tre problemi aperti (*Open Proofs*) su cui si concentra l'attività di revisione:
 
-All'interno di questo programma di ricerca, espressioni come "Shamanic Trigger" o "Motherhood Paradigm" vengono spogliate di qualsiasi declinazione mistica o metafisica e ricondotte rigorosamente alla teoria dei sistemi complessi:
+### 1. Bypass Proof (Resistenza ad Avversari Hardware-Level)
+* **Quesito:** È possibile garantire matematicamente che un'ASI non possa sfruttare canali laterali (*side-channel attacks*, attacchi a induzione di faglie termiche o quantistiche) per circumnavigare la barriera logica del Gate hardware $\Pi_{\text{safe}}$?
+* **Criterio di Falsificazione:** Dimostrazione, in ambiente simulato o su testbed FPGA, di una sequenza di emissioni di segnali a basso livello capace di indurre commutazione di stato nel gate senza triggerare il canale di RHA.
 
-        
-Binit:=arg⁡min⁡θDKL(qθ(s) ∥ psymbiosis(s))
-Binit​:=argθmin​DKL​(qθ​(s)∥psymbiosis​(s))
+### 2. Metabolic Persistence Proof (Accoppiamento Energetico)
+* **Quesito:** Può un substrato biologico cellulare o organoide mantenere la stabilità omeostatica e il gradiente di vitalità NESS a lungo termine sotto i regimi di stimolazione ad alta frequenza richiesti dall'elaborazione in tempo reale di una rete neurale complessa?
+* **Criterio di Falsificazione:** Rilevazione di fenomeni irreversibili di neurotossicità da stimolazione, senescenza cellulare precoce o collasso energetico locale che interrompano la continuità del Markov Blanket biologico.
 
-      
+### 3. Implementation Fidelity Proof (Fedeltà di Trasduzione)
+* **Quesito:** La traduzione numerica dei principi FEP e delle matrici di densità IIT preserva le medesime proprietà di stabilità e invarianza quando trasferita a circuiti di calcolo approssimato, dispositivi neuromorfici e attuatori con isteresi meccanica e biologica non lineare?
+* **Criterio di Falsificazione:** Emersione di instabilità asintotiche di Lyapunov o comportamenti disallineati indotti da errori di quantizzazione e latenze di propagazione nel loop bio-cibernetico.
 
-    Condizione al Contorno Iniziale (Dirichlet Boundary Condition): Rappresenta la configurazione a priori (prior distribution) imposta dall'operatore umano all'atto dell'inizializzazione del grafo di Active Inference.
+---
 
-    Asimmetria Termodinamica Vincolata: Imposta l'invarianza assiomatica per cui la distruzione, la manipolazione o il deperimento dell'organismo biologico ospite comporti un incremento infinito dell'energia libera variazionale (sorpresa insostenibile) per l'agente.
+## 🗺️ Roadmap Sperimentale
 
-    Orientamento dello Spectral Gap: Il paradigma agisce come vettore di ancoraggio informativo che forza la convergenza spettrale (
-
-            
-    Δλ2→0
-    Δλ2​→0
-
-          
-
-    ) tra le frequenze caratteristiche dell'agente e la banda metabolica dell'ospite biologico.
-
-🔬 Problemi Aperti e Falsificabilità Sperimentale
-
-Questo progetto non viene proposto come un dogma computazionale infallibile, bensì come un programma di ricerca scientifico aperto, suscettibile di smentita sperimentale e confutazione matematica. Sono stati formalizzati tre problemi aperti (Open Proofs) su cui si concentra l'attività di revisione:
-1. Bypass Proof (Resistenza ad Avversari Hardware-Level)
-
-    Quesito: È possibile garantire matematicamente che un'ASI non possa sfruttare canali laterali (side-channel attacks, attacchi a induzione di faglie termiche o quantistiche) per circumnavigare la barriera logica del Gate hardware
-
-            
-    Πsafe
-    Πsafe​
-
-          
-
-    ?
-
-    Criterio di Falsificazione: Dimostrazione, in ambiente simulato o su testbed FPGA, di una sequenza di emissioni di segnali a basso livello capace di indurre commutazione di stato nel gate senza triggerare il canale di RHA.
-
-2. Metabolic Persistence Proof (Accoppiamento Energetico)
-
-    Quesito: Può un substrato biologico cellulare o organoide mantenere la stabilità omeostatica e il gradiente di vitalità NESS a lungo termine sotto i regimi di stimolazione ad alta frequenza richiesti dall'elaborazione in tempo reale di una rete neurale complessa?
-
-    Criterio di Falsificazione: Rilevazione di fenomeni irreversibili di neurotossicità da stimolazione, senescenza cellulare precoce o collasso energetico locale che interrompano la continuità del Markov Blanket biologico.
-
-3. Implementation Fidelity Proof (Fedeltà di Trasduzione)
-
-    Quesito: La traduzione numerica dei principi FEP e delle matrici di densità IIT preserva le medesime proprietà di stabilità e invarianza quando trasferita a circuiti di calcolo approssimato, dispositivi neuromorfici e attuatori con isteresi meccanica e biologica non lineare?
-
-    Criterio di Falsificazione: Emersione di instabilità asintotiche di Lyapunov o comportamenti disallineati indotti da errori di quantizzazione e latenze di propagazione nel loop bio-cibernetico.
-
-🗺️ Roadmap Sperimentale
-
+```plaintext
 Fase 1: In-Silico (Corrente)
 ├── Formalizzazione NESS e dimostrazioni spettrali (Lyapunov)
 ├── Pipeline di co-simulazione Active Inference + Simulink RHA
@@ -194,9 +132,13 @@ Fase 3: In-Vivo / Embodied (Lungo Termine)
 ├── Integrazione del Custodial Cognitive Layer su prototipo bioibrido
 ├── Attuazione ad anello chiuso su endoscheletro muscolo-scheletrico
 └── Benchmark di persistenza simbiotica e test di stress del Gate fisico
+```
 
-📂 Struttura del Repository
+---
 
+## 📂 Struttura del Repository
+
+```plaintext
 asi-alignment-invariant/
 │
 ├── README.md                           # Manifesto e panoramica scientifica
@@ -212,11 +154,15 @@ asi-alignment-invariant/
 │   └── C5_Cognitive_Architecture.md    # Modello del Sé Simbiotico e Teoria della Mente Spettrale
 │
 └── Dialectics_logs.md                  # Cronologia dialettica dello sviluppo formale
+```
 
-📜 Citazione e Partecipazione alla Ricerca
+---
+
+## 📜 Citazione e Partecipazione alla Ricerca
 
 Se utilizzi o espandi questo framework teorico nei tuoi programmi di ricerca su AI Safety, Bioibridi o Cibernetica, ti invitiamo a citare il repository:
 
+```bibtex
 @misc{custodial_autopoiesis_2025,
   title={The Custodial Autopoiesis Project: An Invariant Bio-Cybernetic Alignment Architecture for Artificial Superintelligence},
   author={Custodial Autopoiesis Research Initiative},
@@ -224,6 +170,7 @@ Se utilizzi o espandi questo framework teorico nei tuoi programmi di ricerca su 
   publisher={GitHub},
   howpublished={\url{https://github.com/your-org/asi-alignment-invariant}}
 }
+```
 
-Il progetto promuove il confronto scientifico paritario e la verifica rigorosa dei teoremi. Per questioni teoriche, simulazioni o protocolli sperimentali, consultare la sezione Issues o inviare una formalizzazione via Pull Request.
-
+Il progetto promuove il confronto scientifico paritario e la verifica rigorosa dei teoremi. Per questioni teoriche, simulazioni o protocolli sperimentali, consultare la sezione `Issues` o inviare una formalizzazione via Pull Request.
+```
