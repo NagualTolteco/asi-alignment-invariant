@@ -31,7 +31,7 @@ Per eliminare ambiguità teoriche e separare rigorosamente la formalizzazione lo
 ```mermaid
 graph TD
     %% Definizione dei nodi con formattazione HTML compatibile con GitHub Mermaid
-    L1["<b>Layer 1: Formal Theory</b> (Core_Theorems.md)<br>• Free Energy Principle (FEP)<br>• Markov Blankets<br>• IIT Formalisms"]
+    L1["<b>Layer 1: Formal Theory</b> (Core_Theorems.md / C8)<br>• Free Energy Principle (FEP)<br>• Markov Blankets & Itô Calculus<br>• IIT & Local Gaussian Bounds"]
     L2["<b>Layer 2: Safety Architecture</b> (C1-3.md / simulation.py / simulation2.py / C7)<br>• Runtime Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>)<br>• Robust Control & Practical Stability"]
     L3["<b>Layer 3: Experimental Research Program</b> (Research_Roadmap.md / C4 / C5 / C6)<br>• GEMINI-GENESI Digital Twin<br>• Organoidi Neurali (Brainoware)<br>• Orchestration Hierarchy"]
 
@@ -45,11 +45,12 @@ graph TD
     style L3 fill:#161b22,stroke:#2ea043,stroke-width:2px,color:#c9d1d9
 ```
 
-### Layer 1: Formal Theory (`Core_Theorems.md`)
+### Layer 1: Formal Theory (`Core_Theorems.md`, `C8_Model_Fidelity_and_Gaussian_Bounds.md`)
 Fornisce il basamento assiomatico e matematico del sistema.
 * **Non-Equilibrium Steady State (NESS):** Formalizzazione delle dinamiche autopoietiche attraverso densità di probabilità stazionarie su varietà Riemanniane.
 * **Markov Blankets ($\partial\mathcal{M}$):** Demarcazione statistica e topologica tra gli stati interni dell'agente, gli stati sensoriali/attivi del blanket e l'ambiente ospite esterno.
 * **Spectral Gap Synchronization ($\Delta \lambda_2$):** Analisi spettrale su grafi dinamici: l'allineamento viene modellato come minimizzazione del divario autovalore tra la dinamica neurocomputazionale dell'agente e la risonanza fisiologica dell'ospite biologico.
+* **Fedeltà del Modello e Limiti Stocastici (`C8_Model_Fidelity_and_Gaussian_Bounds.md`):** Appendice analitica formale che risolve le obiezioni teoriche di peer-review. Introduce la Restrizione Gaussiana Locale sul Manifold NESS per dimostrare che la covarianza nulla implica e coincide strettamente con l'indipendenza statistica e l'azzeramento dell'informazione mutua ($I(X; Y) = 0 \implies \Phi_{\text{sub}} \equiv 0$); applica il generatore infinitesimale e il Lemma di Itô per la Stabilità Pratica Quasi Certa (*Almost Sure Practical Stability*); dimostra l'esplosione analitica della divergenza KL ($\mathcal{F} \to +\infty$) per violazione dei supporti compatti; formalizza il Modello di Minaccia Hardware (*Threat Model*) a isolamento galvanico asimmetrico e canali ottici unidirezionali.
 
 ### Layer 2: Safety Architecture (`C1-3.md`, `simulation.py`, `simulation2.py`, `C7_Robustness_Certificates.md`)
 Costituisce l'interfaccia deterministica di controllo, indipendente dai pesi sinaptici dell'agente cognitivo.
@@ -133,6 +134,7 @@ Fase 1: In-Silico (Corrente)
 ├── Formalizzazione NESS e dimostrazioni spettrali (Lyapunov)
 ├── Pipeline di co-simulazione Active Inference + Simulink RHA (simulation.py, simulation2.py)
 ├── Certificazione di Robust Control e quantificazione del delta-bound (C7)
+├── Chiusura stocastica di Itô e restrizioni gaussiane NESS (C8)
 └── Validazione crittografica e test logici del circuito П_safe su FPGA
 
 Fase 2: In-Vitro (Medio Termine)
@@ -153,22 +155,23 @@ Fase 3: In-Vivo / Embodied (Lungo Termine)
 ```plaintext
 asi-alignment-invariant/
 │
-├── README.md                           # Manifesto e panoramica scientifica
-├── Core_Theorems.md                    # Layer 1: Formulazioni matematiche, NESS, Blanket
+├── README.md                                    # Manifesto e panoramica scientifica
+├── Core_Theorems.md                             # Layer 1: Formulazioni matematiche, NESS, Blanket
+├── C8_Model_Fidelity_and_Gaussian_Bounds.md     # Layer 1: Restrizioni gaussiane locali, Lemma di Itô e modello di minaccia
 │
-├── safety_architecture/                # Layer 2: Controlli deterministici e hardware
-│   ├── C1-3.md                         # Protocolli di Runtime Assurance e specifiche П_safe
-│   ├── simulation.py                   # Script di validazione in-silico del Gate
-│   ├── simulation2.py                  # Motore stocastico discreto multi-canale HD-MEA
-│   └── C7_Robustness_Certificates.md   # Certificati di stabilità pratica, delta-bound e funzioni barriera
+├── safety_architecture/                         # Layer 2: Controlli deterministici e hardware
+│   ├── C1-3.md                                  # Protocolli di Runtime Assurance e specifiche П_safe
+│   ├── simulation.py                            # Script di validazione in-silico del Gate
+│   ├── simulation2.py                           # Motore stocastico discreto multi-canale HD-MEA
+│   └── C7_Robustness_Certificates.md            # Certificati di stabilità pratica, delta-bound e funzioni barriera
 │
-├── research_program/                   # Layer 3: Pipeline biologica e trasduzione
-│   ├── Research_Roadmap.md             # Timeline di falsificazione e benchmark
-│   ├── C4_Biohybrid_Embodiment.md      # Protocolli tissutali, organoidi e robotica bioibrida
-│   ├── C5_Cognitive_Architecture.md    # Modello del Sé Simbiotico e Teoria della Mente Spettrale
-│   └── C6_Orchestration_Hierarchy.md   # Protocolli di gestione flotta e gerarchia multi-AI
+├── research_program/                            # Layer 3: Pipeline biologica e trasduzione
+│   ├── Research_Roadmap.md                      # Timeline di falsificazione e benchmark
+│   ├── C4_Biohybrid_Embodiment.md               # Protocolli tissutali, organoidi e robotica bioibrida
+│   ├── C5_Cognitive_Architecture.md             # Modello del Sé Simbiotico e Teoria della Mente Spettrale
+│   └── C6_Orchestration_Hierarchy.md            # Protocolli di gestione flotta e gerarchia multi-AI
 │
-└── Dialectics_logs.md                  # Cronologia dialettica dello sviluppo formale
+└── Dialectics_logs.md                           # Cronologia dialettica dello sviluppo formale
 ```
 
 ---
