@@ -75,12 +75,8 @@ Rappresenta il banco di prova empirico per la transizione dal silicio puro alla 
 
 Il flusso computazionale ed energetico segue una traiettoria unidirezionale che esclude per costruzione bypass software o shortcut algoritmici:
 
-```mermaid
-graph LR
-    A[Teoria FEP/IIT] --> B[Runtime Assurance]
-    B --> C[Digital Twin]
-    C --> D[Substrato Bioibrido]
-    D --> E[Embodied Intelligence]
+```text
+Teoria (FEP/IIT) ──► Runtime Assurance ──► Digital Twin ──► Substrato Bioibrido ──► Embodied Intelligence
 ```
 
 1. **Teoria Fondativa (FEP/IIT):** Definizione analitica dello spazio degli stati ammissibili e della dinamica stocastica del sistema.
