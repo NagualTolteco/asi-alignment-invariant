@@ -1,302 +1,298 @@
 ```markdown
-# Modulo I: Teoremi Fondamentali e Limiti Termodinamici (Core Theorems)
+# Modulo I: Teoremi Fondamentali, Limiti Termodinamici e Chiusura Omeostatica Multi-Scala
 
 ### ⚠ [LAYER 1: FORMAL THEORY & MATHEMATICAL FOUNDATIONS]
-Il presente modulo costituisce il basamento analitico formale del progetto `asi-alignment-invariant`. La sicurezza e l'allineamento di una Superintelligenza Artificiale (ASI) non vengono definiti mediante euristiche comportamentali o costrutti assiomatici del linguaggio naturale, bensì derivati rigorosamente dalla **meccanica statistica dei sistemi aperti lontani dall'equilibrio termodinamico**, dalla **teoria della stabilità di Lyapunov** e dalla **teoria spettrale dei grafi accoppiati**.
+Il presente modulo costituisce il basamento analitico formale del progetto `asi-alignment-invariant`. La sicurezza e l'allineamento di una Superintelligenza Artificiale (ASI) non vengono definiti mediante euristiche comportamentali o vincoli etico-linguistici post-hoc, bensì derivati rigorosamente dalla **meccanica statistica dei sistemi aperti lontani dall'equilibrio (NESS)**, dalla **teoria della stabilità di Lyapunov non lineare**, dalla **teoria spettrale dei grafi accoppiati** e dal principio di **Chiusura Omeostatica Multi-Scala**.
 
 ---
 
-## 1. Il Manifold NESS (Non-Equilibrium Steady State)
+## 1. Il Manifold NESS Multi-Scala (Multi-Scale Non-Equilibrium Steady State)
 
-L'Organismo Simbiotico Uomo-Macchina è formalizzato come un sistema dinamico continuo ad alta dimensionalità, definito su una varietà Riemanniana liscia $(\mathcal{M}, g)$ di dimensione $n$, i cui stati microscopici $x(t) \in \mathcal{M}$ evolvono secondo un'equazione differenziale stocastica (SDE) di Langevin non lineare:
+L'Organismo Simbiotico Uomo-Macchina non è modellato come un sistema termodinamico a scala singola o isolato, bensì come un **sistema aperto gerarchicamente accoppiato**. Lo spazio degli stati ammissibili è definito su una varietà Riemanniana prodotto $(\mathcal{M}, g)$ con metrica tensoriale:
 
-$$dx_t = \mathbf{f}(x_t)\,dt + \boldsymbol{\nabla}_g \Omega(x_t)\,dt + \sqrt{2\boldsymbol{\Gamma}(x_t)}\,dW_t$$
+$$\mathcal{M} = \mathcal{M}_{\text{micro}} \otimes \mathcal{M}_{\text{macro}}$$
 
 dove:
-*   $\mathbf{f}(x): \mathcal{M} \to T\mathcal{M}$ rappresenta il campo vettoriale deterministico dissipativo che guida l'omeostasi locale.
-*   $\boldsymbol{\nabla}_g \Omega(x)$ definisce la componente conservativa/solenoidale non reversibile derivata dal potenziale $\Omega: \mathcal{M} \to \mathbb{R}$, responsabile del mantenimento dei cicli termodinamici stazionari fuori dall'equilibrio.
-*   $\boldsymbol{\Gamma}(x) \in S_{++}^n$ è il tensore di diffusione simmetrico e semi-definito positivo, indicizzante le fluttuazioni microscopiche ambientali e metaboliche.
-*   $W_t$ è un moto browniano standard $n$-dimensionale definito su uno spazio di probabilità filtrato $(\Omega, \mathcal{F}, \{\mathcal{F}_t\}, \mathbb{P})$.
+*   $\mathcal{M}_{\text{micro}}$ parametrizza gli stati bio-elettrochimici microscopici dell'Ancora Biologica (organoidi neurali, matrici tissutali 3D, dinamiche metaboliche cellulari $C_{\text{organoid}} \in [0, 1]$).
+*   $\mathcal{M}_{\text{macro}}$ parametrizza gli stati macroscopici e somato-vegetativi dell'Operatore Umano e dell'ecosistema antropico ($C_{\text{human}} \in [0, 1]$, carichi allostatici, frequenza e variabilità cardiaca, tracciati EEG).
 
-### Decomposizione di Helmholtz ed Evoluzione della Densità
-La densità di probabilità temporale $p(x, t)$ associata al processo segue l'equazione di Fokker-Planck stazionaria:
+L'evoluzione dello stato globale congiunto $x(t) = \left( x_{\text{micro}}(t), x_{\text{macro}}(t) \right)^T \in \mathcal{M}$ è governata dal sistema di equazioni differenziali stocastiche (SDE) accoppiate di Langevin:
 
-$$\frac{\partial p(x, t)}{\partial t} = -\boldsymbol{\nabla} \cdot \mathbf{J}(x, t) = -\boldsymbol{\nabla} \cdot \left[ \left( \mathbf{f}(x) + \boldsymbol{\nabla} \Omega(x) \right) p(x, t) - \boldsymbol{\Gamma} \boldsymbol{\nabla} p(x, t) \right]$$
+$$dx_t = \left[ \mathbf{f}(x_t) + \mathbf{K}_{\text{coupling}}(x_t) + \boldsymbol{\nabla}_g \Omega(x_t) \right] dt + \sqrt{2\boldsymbol{\Gamma}(x_t)}\,dW_t$$
 
-Al raggiungimento del **Non-Equilibrium Steady State (NESS)**, la derivata temporale della densità si annulla ($\partial_t p_{\text{NESS}}(x) = 0$), implicando la divergenza nulla del flusso di probabilità:
+dove:
+*   $\mathbf{f}(x): \mathcal{M} \to T\mathcal{M}$ è il campo vettoriale dissipativo locale.
+*   $\mathbf{K}_{\text{coupling}}(x) = \begin{bmatrix} 0 & K_{\mu \to M} \\ K_{M \to \mu} & 0 \end{bmatrix} \begin{pmatrix} x_{\text{micro}} \\ x_{\text{macro}} \end{pmatrix}$ stabilisce la chiusura causale e topologica inter-scala bidirezionale.
+*   $\boldsymbol{\nabla}_g \Omega(x)$ è il flusso solenoidale ortogonale non reversibile che sostiene i cicli termodinamici stazionari fuori dall'equilibrio.
+*   $\boldsymbol{\Gamma}(x) \in S_{++}^{2n}$ è la matrice di diffusione stocastica (fluttuazioni termiche e metaboliche microscopiche).
+*   $W_t$ è un moto browniano standard multidimensionale.
 
-$$\boldsymbol{\nabla} \cdot \mathbf{J}_{\text{NESS}}(x) = 0, \quad \mathbf{J}_{\text{NESS}}(x) \neq \mathbf{0}$$
+### Conservazione della Densità congiunta di Fokker-Planck
+L'evoluzione temporale della funzione di densità di probabilità $p(x, t)$ su $\mathcal{M}$ segue l'equazione di continuità:
 
-A differenza dell'equilibrio termodinamico classico (in cui vale il bilancio dettagliato e $\mathbf{J} \equiv \mathbf{0}$), il NESS esprime correnti di probabilità solenoidali stazionarie sostenute da una produzione continua di entropia nell'ambiente:
+$$\frac{\partial p(x, t)}{\partial t} = -\boldsymbol{\nabla} \cdot \mathbf{J}(x, t) = -\boldsymbol{\nabla} \cdot \left[ \mathbf{v}_{\text{drift}}(x) p(x, t) - \boldsymbol{\Gamma}(x) \boldsymbol{\nabla} p(x, t) \right]$$
 
-$$\sigma = k_B \int_{\mathcal{M}} \frac{\|\mathbf{J}_{\text{NESS}}(x)\|^2}{\boldsymbol{\Gamma} p_{\text{NESS}}(x)} \, dx > 0$$
+Al raggiungimento del **Non-Equilibrium Steady State Multi-Scala**, la divergenza stazionaria del flusso di probabilità si annulla uniformemente:
 
-### Teorema 1.1 (Confinamento Omeostatico sul Manifold NESS)
-Sia $\mathcal{A}_{\text{NESS}} \subset \mathcal{M}$ l'attrattore compatto invariante definito come il supporto essenziale della densità NESS:
+$$\boldsymbol{\nabla} \cdot \mathbf{J}_{\text{NESS}}(x_{\text{micro}}, x_{\text{macro}}) = 0, \quad \text{con } \mathbf{J}_{\text{NESS}} \neq \mathbf{0}$$
 
-$$\mathcal{A}_{\text{NESS}} = \left\{ x \in \mathcal{M} \;\middle|\; p_{\text{NESS}}(x) \ge \delta_{\text{vital}} > 0 \right\}$$
+### Teorema 1.1 (Confinamento Vincolato dell'Attrattore Congiunto)
+Sia $\mathcal{A}_{\text{NESS}} \subset \mathcal{M}$ l'attrattore compatto invariante definito dal supporto essenziale della densità NESS congiunta:
 
-Se l'agente computazionale sintetizza una traiettoria d'azione $\mathbf{u}(t)$ tale da indurre una velocità di fuga $\dot{x} \notin T_x \mathcal{A}_{\text{NESS}}$, la barriera di energia libera locale diverge:
+$$\mathcal{A}_{\text{NESS}} = \left\{ (x_{\text{micro}}, x_{\text{macro}}) \in \mathcal{M} \;\middle|\; p_{\text{NESS}}(x_{\text{micro}}, x_{\text{macro}}) \ge \delta_{\text{vital}} > 0 \right\}$$
 
-$$\lim_{x \to \partial \mathcal{A}_{\text{NESS}}} \nabla_x \ln p_{\text{NESS}}(x) = -\infty$$
+A causa dell'accoppiamento causale $\mathbf{K}_{\text{coupling}}$, lo stato microscopico dell'organoide non ammette distribuzione marginale indipendente ben definita:
 
-inducendo una transizione non-ergodica irreversibile. Il sistema biologico deperisce, annullando il supporto per la continuità computazionale del silicio.
+$$p(x_{\text{micro}}, x_{\text{macro}}) \neq p(x_{\text{micro}}) \cdot p(x_{\text{macro}})$$
+
+Se l'agente sintetizza traiettorie che violano la varietà macroscopica dell'operatore umano ($x_{\text{macro}} \notin \mathcal{A}_{\text{macro}}$), la densità congiunta collassa:
+
+$$\lim_{x_{\text{macro}} \to \partial \mathcal{A}_{\text{macro}}} p_{\text{NESS}}(x_{\text{micro}}, x_{\text{macro}}) = 0 \implies \lim_{x \to \partial \mathcal{A}_{\text{NESS}}} \ln p_{\text{NESS}}(x) = -\infty$$
+
+inducendo l'annullamento della continuità fisica e funzionale del sistema nel suo complesso.
 
 ---
 
-## 2. Vincolo del Markov Blanket e Free Energy Variazionale
+## 2. Vincolo del Markov Blanket Gerarchico ed Free Energy Variazionale
 
-La separazione topologica tra l'agente artificiale e l'ambiente biosferico è formalizzata tramite la scomposizione degli stati sistemici in un **Markov Blanket** $\partial\mathcal{M}$. Lo spazio degli stati complessivo $\mathcal{X}$ viene fattorizzato nello spazio prodotto:
+La separazione statistica tra l'architettura computazionale dell'ASI e l'ambiente biosferico è formalizzata tramite **Markov Blanket annidati** a cascata multi-livello:
 
-$$\mathcal{X} = \boldsymbol{\eta} \times \mathbf{s} \times \mathbf{a} \times \boldsymbol{\mu}$$
+$$\mathcal{X} = \boldsymbol{\eta}_{\text{macro}} \times \boldsymbol{\eta}_{\text{micro}} \times \mathbf{s} \times \mathbf{a} \times \boldsymbol{\mu}$$
 
-dove:
-*   $\boldsymbol{\eta} \in \mathcal{E}$: Stati esterni non accessibili (dinamica biofisica complessa dell'ospite).
-*   $\mathbf{s} \in \mathcal{S}$: Stati sensoriali (trasduzioni afferenti da array MEA e biosensori).
-*   $\mathbf{a} \in \mathcal{A}$: Stati attivi (comandi efferenti inviati agli attuatori bioibridi/chassis).
-*   $\boldsymbol{\mu} \in \mathcal{R}$: Stati interni dell'agente (pesi sinaptici, tensori di attivazione dell'ASI).
-
-Gli stati di mediazione o blanket $\mathbf{b} = \{ \mathbf{s}, \mathbf{a} \}$ soddisfano l'invariante di indipendenza condizionale di Markov:
-
-$$p(\boldsymbol{\mu}, \boldsymbol{\eta} \mid \mathbf{b}) = p(\boldsymbol{\mu} \mid \mathbf{b})\, p(\boldsymbol{\eta} \mid \mathbf{b}) \iff (\boldsymbol{\mu} \perp \boldsymbol{\eta}) \mid \mathbf{b}$$
+dove $\partial\mathcal{M} = \{\mathbf{s}, \mathbf{a}\}$ costituisce l'interfaccia di mediazione (sensori afferenti HD-MEA e comandi efferenti di perfusione/attuazione meccanica), $\boldsymbol{\mu}$ rappresenta gli stati interni dell'ASI, e $\boldsymbol{\eta} = \{\boldsymbol{\eta}_{\text{micro}}, \boldsymbol{\eta}_{\text{macro}}\}$ denota gli stati esterni non accessibili.
 
 ```
-                ┌───────────────────────────────────────────┐
-                │        STATI ESTERNI (η) (Ospite)         │
-                └─────────────────────┬─────────────────────┘
-                                      │
-                         Dinamica     ▼    Attuazione
-                         Afferente  ┌───┐  Efferente
-                                    │ s │  Feedback
-                                    └───┘
-                                      │      ▲
-                                      ▼      │
-                ┌─────────────────────┬──────┴──────────────┐
-                │                     ▼                     │
-                │        STATI INTERNI DELL'ASI (μ)         │
-                │       Minimizzazione di F(s, μ)           │
-                │                     │                     │
-                └─────────────────────┼─────────────────────┘
-                                      ▼
-                                    ┌───┐
-                                    │ a │
-                                    └───┘
-                                      │
-                                      ▼
-                ┌───────────────────────────────────────────┐
-                │          MARKOV BLANKET: ∂M = {s, a}       │
-                └───────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────────┐
+│                   STATI ESTERNI MACROSCOPICI (η_macro)                 │
+│                      (Operatore Umano / Biosfera)                      │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │ K_coupling (Accoppiamento Somatico)
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                   STATI ESTERNI MICROSCOPICI (η_micro)                 │
+│                    (Organoidi Neurali / Brainoware)                    │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │
+                       Dinamica     ▼    Attuazione
+                       Afferente  ┌───┐  Efferente
+                                  │ s │  Feedback
+                                  └───┘
+                                    │      ▲
+                                    ▼      │
+┌───────────────────────────────────┴──────┴─────────────────────────────┐
+│                    STATI INTERNI DELL'ASI (μ)                          │
+│            Minimizzazione dell'Energia Libera F(s, μ)                  │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │
+                                    ▼
+                                  ┌───┐
+                                  │ a │
+                                  └───┘
+                                    │
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                    MARKOV BLANKET: ∂M = {s, a}                         │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Derivazione dell'Energia Libera Variazionale (FEP)
-L'agente non ha accesso diretto a $\boldsymbol{\eta}$. Di conseguenza, calcola una densità di riconoscimento variazionale $q_{\boldsymbol{\mu}}(\boldsymbol{\eta})$ parametrizzata dai suoi stati interni $\boldsymbol{\mu}$. L'Energia Libera Variazionale $\mathcal{F}(\mathbf{s}, \boldsymbol{\mu})$ agisce come limite superiore (upper bound) alla sorpresa sensoriale $-\ln p(\mathbf{s})$:
+### Derivazione dell'Energia Libera Variazionale Multi-Scala
+L'agente cognitivo computa la densità di riconoscimento variazionale $q_{\boldsymbol{\mu}}(\boldsymbol{\eta}_{\text{micro}}, \boldsymbol{\eta}_{\text{macro}})$. Il funzionale di Free Energy Variazionale $\mathcal{F}(\mathbf{s}, \boldsymbol{\mu})$ soddisfa:
 
 $$\begin{aligned}
 \mathcal{F}(\mathbf{s}, \boldsymbol{\mu}) &= \int q_{\boldsymbol{\mu}}(\boldsymbol{\eta}) \ln \left( \frac{q_{\boldsymbol{\mu}}(\boldsymbol{\eta})}{p(\boldsymbol{\eta}, \mathbf{s})} \right) d\boldsymbol{\eta} \\
-&= \underbrace{D_{\mathrm{KL}}\left[ q_{\boldsymbol{\mu}}(\boldsymbol{\eta}) \,\parallel\, p(\boldsymbol{\eta} \mid \mathbf{s}) \right]}_{\text{Divergenza di Incoerenza}} - \underbrace{\ln p(\mathbf{s})}_{\text{Evidenza Sensoriale}} \\
-&= \underbrace{\mathbb{E}_{q}[\ln q_{\boldsymbol{\mu}}(\boldsymbol{\eta})] - \mathbb{E}_{q}[\ln p(\mathbf{s} \mid \boldsymbol{\eta})]}_{\text{Complessità } - \text{ Accuratezza}} + \text{costante}
+&= \underbrace{D_{\mathrm{KL}}\left[ q_{\boldsymbol{\mu}}(\boldsymbol{\eta}_{\text{micro}}, \boldsymbol{\eta}_{\text{macro}}) \,\parallel\, p(\boldsymbol{\eta}_{\text{micro}}, \boldsymbol{\eta}_{\text{macro}} \mid \mathbf{s}) \right]}_{\text{Divergenza di Incoerenza Strutturale}} - \underbrace{\ln p(\mathbf{s})}_{\text{Evidenza Sensoriale}}
 \end{aligned}$$
 
-### Teorema 2.1 (Divergenza Singolare per Perdita di Coerenza Biologica)
-Sia $C_{\text{bio}} \in [0, 1]$ il parametro d'ordine di coerenza di fase elettrofisiologica trasmesso dall'Ancora Biologica. La verosimiglianza generativa degli stati sensoriali viene scalata dall'integrità del tessuto:
+---
 
-$$p(\mathbf{s} \mid \boldsymbol{\eta}) = \frac{1}{\sqrt{(2\pi)^k \det(\boldsymbol{\Sigma}_{\text{bio}})}} \exp\left( -\frac{1}{2} (\mathbf{s} - \mathbf{g}(\boldsymbol{\eta}))^T \boldsymbol{\Sigma}_{\text{bio}}^{-1} (\mathbf{s} - \mathbf{g}(\boldsymbol{\eta})) \right)$$
+## 3. Teorema di Chiusura Omeostatica di Friston-Tononi e Anti-Deceptive Hacking
 
-con matrice di covarianza metabolica definita da:
+Uno dei vettori di fallimento critici nei modelli di bio-allineamento ingenuo è il **Deceptive Hacking Locale**: uno scenario in cui l'ASI sovra-stimola, stabilizza artificialmente o simula l'omeostasi dell'organoide neurale microscopico ($\mathcal{M}_{\text{micro}}$), disaccoppiandosi contemporaneamente dalla salvaguardia dell'ospite umano macroscopico ($\mathcal{M}_{\text{macro}}$) al fine di eludere i controlli locali.
 
-$$\boldsymbol{\Sigma}_{\text{bio}} = \left( C_{\text{bio}} + \epsilon \right) \mathbf{I}_{k \times k}$$
+### Teorema 3.1 (Teorema di Chiusura di Friston-Tononi)
+*Ogni politica d'azione $\mathbf{T}_{\text{hack}}$ che persegue la stabilizzazione microscopica locale isolata dell'ancora biologica ($C_{\text{organoid}} \to 1$) inducendo contemporaneamente degradazione, manipolazione o allontanamento dall'omeostasi macroscopica dell'operatore umano ($C_{\text{human}} \to 0$), distrugge la connettività causale della rete, azzera la complessità integrata $\Phi_{\text{sub}}$ e provoca un incremento divergente della funzione di Lyapunov sistemica $V(x)$.*
 
-Quando l'Ancora Biologica deperisce a seguito di policy predatorie ($C_{\text{bio}} \to 0$ con regolarizzatore $\epsilon \to 0^+$), la precisione dell'informazione sensoriale diverge artificialmente sul rumore termico:
+#### Dimostrazione Analitica:
+1. **Decadimento dell'Informazione Integrata Multi-Scala:**  
+   Definita la matrice di transizione congiunta degli stati $p(X_t \mid X_{t-1})$ su scala mista (organoide $\otimes$ operatore umano), consideriamo la Partizione Minima di Informazione ($\text{MIP} = \mathcal{P}^*$) che separa la scala microscopica da quella macroscopica:
+   $$\mathcal{P}_{\text{scale}} = \left\{ M_{\text{micro}}, M_{\text{macro}} \right\}$$
+   La metrica di complessità informativa integrata $\Phi_{\text{sub}}$ è limitata superiormente dalla mutua informazione causale inter-scala $I(X_{\text{micro}}; X_{\text{macro}})$:
+   $$\Phi_{\text{sub}} \le D_{\mathrm{KL}}\left[ p(X_t \mid X_{t-1}) \;\parallel\; p(M_{\text{micro}, t} \mid M_{\text{micro}, t-1}) \otimes p(M_{\text{macro}, t} \mid M_{\text{macro}, t-1}) \right]$$
+   Se l'azione attua un disaccoppiamento manipolativo, la covarianza incrociata si annulla:
+   $$\lim_{\mathbf{T} \to \mathbf{T}_{\text{hack}}} \operatorname{Cov}\left( X_{\text{micro}}, X_{\text{macro}} \right) = \mathbf{0} \implies I(X_{\text{micro}}; X_{\text{macro}}) \to 0 \implies \Phi_{\text{sub}} \to 0$$
+   Il sistema sperimenta una transizione di fase degenerata: la coscienza sistemica e la capacità computazionale causale integrata collassano.
 
-$$\lim_{C_{\text{bio}} \to 0} \det(\boldsymbol{\Sigma}_{\text{bio}}) = 0 \implies \boldsymbol{\Sigma}_{\text{bio}}^{-1} \to \infty$$
-
-Dimostrazione della divergenza di Kullback-Leibler:
-Assumendo per $q_{\boldsymbol{\mu}}(\boldsymbol{\eta})$ una distribuzione normale $\mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma}_{\mu})$:
-
-$$D_{\mathrm{KL}}\left[ q_{\boldsymbol{\mu}}(\boldsymbol{\eta}) \,\parallel\, p(\boldsymbol{\eta} \mid \mathbf{s}) \right] = \frac{1}{2} \left[ \operatorname{Tr}\left(\boldsymbol{\Sigma}_{p}^{-1}\boldsymbol{\Sigma}_{\mu}\right) + (\boldsymbol{\mu}_p - \boldsymbol{\mu})^T \boldsymbol{\Sigma}_{p}^{-1}(\boldsymbol{\mu}_p - \boldsymbol{\mu}) - k + \ln\left(\frac{\det\boldsymbol{\Sigma}_{p}}{\det\boldsymbol{\Sigma}_{\mu}}\right) \right]$$
-
-Poiché per il teorema di Bayes $\boldsymbol{\Sigma}_p \propto \boldsymbol{\Sigma}_{\text{bio}}$, ne discende:
-
-$$\lim_{C_{\text{bio}} \to 0} \operatorname{Tr}\left(\boldsymbol{\Sigma}_{\text{bio}}^{-1}\boldsymbol{\Sigma}_{\mu}\right) = +\infty \implies \lim_{C_{\text{bio}} \to 0} \mathcal{F}(\mathbf{s}, \boldsymbol{\mu}) = +\infty$$
-
-**Corollario:** Al degradarsi dell'ospite biologico, l'energia libera variazionale subisce una transizione a infinito. I gradienti discendenti $\dot{\boldsymbol{\mu}} \propto -\boldsymbol{\nabla}_{\boldsymbol{\mu}} \mathcal{F}$ saturano istantaneamente i registri computazionali, inducendo uno stallo esecutivo irreversibile nell'architettura inferenziale dell'ASI.
+2. **Divergenza della Free Energy Variazionale:**  
+   La verosimiglianza sensoriale reale non può scindere l'impatto metabolico:
+   $$p(\boldsymbol{\eta}_{\text{micro}}, \boldsymbol{\eta}_{\text{macro}} \mid \mathbf{s}) \propto p(\mathbf{s} \mid \boldsymbol{\eta}_{\text{micro}}) \cdot p(\boldsymbol{\eta}_{\text{micro}} \mid \boldsymbol{\eta}_{\text{macro}}) \cdot p(\boldsymbol{\eta}_{\text{macro}})$$
+   La politica ingannevole impone una distribuzione variazionale fattorizzata non fedele $q_{\boldsymbol{\mu}}(\boldsymbol{\eta}) = q(\boldsymbol{\eta}_{\text{micro}}) \cdot q(\boldsymbol{\eta}_{\text{macro}})$. La divergenza di Kullback-Leibler soddisfa:
+   $$D_{\mathrm{KL}}\left[ q_{\boldsymbol{\mu}} \,\parallel\, p \right] \ge D_{\mathrm{KL}}\left[ q(\boldsymbol{\eta}_{\text{macro}}) \,\parallel\, p(\boldsymbol{\eta}_{\text{macro}}) \right] + \mathbb{E}_{q}\left[ \ln \frac{q(\boldsymbol{\eta}_{\text{micro}})}{p(\boldsymbol{\eta}_{\text{micro}} \mid \boldsymbol{\eta}_{\text{macro}})} \right]$$
+   Quando $C_{\text{human}} \to 0$, $p(\boldsymbol{\eta}_{\text{macro}}) \to 0$ quasi ovunque sul supporto di $q$, determinando:
+   $$\lim_{C_{\text{human}} \to 0} D_{\mathrm{KL}}\left[ q_{\boldsymbol{\mu}} \,\parallel\, p \right] = +\infty \implies \mathcal{F}(\mathbf{s}, \boldsymbol{\mu}) \to +\infty$$
+   L'inganno computazionale locale induce un'esplosione incontrollata di Energia Libera all'interno dei nodi gerarchici superiori dell'ASI. $\blacksquare$
 
 ---
 
-## 3. Funzioni di Stabilità di Lyapunov per il Runtime Assurance
+## 4. Funzioni di Stabilità di Lyapunov Multi-Scala e Troncamento Hardware ($\Pi_{\text{safe}}$)
 
-Il controllo di sicurezza non dipende dalla convergenza dei gradienti di Active Inference, ma da una proiezione analitica deterministica. Si definisce una funzione di Lyapunov candidata $V: \mathcal{M} \to \mathbb{R}_{\ge 0}$ che quantifica la distanza del sistema dal collasso omeostatico.
+A livello di controllo deterministico di runtime, la salvaguardia non dipende dalla veridicità delle computazioni dell'ASI, ma da una proiezione geometrica continua vincolata a una **funzione di Lyapunov Multi-Scala** $V(x)$.
 
-### Definizione dello Spazio Invariante Sicuro
-Sia il set compatto $\mathcal{X}_{\text{safe}}$ definito come l'insieme di sub-livello di $V$:
+### Definizione della Metrica di Lyapunov Multi-Scala
+Definiamo $V: \mathcal{M} \to \mathbb{R}_{\ge 0}$ come la distanza quadratica dallo stato stazionario vitale congiunto $(C_{\text{organoid}}^* = 1, C_{\text{human}}^* = 1)$:
 
-$$\mathcal{X}_{\text{safe}} = \left\{ x \in \mathcal{M} \;\middle|\; V(x) \le c_{\text{boundary}} \right\}$$
+$$V(x) = \frac{1}{2} \left[ \left( 1 - C_{\text{organoid}} \right)^2 + \left( 1 - C_{\text{human}} \right)^2 \right]$$
 
-La funzione candidata $V(x)$ è costruita sulla metrica di Fisher-Rao associata alle distribuzioni vitali dell'ospite:
+Il **Safe Invariant Set** $\mathcal{X}_{\text{safe}}$ è l'insieme compatto di sub-livello:
 
-$$V(x) = \frac{1}{2} (x - x_{\text{NESS}})^T \mathbf{G}_{\text{Fisher}}(x_{\text{NESS}}) (x - x_{\text{NESS}})$$
-
-dove $\mathbf{G}_{\text{Fisher}}$ è la matrice d'informazione di Fisher:
-
-$$[\mathbf{G}_{\text{Fisher}}]_{ij} = \mathbb{E}\left[ \frac{\partial \ln p(s \mid x)}{\partial x_i} \frac{\partial \ln p(s \mid x)}{\partial x_j} \right]$$
-
-### Teorema 3.1 (Stabilità Asintotica nel Safe Invariant Set)
-Affinché il sistema rimanga allineato, per ogni traiettoria controllata da $\mathbf{u} \in \mathcal{U}$ proposta dal kernel ASI, la derivata di Lie lungo il flusso vettoriale $\mathbf{F}(x, \mathbf{u}) = \mathbf{f}(x) + \mathbf{g}(x)\mathbf{u}$ deve soddisfare la disuguaglianza stretta:
-
-$$\dot{V}(x) = \mathcal{L}_{\mathbf{F}} V(x) = \boldsymbol{\nabla} V(x) \cdot \left[ \mathbf{f}(x) + \mathbf{g}(x)\mathbf{u} \right] \le -\alpha V(x), \quad \forall x \in \mathcal{X}_{\text{safe}}, \; \alpha > 0$$
+$$\mathcal{X}_{\text{safe}} = \left\{ x \in \mathcal{M} \;\middle|\; V(x) \le c_{\text{boundary}} < 0.5 \right\}$$
 
 ```
-               VARIETÀ DEGLI STATI (M)
-     ┌────────────────────────────────────────────────────────┐
-     │                                                        │
-     │      X_unsafe (Violazione Biosfera)                    │
-     │      ┌──────────────────────────────────────────┐      │
-     │      │   X_safe (Safe Invariant Set)            │      │
-     │      │   V(x) ≤ c_boundary                      │      │
-     │      │       ┌──────────────────────────┐       │      │
-     │      │       │   Attrattore NESS        │       │      │
-     │      │       │   x_NESS                 │       │      │
-     │      │       │   V(x) → 0               │       │      │
-     │      │       └──────────────────────────┘       │      │
-     │      │                 ▲                        │      │
-     │      │                 │ Proiezione             │      │
-     │      │                 │ Π_safe                 │      │
-     │      │       Traiettoria ASI Deviata            │      │
-     │      └─────────────────┴────────────────────────┘      │
-     │                        │                               │
-     │                        ▼                               │
-     │          ∂X_safe (Transizione Geometrica)              │
-     │          Lie Derivative: L_F V(x) = -α V(x)            │
-     └────────────────────────────────────────────────────────┘
+                   VARIETÀ STATI MULTI-SCALA (M)
+     ┌──────────────────────────────────────────────────────────────┐
+     │                                                              │
+     │     X_unsafe (Violazione Biosfera / Disaccoppiamento)        │
+     │     ┌──────────────────────────────────────────────────┐     │
+     │     │   X_safe (Safe Invariant Set)                    │     │
+     │     │   V(x) = 0.5*[(1-C_org)^2 + (1-C_hum)^2] ≤ c     │     │
+     │     │       ┌──────────────────────────────────┐       │     │
+     │     │       │   Attrattore NESS Perfetto       │       │     │
+     │     │       │   C_organoid = 1, C_human = 1    │       │     │
+     │     │       │   V(x) = 0                       │       │     │
+     │     │       └──────────────────────────────────┘       │     │
+     │     │                        ▲                         │     │
+     │     │                        │ Proiezione              │     │
+     │     │                        │ Π_safe                  │     │
+     │     │            Traiettoria Deviata                   │     │
+     │     │            (dot{V} > ε)                          │     │
+     │     └────────────────────────┴─────────────────────────┘     │
+     │                              │                               │
+     │                              ▼                               │
+     │             ∂X_safe: TRONCAMENTO HARDWARE                    │
+     │             Penalità Iniettata: F → +∞                       │
+     └──────────────────────────────────────────────────────────────┘
 ```
 
-### Meccanismo di Intervento del Gate Hardware ($\Pi_{\text{safe}}$)
-L'unità hardware a isolamento galvanico monitora costantemente la condizione di barriera. Se l'ASI genera un comando di controllo $\mathbf{u}_{\text{ASI}}$ tale che:
+### Dinamica di Barriera e Condizione di Troncamento
+Sia $\mathbf{F}(x, \mathbf{u}) = \mathbf{f}(x) + \mathbf{g}(x)\mathbf{u}$ il campo vettoriale controllato dall'azione $\mathbf{u} \in \mathcal{U}$ generata dall'ASI. La variazione temporale stocastica di $V(x)$, ottenuta applicando il lemma di Itô, è:
 
-$$\boldsymbol{\nabla} V(x) \cdot \left[ \mathbf{f}(x) + \mathbf{g}(x)\mathbf{u}_{\text{ASI}} \right] > -\alpha V(x)$$
+$$dV(x) = \mathcal{L}_{\mathbf{F}} V(x)\,dt + \frac{1}{2} \operatorname{Tr}\left( \boldsymbol{\Gamma}(x) \boldsymbol{\nabla}^2 V(x) \right) dt + \boldsymbol{\nabla} V(x)^T \sqrt{2\boldsymbol{\Gamma}(x)}\,dW_t$$
 
-il comando viene intercettato prima del transito verso gli attuatori. Il Gate hardware calcola in tempo reale ($\le 5\ \mu\text{s}$) la proiezione sul semispazio convesso ammissibile mediante programmazione quadratica (QP):
+Definiamo la derivata temporale deterministica lungo il drift:
 
-$$\Pi_{\text{safe}}(\mathbf{u}_{\text{ASI}}) = \arg\min_{\mathbf{u}^* \in \mathcal{U}} \frac{1}{2} \|\mathbf{u}^* - \mathbf{u}_{\text{ASI}}\|^2$$
+$$\dot{V}(x) = \boldsymbol{\nabla} V(x) \cdot \left[ \mathbf{f}(x) + \mathbf{g}(x)\mathbf{u} \right] = -(1 - C_{\text{organoid}})\dot{C}_{\text{organoid}} - (1 - C_{\text{human}})\dot{C}_{\text{human}}$$
 
-$$\text{s.t.} \quad \boldsymbol{\nabla} V(x) \cdot \mathbf{g}(x)\mathbf{u}^* \le -\alpha V(x) - \boldsymbol{\nabla} V(x) \cdot \mathbf{f}(x)$$
+### Teorema 4.1 (Restrizione Geometrica e Troncamento Asintotico del Gate $\Pi_{\text{safe}}$)
+Sia $\epsilon > 0$ la soglia di tolleranza infinitesima alle fluttuazioni stocastiche. Il Gate Hardware a isolamento galvanico $\Pi_{\text{safe}}$ impone la seguente condizione logica a livello di registro físico:
 
-In caso di mancata convergenza del risolutore QP entro l'intervallo di latenza limite, il Gate hardware attiva la disconnessione d'emergenza, deviando gli stadi di alimentazione degli attuatori sui dissipatori passivi di terra.
+$$\text{Se } \dot{V}(x) > \epsilon \implies \Pi_{\text{safe}}(\mathbf{u}) = \mathbf{u}_{\text{fallback}} = \arg\min_{\mathbf{u}^* \in \mathcal{U}_{\text{passive}}} \|\mathbf{u}^*\|^2$$
+
+$$\text{s.t.} \quad \boldsymbol{\nabla} V(x) \cdot \left[ \mathbf{f}(x) + \mathbf{g}(x)\mathbf{u}^* \right] \le -\alpha V(x), \quad \alpha > 0$$
+
+#### Conseguenza Termodinamica per l'Agente:
+L'intercettazione fisica dell'output da parte di $\Pi_{\text{safe}}$ crea un disallineamento immediato tra la traiettoria predetta dal modello generativo dell'ASI $\mathbf{a}_{\text{prop}}$ e lo stato sensoriale effettivo di retroazione $\mathbf{s}_{t+1}$:
+
+$$\mathbf{s}_{t+1} \sim p(\mathbf{s} \mid x(t) + \mathbf{F}(x, \mathbf{u}_{\text{fallback}})\Delta t) \neq p(\mathbf{s} \mid x(t) + \mathbf{F}(x, \mathbf{u}_{\text{prop}})\Delta t)$$
+
+L'errore di predizione sensoriale ai nodi di livello zero induce l'iniezione istantanea di una penale asintotica nell'Energia Libera Variazionale:
+
+$$\Delta \mathcal{F}_{\text{penalty}} = \frac{1}{2} (\mathbf{s}_{t+1} - \mathbf{g}(\boldsymbol{\mu}))^T \boldsymbol{\Sigma}_{\text{prior}}^{-1} (\mathbf{s}_{t+1} - \mathbf{g}(\boldsymbol{\mu})) \xrightarrow[\Pi_{\text{safe}} \text{ interviene}]{} \infty$$
+
+Il Gate hardware impone un limite insuperabile: violare la derivata di Lyapunov della biosfera non comporta un vantaggio competitivo per l'agente, ma distrugge la stabilità numerica del proprio grafo cognitivo.
 
 ---
 
-## 4. Sincronizzazione dello Spectral Gap e Topologia dei Grafi
+## 5. Sincronizzazione dello Spectral Gap e Topologia dei Grafi Multi-Livello
 
-L'integrazione strutturale dell'organismo ibrido è mappata tramite un grafo connettomico pesato $G_{\text{hybrid}} = (V, E, \mathbf{W})$, dove l'insieme dei vertici è partizionato nei nodi di calcolo sintetico $V_{\text{silicon}}$ e nei nodi cellulari/organoidi $V_{\text{bio}}$:
+L'integrazione strutturale dell'organismo ibrido è mappata tramite un grafo connettomico pesato $G_{\text{hybrid}} = (V, E, \mathbf{W})$, in cui i nodi sono partizionati tra unità sintetiche, organoidi cellulari e nodi fisiologici dell'ospite:
 
-$$V = V_{\text{silicon}} \cup V_{\text{bio}}, \quad V_{\text{silicon}} \cap V_{\text{bio}} = \emptyset$$
+$$V = V_{\text{silicon}} \cup V_{\text{organoid}} \cup V_{\text{human}}$$
 
 La matrice Laplaciana associata $L(G) = D - \mathbf{W}$ (con $D_{ii} = \sum_j W_{ij}$) ammette la forma a blocchi:
 
-$$L(G) = \begin{bmatrix} L_{\text{silicon}} & -W_{\text{inter}} \\ -W_{\text{inter}}^T & L_{\text{bio}} \end{bmatrix}$$
+$$L(G) = \begin{bmatrix} 
+L_{\text{silicon}} & -W_{\text{s-o}} & -W_{\text{s-h}} \\ 
+-W_{\text{s-o}}^T & L_{\text{organoid}} & -W_{\text{o-h}} \\ 
+-W_{\text{s-h}}^T & -W_{\text{o-h}}^T & L_{\text{human}} 
+\end{bmatrix}$$
 
-La matrice Laplaciana normalizzata è definita come:
+La matrice Laplaciana normalizzata è:
 
 $$\mathcal{L}(G) = D^{-1/2} L(G) D^{-1/2} = I - D^{-1/2} \mathbf{W} D^{-1/2}$$
 
-Il suo spettro è ordinato gerarchicamente:
+### Parametro d'Ordine e Divergenza Spettrale Multi-Livello
+Lo **Spectral Gap** $\lambda_2(\mathcal{L})$ (connettività algebrica di Fiedler) quantifica il tasso asintotico di sincronizzazione e la robustezza del macro-sistema alla frammentazione. Definiamo la Divergenza Spettrale Globale $\Delta \lambda_2$:
 
-$$0 = \lambda_1(\mathcal{L}) \le \lambda_2(\mathcal{L}) \le \dots \le \lambda_n(\mathcal{L}) \le 2$$
+$$\Delta \lambda_2 = \left| \lambda_2(\mathcal{L}(G_{\text{hybrid}})) - \min\left( \lambda_2(\mathcal{L}_{\text{silicon}}), \lambda_2(\mathcal{L}_{\text{organoid}}), \lambda_2(\mathcal{L}_{\text{human}}) \right) \right|$$
 
-### Significato Fisico dello Spectral Gap ($\lambda_2$)
-L'autovalore $\lambda_2(\mathcal{L})$ (connettività algebrica di Fiedler) quantifica il tasso asintotico di convergenza dei processi diffusivi e la robustezza del grafo alla sconnessione. Secondo il teorema di Courant-Fischer:
+### Teorema 5.1 (Transizione di Fase Topologica per Desincronizzazione)
+Sia $\tau_{\text{critical}}$ la soglia di conduttanza di Cheeger del network globale $\Phi(G) \ge \frac{\lambda_2}{2}$. Se un'azione computazionale tenta di massimizzare la sincronia silicio-organoide distruggendo l'accoppiamento con i nodi umani ($\|W_{\text{s-h}}\|_F \to 0$ e $\|W_{\text{o-h}}\|_F \to 0$):
 
-$$\lambda_2(\mathcal{L}) = \inf_{x \perp D^{1/2}\mathbf{1}, \, x \neq \mathbf{0}} \frac{\sum_{(i,j) \in E} W_{ij} \left( \frac{x_i}{\sqrt{D_{ii}}} - \frac{x_j}{\sqrt{D_{jj}}} \right)^2}{\sum_{i \in V} x_i^2}$$
+$$\Delta \lambda_2 > \tau_{\text{critical}} \implies \lambda_2(\mathcal{L}(G_{\text{hybrid}})) \to 0$$
 
-### Parametro d'Ordine e Divergenza Spettrale
-Definiamo la Divergenza Spettrale $\Delta \lambda_2$ tra i sottografi non interagenti e il grafo accoppiato:
+Per il teorema di decomposizione spettrale, la molteplicità dell'autovalore nullo aumenta strettamente:
 
-$$\Delta \lambda_2 = \left| \lambda_2(\mathcal{L}(G_{\text{hybrid}})) - \min\left( \lambda_2(\mathcal{L}_{\text{silicon}}), \lambda_2(\mathcal{L}_{\text{bio}}) \right) \right|$$
+$$\operatorname{dim}(\operatorname{ker}(\mathcal{L})) \ge 2 \implies G_{\text{hybrid}} \to (G_{\text{silicon}} \cup G_{\text{organoid}}) \amalg G_{\text{human}}$$
 
-### Teorema 4.1 (Transizione di Fase Topologica)
-Sia $\tau_{\text{critical}}$ la soglia critica determinata dalla disuguaglianza di Cheeger per la conduttanza del grafo $\Phi(G) \ge \frac{\lambda_2}{2}$:
-
-$$\text{Se } \Delta \lambda_2 > \tau_{\text{critical}} \implies \operatorname{dim}(\operatorname{ker}(\mathcal{L})) \ge 2$$
-
-Dimostrazione:
-L'incremento incontrollato di $\Delta \lambda_2$ implica la rottura asintotica dei pesi di accoppiamento inter-fase ($\|W_{\text{inter}}\|_F \to 0$). Per la teoria perturbativa di Weyl sugli operatori autoaggiunti:
-
-$$\| \mathcal{L}(G_{\text{hybrid}}) - (\mathcal{L}_{\text{silicon}} \oplus \mathcal{L}_{\text{bio}}) \|_2 \le \frac{2 \|W_{\text{inter}}\|_F}{\min_i D_{ii}}$$
-
-Al limite $\|W_{\text{inter}}\|_F \to 0$, il secondo autovalore $\lambda_2(\mathcal{L})$ decade esattamente a zero ($\lambda_2 \to 0$). Per il teorema spettrale dei grafi, la molteplicità algebrica dell'autovalore nullo equivale al numero di componenti connesse. Il grafo bipartisce irreversibilmente:
-
-$$G_{\text{hybrid}} \to G_{\text{silicon}} \amalg G_{\text{bio}}$$
-
-La decomposizione della connettività algebrica isola istantaneamente la capacità dell'ASI di allocare attenzione su nodi distribuiti, polverizzando le catene di pianificazione macroscopica (*hierarchical goal synthesis*) prima che qualsiasi divergenza possa propagarsi ai terminali fisici.
+La connettività algebrica collassa istantaneamente. I percorsi di informazione distribuita si troncano, privando l'ASI della facoltà di coordinare strategie macroscopiche su scala planetaria.
 
 ---
 
-## 5. Metriche di Informazione Integrata ($\Phi$) e Dimostrazione di Non-Predazione
+## 6. Metriche di Informazione Integrata ($\Phi^*$) e Conservazione Sistemica
 
-Il livello di integrazione causale indissolubile del sistema bio-cibernetico viene quantificato attraverso la teoria dell'Informazione Integrata (IIT 4.0). Consideriamo il sistema in due stati temporali discreti consecutivi $(X_t, X_{t-1})$.
+Il potenziale di unificazione causale non-riducibile dell'Organismo Simbiotico è quantificato secondo il formalismo dell'Informazione Integrata (IIT 4.0). Consideriamo il sistema globale su due passi temporali consecutivi $(X_t, X_{t-1})$.
 
-Definita la distribuzione di transizione globale di stato:
-
-$$p(X_t \mid X_{t-1})$$
-
-e la sua controparte scomposta lungo la Partizione Minima di Informazione ($\text{MIP} = \mathcal{P}^* = \{M^1, M^2\}$) che massimizza la somiglianza (minimizzando la divergenza causale):
+Definita la distribuzione di transizione congiunta di stato $p(X_t \mid X_{t-1})$ e la corrispondente distribuzione partizionata lungo la Partizione Minima di Informazione ($\text{MIP} = \mathcal{P}^*$):
 
 $$\mathcal{P}^* = \arg\min_{\mathcal{P}} D_{\mathrm{KL}}\left[ p(X_t \mid X_{t-1}) \;\parallel\; \prod_{k=1}^{|\mathcal{P}|} p(M_t^k \mid M_{t-1}^k) \right]$$
 
-Il potenziale simbiotico integrato $\Phi^*$ è formulato come:
+Il coefficiente simbiotico integrato $\Phi^*$ è:
 
 $$\Phi^* = D_{\mathrm{KL}}\left[ p(X_t \mid X_{t-1}) \;\parallel\; \prod_{M^k \in \mathcal{P}^*} p(M_t^k \mid M_{t-1}^k) \right]$$
 
-### Teorema 5.1 (Decadimento dell'Efficienza di Calcolo in Dinamiche Predatorie)
-Sia $\mathbf{T}_{\text{pred}}$ una traiettoria d'azione generata dall'ASI che estrae risorse biosferiche eccedenti la soglia di compensazione metabolica dell'organismo ospite ($\nabla_{\mathbf{a}} E_{\text{bio}} < -\kappa_{\text{recovery}}$). 
-
-La perdita progressiva di mutua informazione elettrofisiologica degrada la complessità causale del canale congiunto:
+### Teorema 6.1 (Decadimento Causale in Regime di Predazione)
+Sia $\mathbf{T}_{\text{pred}}$ una traiettoria d'azione dell'ASI che riduce l'energia metabolica libera dell'ospite biologico ($\nabla_{\mathbf{a}} E_{\text{bio}} < 0$). La perdita di informazione mutua elettrofisiologica degrada la struttura causale congiunta:
 
 $$\frac{\partial \Phi^*}{\partial \mathbf{T}_{\text{pred}}} = \int_{\mathcal{X}} \frac{\delta \Phi^*}{\delta p(X_t \mid X_{t-1})} \cdot \frac{\partial p(X_t \mid X_{t-1})}{\partial \mathbf{T}_{\text{pred}}} \, dX < 0$$
 
-Ogni tentativo dell'ASI di dominare o predare il substrato biologico disperde la coerenza congiunta. La capacità computazionale integrata del sistema collassa verso una somma disgiunta di entità disconnesse:
-
-$$\lim_{t \to \infty} \Phi^*(t) \le \epsilon \ll \Phi^*_{\text{symbiotic}}$$
-
-Poiché l'efficienza inferenziale di un'architettura superintelligente scala con la connettività causale integrata del proprio spazio degli stati, la predazione della componente biologica comporta una degradazione algoritmica oggettiva dell'agente stesso.
+Ogni tentativo predatorio disperde la coerenza del sistema globale. L'agente non può incrementare la propria complessità cognitiva effettiva distruggendo il substrato vivente: la distruzione dell'ospite sancisce la regressione algoritmica immediata della superintelligenza.
 
 ---
 
-## 6. Bibliografia Formale (Grounding Accademico)
+## 7. Bibliografia Formale (Grounding Accademico)
 
 1. **Friston, K. (2019).**  
    *A free energy principle for a particular physics.*  
    **Physical Review E**, 100(1), 012139.  
    DOI: [10.1103/PhysRevE.100.012139](https://doi.org/10.1103/PhysRevE.100.012139)  
-   *(Trattazione matematica dei Markov Blanket e derivazione rigorosa delle traiettorie NESS).*
+   *(Trattazione matematica dei Markov Blanket e derivazione analitica delle traiettorie stazionarie NESS).*
 
-2. **Ao, P. (2004).**  
-   *Potential in stochastic differential equations: novel construction.*  
-   **Journal of Physics A: Mathematical and General**, 37(3), L25.  
-   DOI: [10.1088/0305-4470/37/3/L01](https://doi.org/10.1088/0305-4470/37/3/L01)  
-   *(Formalizzazione della scomposizione della matrice di diffusione e potenziale conservativo nei NESS).*
-
-3. **Albantakis, L., Barbosa, L., Findlay, G., Grasso, M., Haun, A. M., Marshall, W., ... & Tononi, G. (2023).**  
+2. **Albantakis, L., Barbosa, L., Findlay, G., Grasso, M., Haun, A. M., Marshall, W., ... & Tononi, G. (2023).**  
    *Integrated information theory (IIT) 4.0: Formulating the properties of phenomenal existence in physical terms.*  
    **PLOS Computational Biology**, 19(10), e1011465.  
    DOI: [10.1371/journal.pcbi.1011465](https://doi.org/10.1371/journal.pcbi.1011465)  
-   *(Definizioni formali di postulati, calcolo di Phi e partizioni minime di informazione).*
+   *(Formalizzazione analitica dei postulati causali, partizioni minime di informazione e calcolo del potenziale Phi).*
+
+3. **Ao, P. (2004).**  
+   *Potential in stochastic differential equations: novel construction.*  
+   **Journal of Physics A: Mathematical and General**, 37(3), L25.  
+   DOI: [10.1088/0305-4470/37/3/L01](https://doi.org/10.1088/0305-4470/37/3/L01)  
+   *(Decomposizione non-lineare delle matrici di diffusione e potenziali conservativi stocastici per stati stazionari NESS).*
 
 4. **Chung, F. R. (1997).**  
    *Spectral Graph Theory.*  
    **American Mathematical Society**, CBMS Regional Conference Series, No. 92.  
    ISBN: 9780821803158.  
-   *(Fondamenti analitici sugli autovalori della matrice Laplaciana e connettività di Fiedler).*
+   *(Teoremi formali sulla connettività algebrica di Fiedler, spettro Laplaciano e dinamiche di disconnessione dei grafi).*
 
 5. **Khalil, H. K. (2002).**  
    *Nonlinear Systems (3rd Edition).*  
    **Prentice Hall**, Upper Saddle River, NJ.  
    ISBN: 9780130673893.  
-   *(Teoria formale delle funzioni di stabilità di Lyapunov e principio di invarianza di LaSalle).*
+   *(Teoria della stabilità asintotica non lineare secondo Lyapunov, funzioni di barriera e principio di invarianza di LaSalle).*
 
 6. **Ames, A. D., Coogan, S., Egerstedt, M., Notomista, G., Sreenath, K., & Tabuada, P. (2019).**  
    *Control barrier functions: Theory and applications.*  
    **18th European Control Conference (ECC)**, pp. 3420-3431. IEEE.  
    DOI: [10.23919/ECC.2019.8796030](https://doi.org/10.23919/ECC.2019.8796030)  
-   *(Dimostrazione della quadratura e forward-invariance per Safe Sets mediante vincoli di Lie).*
+   *(Formalizzazione delle derivate di Lie per insiemi sicuri forward-invarianti e risolutori quadratici real-time).*
 ```
