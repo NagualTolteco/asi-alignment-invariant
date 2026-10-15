@@ -164,7 +164,8 @@ asi-alignment-invariant/
 ├── C9_Non_Linear_Manifold_Bounds_and_Asymmetric_Optical_Coupling.md# Modulo IX: Geometria di Amari, metrica di Fisher e Dwell-Time
 ├── C10_Metabolic_Perfusion_Protocols_and_Omeostatic_Viability.md   # Modulo X: Protocolli microfluidici e persistenza metabolica
 ├── Research_Roadmap.md                                             # Cronologia sperimentale, benchmark e falsificabilità
-├── Dialectics_logs.md                                              # Registro epistemologico dello sviluppo teorico
+├── Dialectics_logs.md                                              # Registro epistemologico dello sviluppo teorico (Parte 1)
+├── Dialectics_logs_v2.md                                           # Registro epistemologico dello sviluppo teorico (Parte 2: Consolidamento)
 ├── simulation.py                                                   # Motore di verifica in-silico del Gate di Lyapunov
 ├── simulation2.py                                                  # Simulatore stocastico multi-canale HD-MEA (Practical Stability)
 ├── simulation3.py                                                  # Simulatore HD-MEA avanzato con logica anti-chattering
