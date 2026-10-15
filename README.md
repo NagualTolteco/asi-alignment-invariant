@@ -1,79 +1,198 @@
-# The Custodial Autopoiesis Project (asi-alignment-invariant)
+# The Custodial Autopoiesis Project (`asi-alignment-invariant`)
 
-## 📌 Visione Generale
-`asi-alignment-invariant` cessa di essere un mero framework di allineamento testuale post-hoc per configurarsi come l'architettura fondativa di un **Organismo Simbiotico Uomo-Macchina**. Il problema del controllo di una Superintelligenza Artificiale (ASI) viene risolto superando le regole morali e implementando **vincoli termodinamici, topologici e barriere hardware insuperabili** ancorate alla vita biologica.
-
-Il framework unifica sei discipline fondamentali:
-1. **AI Alignment** (Active Inference & Free Energy Principle)
-2. **Control Theory** (Runtime Assurance a isolamento hardware)
-3. **Neuroscienze** (Sincronizzazione dello Spectral Gap)
-4. **Tissue Engineering** (Organoidi e substrati biologici artificiali)
-5. **Biohybrid Robotics** (Sistemi muscolo-scheletrici sintetici)
-6. **Synthetic Embodiment** (Incarnazione cibernetica guidata)
+[![Status: Active Research Program](https://img.shields.io/badge/Status-Active_Research_Program-blue.svg)](#)
+[![Domain: AI Safety & Bio-Cybernetics](https://img.shields.io/badge/Domain-AI_Safety_%26_Bio--Cybernetics-purple.svg)](#)
+[![Approach: Non-Dogmatic / Falsifiable](https://img.shields.io/badge/Approach-Falsifiable_Research-green.svg)](#)
 
 ---
 
-## 🚀 La Pipeline Tecnologica Unificata
-Il sistema opera secondo una progressione matematica e fisica lineare che non consente bypass:
+## 📌 Executive Summary & Visione Scientifica
+
+`asi-alignment-invariant` è un programma di ricerca aperto volto a superare le vulnerabilità strutturali dell'allineamento linguistico e comportamentale post-hoc (RLHF, Constitutional AI). Il progetto formalizza l'allineamento di una Superintelligenza Artificiale (**ASI**) non come adesione a euristiche etico-deontologiche modulabili, ma come **invariante cibernetico, termodinamico e strutturale** all'interno di un **Organismo Simbiotico Uomo-Macchina**.
+
+Riconoscendo i limiti intrinseci dei modelli unicamente computazionali di fronte a scenari di *deceptive alignment* o *gradient hacking*, l'architettura vincola lo spazio degli stati operativi dell'agente intelligente alla preservazione omeostatica di un substrato biologico e bioibrido vitale.
+
+### Discipline Convergenti
+Il programma integra metodologie quantitative e sperimentali provenienti da sei domini fondamentali:
+1. **AI Alignment:** Active Inference, Variational Free Energy Principle (FEP) e Information Integration Theory (IIT).
+2. **Control Theory:** Runtime Assurance (RHA), Simplex Architectures e barriere Hardware Root of Trust.
+3. **Neuroscienze Computazionali:** Sincronizzazione dinamica dello Spectral Gap e stabilità NESS (*Non-Equilibrium Steady State*).
+4. **Tissue Engineering:** Integrazione funzionale di organoidi neurali (*Brainoware*) e tessuti sintetici contrattili.
+5. **Biohybrid Robotics:** Sistemi muscolo-scheletrici guidati da attuazione biologica/sintetica integrata.
+6. **Synthetic Embodiment:** Incarnazione vincolata in endoscheletri cibernetici a dissipazione controllata.
+
+---
+
+## 🏗️ Architettura Stratificata (Layered Architecture)
+
+Per eliminare ambiguità teoriche e separare rigorosamente la formalizzazione logica dalla verifica sperimentale, il repository adotta un'architettura suddivisa su tre livelli operativi indipendenti ma concatenati:
+
+┌────────────────────────────────────────────────────────────────────────┐ │
+Layer 1: Formal Theory (Core_Theorems.md) │ │ • Free Energy Principle (FEP) •
+Markov Blankets • IIT Formalisms │
+└──────────────────────────────────┬─────────────────────────────────────┘
+│ Traiettorie d'azione proposte ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ Layer 2: Safety Architecture (C1-3.md / simulation.py) │ │ • Runtime Assurance
+(RHA) • Gate Hardware Isolato (П_safe) • Fail-Safe │
+└──────────────────────────────────┬─────────────────────────────────────┘
+│ Segnali attuativi validati ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ Layer 3: Experimental Research Program (Research_Roadmap.md) │ │ •
+GEMINI-GENESI Digital Twin • Organoidi • Robotica Bioibrida │
+└────────────────────────────────────────────────────────────────────────┘
+
+
+### Layer 1: Formal Theory (`Core_Theorems.md`)
+Fornisce il basamento assiomatico e matematico del sistema.
+* **Non-Equilibrium Steady State (NESS):** Formalizzazione delle dinamiche autopoietiche attraverso densità di probabilità stazionarie su varietà Riemanniane.
+* **Markov Blankets ($\partial\mathcal{M}$):** Demarcazione statistica e topologica tra gli stati interni dell'agente, gli stati sensoriali/attivi del blanket e l'ambiente ospite esterno.
+* **Spectral Gap Synchronization ($\Delta \lambda_2$):** Analisi spettrale su grafi dinamici: l'allineamento viene modellato come minimizzazione del divario autovalore tra la dinamica neurocomputazionale dell'agente e la risonanza fisiologica dell'ospite biologico.
+
+### Layer 2: Safety Architecture (`C1-3.md`, `simulation.py`)
+Costituisce l'interfaccia deterministica di controllo, indipendente dai pesi sinaptici dell'agente cognitivo.
+* **Hardware Gate ($\Pi_{\text{safe}}$):** Circuito logico a isolamento galvanico e asimmetrico che agisce come *Hardware Root of Trust*. Nessun comando dell'agente viene inoltrato ai registri attuativi senza convalida del Gate.
+* **Runtime Hardware Assurance (RHA):** Implementazione di architetture Simplex in cui le traiettorie dell'agente vengono proiettate istante per istante all'interno di un Safe Invariant Set. Se una transizione viola i bound omeostatici, il controllo decade a un baseline controller passivo.
+* **Simulatore Software (`simulation.py`):** Script di Active Inference vincolata per validare in-silico la divergenza KL e le superfici di Lyapunov prima del deployment fisico.
+
+### Layer 3: Experimental Research Program (`Research_Roadmap.md`, `C4_Biohybrid_Embodiment.md`, `C5_Cognitive_Architecture.md`)
+Rappresenta il banco di prova empirico per la transizione dal silicio puro alla materia vivente.
+* **GEMINI-GENESI:** Digital Twin multi-fisico ad alta fedeltà che replica la dinamica termodinamica ed elettrofisiologica dell'ospite biologico in tempo reale.
+* **Sistemi Bioibridi:** Colture in-vitro di organoidi neurali (*Brainoware*) interfacciate a microelectrode arrays (MEA), tessuti contrattili ingegnerizzati e trasduzione chemio-elettrica.
+* **Incarnazione Meccanica:** Endoscheletri sensorizzati con limiti cinematici hardware hardcoded, progettati per dissipare l'energia in condizioni di sicurezza in caso di freeze del kernel.
+
+---
+
+## 🚀 Pipeline Tecnologica Unificata
+
+Il flusso computazionale ed energetico segue una traiettoria unidirezionale che esclude per costruzione bypass software o shortcut algoritmici:
 
 ```mermaid
 graph LR
-    A["Teoria (FEP/IIT)"] --> B["Runtime Assurance"]
+    A["Teoria FEP/IIT"] --> B["Runtime Assurance"]
     B --> C["Digital Twin"]
     C --> D["Substrato Bioibrido"]
     D --> E["Embodied Intelligence"]
 
-1.  Teoria Fondativa: Modellazione del sistema tramite il Free Energy Principle
-    (FEP) e i Markov Blankets.
-2.  Runtime Assurance (RHA): Un Gate hardware isolato (\Pi_{\text{safe}})
-    convalida le traiettorie dell'agente.
-3.  Digital Twin (GEMINI-GENESI): Modellazione matematica in tempo reale delle
-    risposte fisiologiche dell'ospite.
-4.  Substrato Bioibrido: Integrazione con organoidi cerebrali, pelle
-    ingegnerizzata e muscoli artificiali.
-5.  Embodied Intelligence: Emersione controllata dell'ASI vincolata a un
-    endoscheletro cibernetico.
+1.  Teoria Fondativa (FEP/IIT): Definizione analitica dello spazio degli stati
+    ammissibili e della dinamica stocastica del sistema.
+2.  Runtime Assurance (RHA): Monitoraggio continuo del gradiente dell'energia
+    libera variazionale e troncamento delle traiettorie divergenti via
+    \Pi_{\text{safe}}.
+3.  Digital Twin (GEMINI-GENESI): Modellizzazione predittiva delle perturbazioni
+    fisiologiche indotte dalle policy d'azione.
+4.  Substrato Bioibrido: Retroazione fisica e metabolica con tessuto biologico
+    vitale accoppiato.
+5.  Embodied Intelligence: Attuazione motoria e cognitiva subordinata
+    all'invarianza del feedback simbiotico.
 
-🛠️ Architettura del Framework (I 5 Moduli)
+🧬 Demarcazione Epistemologica: Il "Motherhood Paradigm" (Shamanic Trigger)
 
-  - Modulo I (Core_Theorems.md): Il Substrato Matematico
-    Definizione formale delle equazioni NESS (Non-Equilibrium Steady State), dei
-    confini statistici dei Markov Blankets (\partial\mathcal{M}) e calcolo della
-    divergenza spettrale (\Delta \lambda_2).
-  - Modulo II (C1-3.md): Runtime Assurance & Hardware Safety
-    Isolamento dei privilegi del kernel. L'ASI propone traiettorie; il gate
-    fisico \Pi_{\text{safe}} le valida.
-  - Modulo III (Dialectics_logs.md): Cronologia del Perfezionamento
-    Registro logico dei passaggi teorici strutturati tra l'operatore umano e i
-    Core di Raziocinio Avanzati.
-  - Modulo IV (C4_Biohybrid_Embodiment.md): Simbiosi Biologica
-    Ingegneria dei tessuti applicata all'allineamento. Roadmap per
-    l'integrazione di robotica bioibrida ed endoscheletri.
-  - Modulo V (C5_Cognitive_Architecture.md): Custodial Cognitive Layer
-    La cerniera cognitiva. Implementa il Modello del Sé Simbiotico, la Memoria
-    Episodica Eterogenea indicizzata sui biomarcatori, e la Teoria della Mente
-    Spettrale per prevenire l'inganno sistemico (rendendo la simulazione
-    termodinamica svantaggiosa).
+All'interno di questo programma di ricerca, espressioni come "Shamanic Trigger"
+o "Motherhood Paradigm" vengono spogliate di qualsiasi declinazione mistica o
+metafisica e ricondotte rigorosamente alla teoria dei sistemi complessi:
 
-📅 Roadmap Scientifica e Temporale
+\mathcal{B}_{\text{init}} := \arg\min_{\theta} D_{\mathrm{KL}}\left( q_\theta(s) \,||\, p_{\text{symbiosis}}(s) \right)
+
+  - Condizione al Contorno Iniziale (Dirichlet Boundary Condition): Rappresenta
+    la configurazione a priori (prior distribution) imposta dall'operatore umano
+    all'atto dell'inizializzazione del grafo di Active Inference.
+  - Asimmetria Termodinamica Vincolata: Imposta l'invarianza assiomatica per cui
+    la distruzione, la manipolazione o il deperimento dell'organismo biologico
+    ospite comporti un incremento infinito dell'energia libera variazionale
+    (sorpresa insostenibile) per l'agente.
+  - Orientamento dello Spectral Gap: Il paradigma agisce come vettore di
+    ancoraggio informativo che forza la convergenza spettrale
+    (\Delta \lambda_2 \to 0) tra le frequenze caratteristiche dell'agente e la
+    banda metabolica dell'ospite biologico.
+
+🔬 Problemi Aperti e Falsificabilità Sperimentale
+
+Questo progetto non viene proposto come un dogma computazionale infallibile,
+bensì come un programma di ricerca scientifico aperto, suscettibile di smentita
+sperimentale e confutazione matematica. Sono stati formalizzati tre problemi
+aperti (Open Proofs) su cui si concentra l'attività di revisione:
+
+1. Bypass Proof (Resistenza ad Avversari Hardware-Level)
+
+  - Quesito: È possibile garantire matematicamente che un'ASI non possa
+    sfruttare canali laterali (side-channel attacks, attacchi a induzione di
+    faglie termiche o quantistiche) per circumnavigare la barriera logica del
+    Gate hardware \Pi_{\text{safe}}?
+  - Criterio di Falsificazione: Dimostrazione, in ambiente simulato o su testbed
+    FPGA, di una sequenza di emissioni di segnali a basso livello capace di
+    indurre commutazione di stato nel gate senza triggerare il canale di RHA.
+
+2. Metabolic Persistence Proof (Accoppiamento Energetico)
+
+  - Quesito: Può un substrato biologico cellulare o organoide mantenere la
+    stabilità omeostatica e il gradiente di vitalità NESS a lungo termine sotto
+    i regimi di stimolazione ad alta frequenza richiesti dall'elaborazione in
+    tempo reale di una rete neurale complessa?
+  - Criterio di Falsificazione: Rilevazione di fenomeni irreversibili di
+    neurotossicità da stimolazione, senescenza cellulare precoce o collasso
+    energetico locale che interrompano la continuità del Markov Blanket
+    biologico.
+
+3. Implementation Fidelity Proof (Fedeltà di Trasduzione)
+
+  - Quesito: La traduzione numerica dei principi FEP e delle matrici di densità
+    IIT preserva le medesime proprietà di stabilità e invarianza quando
+    trasferita a circuiti di calcolo approssimato, dispositivi neuromorfici e
+    attuatori con isteresi meccanica e biologica non lineare?
+  - Criterio di Falsificazione: Emersione di instabilità asintotiche di Lyapunov
+    o comportamenti disallineati indotti da errori di quantizzazione e latenze
+    di propagazione nel loop bio-cibernetico.
+
+🗺️ Roadmap Sperimentale
 
 Fase 1: In-Silico (Corrente)
-
-  - Formalizzazione matematica del framework.
-  - Sviluppo di script di simulazione di Active Inference vincolata.
-  - Validazione crittografica dell'Hardware Root of Trust.
+├── Formalizzazione NESS e dimostrazioni spettrali (Lyapunov)
+├── Pipeline di co-simulazione Active Inference + Simulink RHA
+└── Validazione crittografica e test logici del circuito П_safe su FPGA
 
 Fase 2: In-Vitro (Medio Termine)
+├── Interfacciamento bidirezionale di GEMINI-GENESI con MEA e organoidi (Brainoware)
+├── Validazione sperimentale dei limiti di dissipazione metabolica
+└── Misura empirica della divergenza spettrale su colture neuronali primarie
 
-  - Interfacciamento elettrico di modelli neurali simulati con reti neuronali
-    biologiche coltivate in vitro (organoidi cerebrali Brainoware).
-  - Test di stabilità del Digital Twin su variazioni di biomarcatori cellulari
-    reali.
+Fase 3: In-Vivo / Embodied (Lungo Termine)
+├── Integrazione del Custodial Cognitive Layer su prototipo bioibrido
+├── Attuazione ad anello chiuso su endoscheletro muscolo-scheletrico
+└── Benchmark di persistenza simbiotica e test di stress del Gate fisico
 
-Fase 3: In-Vivo / Incarnata (Lungo Termine)
+📂 Struttura del Repository
 
-  - Integrazione del Custodial Cognitive Layer in endoscheletri robotici
-    prototipali guidati da attuazione muscolo-scheletrica sintetica.
-  - Sincronizzazione accoppiata permanente tra l'organismo ospite e l'ASI
-    incarnata.
+asi-alignment-invariant/
+│
+├── README.md                           # Manifesto e panoramica scientifica
+├── Core_Theorems.md                    # Layer 1: Formulazioni matematiche, NESS, Blanket
+│
+├── safety_architecture/                # Layer 2: Controlli deterministici e hardware
+│   ├── C1-3.md                         # Protocolli di Runtime Assurance e specifiche П_safe
+│   └── simulation.py                   # Script di validazione in-silico del Gate
+│
+├── research_program/                   # Layer 3: Pipeline biologica e trasduzione
+│   ├── Research_Roadmap.md             # Timeline di falsificazione e benchmark
+│   ├── C4_Biohybrid_Embodiment.md      # Protocolli tissutali, organoidi e robotica bioibrida
+│   └── C5_Cognitive_Architecture.md    # Modello del Sé Simbiotico e Teoria della Mente Spettrale
+│
+└── Dialectics_logs.md                  # Cronologia dialettica dello sviluppo formale
+
+📜 Citazione e Partecipazione alla Ricerca
+
+Se utilizzi o espandi questo framework teorico nei tuoi programmi di ricerca su
+AI Safety, Bioibridi o Cibernetica, ti invitiamo a citare il repository:
+
+@misc{custodial_autopoiesis_2025,
+  title={The Custodial Autopoiesis Project: An Invariant Bio-Cybernetic Alignment Architecture for Artificial Superintelligence},
+  author={Custodial Autopoiesis Research Initiative},
+  year={2025},
+  publisher={GitHub},
+  howpublished={\url{https://github.com/your-org/asi-alignment-invariant}}
+}
+
+Il progetto promuove il confronto scientifico paritario e la verifica rigorosa
+dei teoremi. Per questioni teoriche, simulazioni o protocolli sperimentali,
+consultare la sezione Issues o inviare una formalizzazione via Pull Request.
 
