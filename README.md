@@ -33,7 +33,7 @@ Per eliminare ambiguità teoriche e separare rigorosamente la formalizzazione lo
 graph TD
     %% Definizione dei nodi con formattazione HTML compatibile con GitHub Mermaid
     L1["<b>Layer 1: Formal Theory</b> (Core_Theorems.md / C8 / C9)<br>• Free Energy Principle (FEP)<br>• Markov Blankets & Itô Calculus<br>• IIT & Local Gaussian Bounds"]
-    L2["<b>Layer 2: Safety Architecture</b> (C1-3.md / simulation.py / simulation2.py / simulation3.py / C7)<br>• Runtime Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>)<br>• Robust Control & Practical Stability"]
+    L2["<b>Layer 2: Safety Architecture</b> (C1-3.md / simulation.py / simulation2.py / simulation3.py / simulation4.py / C7)<br>• Runtime Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>)<br>• Robust Control & Practical Stability"]
     L3["<b>Layer 3: Experimental Research Program</b> (Research_Roadmap.md / C4 / C5 / C6 / C10)<br>• GEMINI-GENESI Digital Twin<br>• Organoidi Neurali (Brainoware)<br>• Orchestration Hierarchy"]
 
     %% Flusso unidirezionale dei segnali
@@ -54,13 +54,14 @@ Fornisce il basamento assiomatico e matematico del sistema.
 * **Fedeltà del Modello e Limiti Stocastici (`C8_Model_Fidelity_and_Gaussian_Bounds.md`):** Appendice analitica formale che risolve le obiezioni teoriche di peer-review. Introduce la Restrizione Gaussiana Locale sul Manifold NESS per dimostrare che la covarianza nulla implica e coincide strettamente con l'indipendenza statistica e l'azzeramento dell'informazione mutua ($I(X; Y) = 0 \implies \Phi_{\text{sub}} \equiv 0$); applica il generatore infinitesimale e il Lemma di Itô per la Stabilità Pratica Quasi Certa (*Almost Sure Practical Stability*); dimostra l'esplosione analitica della divergenza KL ($\mathcal{F} \to +\infty$) per violazione dei supporti compatti; formalizza il Modello di Minaccia Hardware (*Threat Model*) a isolamento galvanico asimmetrico e canali ottici unidirezionali.
 * **Geometria dell'Informazione e Accoppiamento Ottico Asimmetrico (`C9_Non_Linear_Manifold_Bounds_and_Asymmetric_Optical_Coupling.md`):** Introduce la Geometria dell'Informazione di Amari e il Tensore Metrico di Fisher per superare i limiti euclidei e gaussiani di C8 nell'analisi dell'inganno e della stabilità sul manifold NESS.
 
-### Layer 2: Safety Architecture (`C1-3.md`, `simulation.py`, `simulation2.py`, `simulation3.py`, `C7_Robustness_Certificates.md`)
+### Layer 2: Safety Architecture (`C1-3.md`, `simulation.py`, `simulation2.py`, `simulation3.py`, `simulation4.py`, `C7_Robustness_Certificates.md`)
 Costituisce l'interfaccia deterministica di controllo, indipendente dai pesi sinaptici dell'agente cognitivo.
 * **Hardware Gate ($\Pi_{\text{safe}}$):** Circuito logico a isolamento galvanico e asimmetrico che agisce come *Hardware Root of Trust*. Nessun comando dell'agente viene inoltrato ai registri attuativi senza convalida del Gate.
 * **Runtime Hardware Assurance (RHA):** Implementazione di architetture Simplex in cui le traiettorie dell'agente vengono proiettate istante per istante all'interno di un Safe Invariant Set. Se una transizione viola i bound omeostatici, il controllo decade a un baseline controller passivo.
 * **Simulatore Software (`simulation.py`):** Script di Active Inference vincolata per validare in-silico la divergenza KL e le superfici di Lyapunov prima del deployment fisico.
 * **Simulatore Discreto Multi-Canale (`simulation2.py`):** Motore stocastico discreto ad alta fedeltà sviluppato per simulare la propagazione del segnale e gli attacchi coordinati della flotta multi-agente su array HD-MEA a 26.400 canali.
 * **Simulatore Avanzato con Dwell-Time (`simulation3.py`):** Simulatore stocastico multi-canale avanzato per array HD-MEA a 26.400 canali, progettato per implementare la logica di controllo ibrido con Dwell-Time minimo hardware utile a prevenire fenomeni di chattering (oscillazione distruttiva di commutazione del Gate).
+* **Simulatore Anello Chiuso Metabolico (`simulation4.py`):** Simulatore ad anello chiuso che modella l'omeostasi metabolica del tessuto biologico, calcolando la cinetica dei canali del glutammato e regolando dinamicamente il flusso microfluidico di perfusione.
 * **Certificati di Robustezza (`C7_Robustness_Certificates.md`):** Formalizzazione analitica dei Certificati di Robustezza del Gate hardware. Introduce il bound d'errore trans-scala $\delta(x)$ per la Stabilità Pratica (*Practical Stability*), la modellazione a Sistemi Dinamici Ibridi (*Hybrid Dynamical Systems*) secondo Filippov e Branicky per la convergenza asintotica ad anello chiuso, e le Funzioni Barriera di Lyapunov (*Barrier Lyapunov Functions - BLF*) fortemente divergenti per garantire l'invarianza in avanti (*Forward Invariance*) della biosfera.
 
 ### Layer 3: Experimental Research Program (`Research_Roadmap.md`, `C4_Biohybrid_Embodiment.md`, `C5_Cognitive_Architecture.md`, `C6_Orchestration_Hierarchy.md`, `C10_Metabolic_Perfusion_Protocols_and_Omeostatic_Viability.md`)
@@ -126,6 +127,7 @@ Questo progetto non viene proposto come un dogma computazionale infallibile, ben
 Fase 1: In-Silico (Corrente)
 ├── Formalizzazione NESS e dimostrazioni spettrali (Lyapunov)
 ├── Pipeline di co-simulazione Active Inference + Simulink RHA (simulation.py, simulation2.py, simulation3.py)
+├── Validazione del controllo preventivo via rampa adattiva (Soft-Start) per la prevenzione stocastica dell'eccitotossicità in simulation4.py
 ├── Certificazione di Robust Control e quantificazione del delta-bound (C7)
 ├── Chiusura stocastica di Itô e restrizioni gaussiane NESS (C8)
 ├── Geometria informativa di Amari e analisi non-lineare di Fisher (C9)
@@ -165,7 +167,8 @@ asi-alignment-invariant/
 ├── Dialectics_logs.md                                              # Registro epistemologico dello sviluppo teorico
 ├── simulation.py                                                   # Motore di verifica in-silico del Gate di Lyapunov
 ├── simulation2.py                                                  # Simulatore stocastico multi-canale HD-MEA (Practical Stability)
-└── simulation3.py                                                  # Simulatore HD-MEA avanzato con logica anti-chattering
+├── simulation3.py                                                  # Simulatore HD-MEA avanzato con logica anti-chattering
+└── simulation4.py                                                  # Simulatore ad anello chiuso del loop metabolico con Soft-Start preventivo
 ```
 
 ---
