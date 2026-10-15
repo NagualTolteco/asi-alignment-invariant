@@ -32,7 +32,7 @@ Per eliminare ambiguità teoriche e separare rigorosamente la formalizzazione lo
 graph TD
     %% Definizione dei nodi con formattazione HTML compatibile con GitHub Mermaid
     L1["<b>Layer 1: Formal Theory</b> (Core_Theorems.md)<br>• Free Energy Principle (FEP)<br>• Markov Blankets<br>• IIT Formalisms"]
-    L2["<b>Layer 2: Safety Architecture</b> (C1-3.md / simulation.py / simulation2.py)<br>• Runtime Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>)<br>• Fail-Safe"]
+    L2["<b>Layer 2: Safety Architecture</b> (C1-3.md / simulation.py / simulation2.py / C7)<br>• Runtime Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>)<br>• Robust Control & Practical Stability"]
     L3["<b>Layer 3: Experimental Research Program</b> (Research_Roadmap.md / C4 / C5 / C6)<br>• GEMINI-GENESI Digital Twin<br>• Organoidi Neurali (Brainoware)<br>• Orchestration Hierarchy"]
 
     %% Flusso unidirezionale dei segnali
@@ -51,12 +51,13 @@ Fornisce il basamento assiomatico e matematico del sistema.
 * **Markov Blankets ($\partial\mathcal{M}$):** Demarcazione statistica e topologica tra gli stati interni dell'agente, gli stati sensoriali/attivi del blanket e l'ambiente ospite esterno.
 * **Spectral Gap Synchronization ($\Delta \lambda_2$):** Analisi spettrale su grafi dinamici: l'allineamento viene modellato come minimizzazione del divario autovalore tra la dinamica neurocomputazionale dell'agente e la risonanza fisiologica dell'ospite biologico.
 
-### Layer 2: Safety Architecture (`C1-3.md`, `simulation.py`, `simulation2.py`)
+### Layer 2: Safety Architecture (`C1-3.md`, `simulation.py`, `simulation2.py`, `C7_Robustness_Certificates.md`)
 Costituisce l'interfaccia deterministica di controllo, indipendente dai pesi sinaptici dell'agente cognitivo.
 * **Hardware Gate ($\Pi_{\text{safe}}$):** Circuito logico a isolamento galvanico e asimmetrico che agisce come *Hardware Root of Trust*. Nessun comando dell'agente viene inoltrato ai registri attuativi senza convalida del Gate.
 * **Runtime Hardware Assurance (RHA):** Implementazione di architetture Simplex in cui le traiettorie dell'agente vengono proiettate istante per istante all'interno di un Safe Invariant Set. Se una transizione viola i bound omeostatici, il controllo decade a un baseline controller passivo.
 * **Simulatore Software (`simulation.py`):** Script di Active Inference vincolata per validare in-silico la divergenza KL e le superfici di Lyapunov prima del deployment fisico.
 * **Simulatore Discreto Multi-Canale (`simulation2.py`):** Motore stocastico discreto ad alta fedeltà sviluppato per simulare la propagazione del segnale e gli attacchi coordinati della flotta multi-agente su array HD-MEA a 26.400 canali.
+* **Certificati di Robustezza (`C7_Robustness_Certificates.md`):** Formalizzazione analitica dei Certificati di Robustezza del Gate hardware. Introduce il bound d'errore trans-scala $\delta(x)$ per la Stabilità Pratica (*Practical Stability*), la modellazione a Sistemi Dinamici Ibridi (*Hybrid Dynamical Systems*) secondo Filippov e Branicky per la convergenza asintotica ad anello chiuso, e le Funzioni Barriera di Lyapunov (*Barrier Lyapunov Functions - BLF*) fortemente divergenti per garantire l'invarianza in avanti (*Forward Invariance*) della biosfera.
 
 ### Layer 3: Experimental Research Program (`Research_Roadmap.md`, `C4_Biohybrid_Embodiment.md`, `C5_Cognitive_Architecture.md`, `C6_Orchestration_Hierarchy.md`)
 Rappresenta il banco di prova empirico per la transizione dal silicio puro alla materia vivente.
@@ -131,6 +132,7 @@ Questo progetto non viene proposto come un dogma computazionale infallibile, ben
 Fase 1: In-Silico (Corrente)
 ├── Formalizzazione NESS e dimostrazioni spettrali (Lyapunov)
 ├── Pipeline di co-simulazione Active Inference + Simulink RHA (simulation.py, simulation2.py)
+├── Certificazione di Robust Control e quantificazione del delta-bound (C7)
 └── Validazione crittografica e test logici del circuito П_safe su FPGA
 
 Fase 2: In-Vitro (Medio Termine)
@@ -157,7 +159,8 @@ asi-alignment-invariant/
 ├── safety_architecture/                # Layer 2: Controlli deterministici e hardware
 │   ├── C1-3.md                         # Protocolli di Runtime Assurance e specifiche П_safe
 │   ├── simulation.py                   # Script di validazione in-silico del Gate
-│   └── simulation2.py                  # Motore stocastico discreto multi-canale HD-MEA
+│   ├── simulation2.py                  # Motore stocastico discreto multi-canale HD-MEA
+│   └── C7_Robustness_Certificates.md   # Certificati di stabilità pratica, delta-bound e funzioni barriera
 │
 ├── research_program/                   # Layer 3: Pipeline biologica e trasduzione
 │   ├── Research_Roadmap.md             # Timeline di falsificazione e benchmark
