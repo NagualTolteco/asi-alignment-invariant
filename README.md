@@ -28,6 +28,7 @@ Il programma integra metodologie quantitative e sperimentali provenienti da sei 
 
 Per eliminare ambiguità teoriche e separare rigorosamente la formalizzazione logica dalla verifica sperimentale, il repository adotta un'architettura suddivisa su tre livelli operativi indipendenti ma concatenati:
 
+```mermaid
 graph TD
     %% Definizione dei nodi con formattazione HTML compatibile con GitHub Mermaid
     L1["<b>Layer 1: Formal Theory</b> (Core_Theorems.md)<br>• Free Energy Principle (FEP)<br>• Markov Blankets<br>• IIT Formalisms"]
@@ -42,6 +43,7 @@ graph TD
     style L1 fill:#161b22,stroke:#388bfd,stroke-width:2px,color:#c9d1d9
     style L2 fill:#161b22,stroke:#f85149,stroke-width:2px,color:#c9d1d9
     style L3 fill:#161b22,stroke:#2ea043,stroke-width:2px,color:#c9d1d9
+```
 
 ### Layer 1: Formal Theory (`Core_Theorems.md`)
 Fornisce il basamento assiomatico e matematico del sistema.
