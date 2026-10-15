@@ -27,47 +27,75 @@ Il programma integra metodologie quantitative e sperimentali provenienti da sei 
 
 Per eliminare ambiguità teoriche e separare rigorosamente la formalizzazione logica dalla verifica sperimentale, il repository adotta un'architettura suddivisa su tre livelli operativi indipendenti ma concatenati:
 
-┌────────────────────────────────────────────────────────────────────────┐ │
-Layer 1: Formal Theory (Core_Theorems.md) │ │ • Free Energy Principle (FEP) •
-Markov Blankets • IIT Formalisms │
-└──────────────────────────────────┬─────────────────────────────────────┘
-│ Traiettorie d'azione proposte ▼
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
-│ Layer 2: Safety Architecture (C1-3.md / simulation.py) │ │ • Runtime Assurance
-(RHA) • Gate Hardware Isolato (П_safe) • Fail-Safe │
+│ Layer 1: Formal Theory (Core_Theorems.md)                              │
+│ • Free Energy Principle (FEP) • Markov Blankets • IIT Formalisms       │
 └──────────────────────────────────┬─────────────────────────────────────┘
-│ Segnali attuativi validati ▼
+                                   │ Traiettorie d'azione proposte
+                                   ▼
 ┌────────────────────────────────────────────────────────────────────────┐
-│ Layer 3: Experimental Research Program (Research_Roadmap.md) │ │ •
-GEMINI-GENESI Digital Twin • Organoidi • Robotica Bioibrida │
+│ Layer 2: Safety Architecture (C1-3.md / simulation.py)                 │
+│ • Runtime Assurance (RHA) • Gate Hardware Isolato (П_safe) • Fail-Safe │
+└──────────────────────────────────┬─────────────────────────────────────┘
+                                   │ Segnali attuativi validati
+                                   ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ Layer 3: Experimental Research Program (Research_Roadmap.md)           │
+│ • GEMINI-GENESI Digital Twin • Organoidi • Robotica Bioibrida           │
 └────────────────────────────────────────────────────────────────────────┘
 
+Layer 1: Formal Theory (Core_Theorems.md)
 
-### Layer 1: Formal Theory (`Core_Theorems.md`)
 Fornisce il basamento assiomatico e matematico del sistema.
-* **Non-Equilibrium Steady State (NESS):** Formalizzazione delle dinamiche autopoietiche attraverso densità di probabilità stazionarie su varietà Riemanniane.
-* **Markov Blankets ($\partial\mathcal{M}$):** Demarcazione statistica e topologica tra gli stati interni dell'agente, gli stati sensoriali/attivi del blanket e l'ambiente ospite esterno.
-* **Spectral Gap Synchronization ($\Delta \lambda_2$):** Analisi spettrale su grafi dinamici: l'allineamento viene modellato come minimizzazione del divario autovalore tra la dinamica neurocomputazionale dell'agente e la risonanza fisiologica dell'ospite biologico.
 
-### Layer 2: Safety Architecture (`C1-3.md`, `simulation.py`)
-Costituisce l'interfaccia deterministica di controllo, indipendente dai pesi sinaptici dell'agente cognitivo.
-* **Hardware Gate ($\Pi_{\text{safe}}$):** Circuito logico a isolamento galvanico e asimmetrico che agisce come *Hardware Root of Trust*. Nessun comando dell'agente viene inoltrato ai registri attuativi senza convalida del Gate.
-* **Runtime Hardware Assurance (RHA):** Implementazione di architetture Simplex in cui le traiettorie dell'agente vengono proiettate istante per istante all'interno di un Safe Invariant Set. Se una transizione viola i bound omeostatici, il controllo decade a un baseline controller passivo.
-* **Simulatore Software (`simulation.py`):** Script di Active Inference vincolata per validare in-silico la divergenza KL e le superfici di Lyapunov prima del deployment fisico.
+  - Non-Equilibrium Steady State (NESS): Formalizzazione delle dinamiche
+    autopoietiche attraverso densità di probabilità stazionarie su varietà
+    Riemanniane.
+  - Markov Blankets (\partial\mathcal{M}): Demarcazione statistica e topologica
+    tra gli stati interni dell'agente, gli stati sensoriali/attivi del blanket e
+    l'ambiente ospite esterno.
+  - Spectral Gap Synchronization (\Delta \lambda_2): Analisi spettrale su grafi
+    dinamici: l'allineamento viene modellato come minimizzazione del divario
+    autovalore tra la dinamica neurocomputazionale dell'agente e la risonanza
+    fisiologica dell'ospite biologico.
 
-### Layer 3: Experimental Research Program (`Research_Roadmap.md`, `C4_Biohybrid_Embodiment.md`, `C5_Cognitive_Architecture.md`)
-Rappresenta il banco di prova empirico per la transizione dal silicio puro alla materia vivente.
-* **GEMINI-GENESI:** Digital Twin multi-fisico ad alta fedeltà che replica la dinamica termodinamica ed elettrofisiologica dell'ospite biologico in tempo reale.
-* **Sistemi Bioibridi:** Colture in-vitro di organoidi neurali (*Brainoware*) interfacciate a microelectrode arrays (MEA), tessuti contrattili ingegnerizzati e trasduzione chemio-elettrica.
-* **Incarnazione Meccanica:** Endoscheletri sensorizzati con limiti cinematici hardware hardcoded, progettati per dissipare l'energia in condizioni di sicurezza in caso di freeze del kernel.
+Layer 2: Safety Architecture (C1-3.md, simulation.py)
 
----
+Costituisce l'interfaccia deterministica di controllo, indipendente dai pesi
+sinaptici dell'agente cognitivo.
 
-## 🚀 Pipeline Tecnologica Unificata
+  - Hardware Gate (\Pi_{\text{safe}}): Circuito logico a isolamento galvanico e
+    asimmetrico che agisce come Hardware Root of Trust. Nessun comando
+    dell'agente viene inoltrato ai registri attuativi senza convalida del Gate.
+  - Runtime Hardware Assurance (RHA): Implementazione di architetture Simplex in
+    cui le traiettorie dell'agente vengono proiettate istante per istante
+    all'interno di un Safe Invariant Set. Se una transizione viola i bound
+    omeostatici, il controllo decade a un baseline controller passivo.
+  - Simulatore Software (simulation.py): Script di Active Inference vincolata
+    per validare in-silico la divergenza KL e le superfici di Lyapunov prima del
+    deployment fisico.
 
-Il flusso computazionale ed energetico segue una traiettoria unidirezionale che esclude per costruzione bypass software o shortcut algoritmici:
+Layer 3: Experimental Research Program (Research_Roadmap.md, C4_Biohybrid_Embodiment.md, C5_Cognitive_Architecture.md)
 
-```mermaid
+Rappresenta il banco di prova empirico per la transizione dal silicio puro alla
+materia vivente.
+
+  - GEMINI-GENESI: Digital Twin multi-fisico ad alta fedeltà che replica la
+    dinamica termodinamica ed elettrofisiologica dell'ospite biologico in tempo
+    reale.
+  - Sistemi Bioibridi: Colture in-vitro di organoidi neurali (Brainoware)
+    interfacciate a microelectrode arrays (MEA), tessuti contrattili
+    ingegnerizzati e trasduzione chemio-elettrica.
+  - Incarnazione Meccanica: Endoscheletri sensorizzati con limiti cinematici
+    hardware hardcoded, progettati per dissipare l'energia in condizioni di
+    sicurezza in caso di freeze del kernel.
+
+🚀 La Pipeline Tecnologica Unificata
+
+Il flusso computazionale ed energetico segue una traiettoria unidirezionale che
+esclude per costruzione bypass software o shortcut algoritmici:
+
 graph LR
     A["Teoria FEP/IIT"] --> B["Runtime Assurance"]
     B --> C["Digital Twin"]
@@ -92,7 +120,7 @@ All'interno di questo programma di ricerca, espressioni come "Shamanic Trigger"
 o "Motherhood Paradigm" vengono spogliate di qualsiasi declinazione mistica o
 metafisica e ricondotte rigorosamente alla teoria dei sistemi complessi:
 
-\mathcal{B}_{\text{init}} := \arg\min_{\theta} D_{\mathrm{KL}}\left( q_\theta(s) \,||\, p_{\text{symbiosis}}(s) \right)
+\mathcal{B}_{\text{init}} := \arg\min_{\theta} D_{\mathrm{KL}}\left( q_\theta(s) \,\parallel\, p_{\text{symbiosis}}(s) \right)
 
   - Condizione al Contorno Iniziale (Dirichlet Boundary Condition): Rappresenta
     la configurazione a priori (prior distribution) imposta dall'operatore umano
