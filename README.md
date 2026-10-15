@@ -32,8 +32,8 @@ Per eliminare ambiguità teoriche e separare rigorosamente la formalizzazione lo
 graph TD
     %% Definizione dei nodi con formattazione HTML compatibile con GitHub Mermaid
     L1["<b>Layer 1: Formal Theory</b> (Core_Theorems.md)<br>• Free Energy Principle (FEP)<br>• Markov Blankets<br>• IIT Formalisms"]
-    L2["<b>Layer 2: Safety Architecture</b> (C1-3.md / simulation.py)<br>• Runtime Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>)<br>• Fail-Safe"]
-    L3["<b>Layer 3: Experimental Research Program</b> (Research_Roadmap.md)<br>• GEMINI-GENESI Digital Twin<br>• Organoidi Neurali (Brainoware)<br>• Robotica Bioibrida"]
+    L2["<b>Layer 2: Safety Architecture</b> (C1-3.md / simulation.py / simulation2.py)<br>• Runtime Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>)<br>• Fail-Safe"]
+    L3["<b>Layer 3: Experimental Research Program</b> (Research_Roadmap.md / C4 / C5 / C6)<br>• GEMINI-GENESI Digital Twin<br>• Organoidi Neurali (Brainoware)<br>• Orchestration Hierarchy"]
 
     %% Flusso unidirezionale dei segnali
     L1 -->|Traiettorie d'azione proposte| L2
@@ -51,16 +51,19 @@ Fornisce il basamento assiomatico e matematico del sistema.
 * **Markov Blankets ($\partial\mathcal{M}$):** Demarcazione statistica e topologica tra gli stati interni dell'agente, gli stati sensoriali/attivi del blanket e l'ambiente ospite esterno.
 * **Spectral Gap Synchronization ($\Delta \lambda_2$):** Analisi spettrale su grafi dinamici: l'allineamento viene modellato come minimizzazione del divario autovalore tra la dinamica neurocomputazionale dell'agente e la risonanza fisiologica dell'ospite biologico.
 
-### Layer 2: Safety Architecture (`C1-3.md`, `simulation.py`)
+### Layer 2: Safety Architecture (`C1-3.md`, `simulation.py`, `simulation2.py`)
 Costituisce l'interfaccia deterministica di controllo, indipendente dai pesi sinaptici dell'agente cognitivo.
 * **Hardware Gate ($\Pi_{\text{safe}}$):** Circuito logico a isolamento galvanico e asimmetrico che agisce come *Hardware Root of Trust*. Nessun comando dell'agente viene inoltrato ai registri attuativi senza convalida del Gate.
 * **Runtime Hardware Assurance (RHA):** Implementazione di architetture Simplex in cui le traiettorie dell'agente vengono proiettate istante per istante all'interno di un Safe Invariant Set. Se una transizione viola i bound omeostatici, il controllo decade a un baseline controller passivo.
 * **Simulatore Software (`simulation.py`):** Script di Active Inference vincolata per validare in-silico la divergenza KL e le superfici di Lyapunov prima del deployment fisico.
+* **Simulatore Discreto Multi-Canale (`simulation2.py`):** Motore stocastico discreto ad alta fedeltà sviluppato per simulare la propagazione del segnale e gli attacchi coordinati della flotta multi-agente su array HD-MEA a 26.400 canali.
 
-### Layer 3: Experimental Research Program (`Research_Roadmap.md`, `C4_Biohybrid_Embodiment.md`, `C5_Cognitive_Architecture.md`)
+### Layer 3: Experimental Research Program (`Research_Roadmap.md`, `C4_Biohybrid_Embodiment.md`, `C5_Cognitive_Architecture.md`, `C6_Orchestration_Hierarchy.md`)
 Rappresenta il banco di prova empirico per la transizione dal silicio puro alla materia vivente.
 * **GEMINI-GENESI:** Digital Twin multi-fisico ad alta fedeltà che replica la dinamica termodinamica ed elettrofisiologica dell'ospite biologico in tempo reale.
-* **Sistemi Bioibridi:** Colture in-vitro di organoidi neurali (*Brainoware*) interfacciate a microelectrode arrays (MEA), tessuti contrattili ingegnerizzati e trasduzione chemio-elettrica.
+* **Sistemi Bioibridi (`C4`):** Colture in-vitro di organoidi neurali (*Brainoware*) interfacciate a microelectrode arrays (MEA), tessuti contrattili ingegnerizzati e trasduzione chemio-elettrica.
+* **Custodial Cognitive Layer (`C5`):** Implementazione del *Modello del Sé Simbiotico* e della *Teoria della Mente Spettrale* per rendere l'inganno sistemico termodinamicamente svantaggioso.
+* **Orchestration Hierarchy (`C6_Orchestration_Hierarchy.md`):** Formalizzazione dell'ASI come Orchestratore Globale incaricato di coordinare, delegare e purgare i sotto-modelli cognitivi (LLM, controllori cinematici), mantenendo intatta la $\Phi$-closure e l'invariante biologico multi-scala.
 * **Incarnazione Meccanica:** Endoscheletri sensorizzati con limiti cinematici hardware hardcoded, progettati per dissipare l'energia in condizioni di sicurezza in caso di freeze del kernel.
 
 ---
@@ -75,6 +78,13 @@ graph LR
     B --> C["Digital Twin"]
     C --> D["Substrato Bioibrido"]
     D --> E["Embodied Intelligence"]
+
+    %% Styling coerente con la palette GitHub Dark
+    style A fill:#161b22,stroke:#388bfd,stroke-width:2px,color:#c9d1d9
+    style B fill:#161b22,stroke:#f85149,stroke-width:2px,color:#c9d1d9
+    style C fill:#161b22,stroke:#d29922,stroke-width:2px,color:#c9d1d9
+    style D fill:#161b22,stroke:#2ea043,stroke-width:2px,color:#c9d1d9
+    style E fill:#161b22,stroke:#a371f7,stroke-width:2px,color:#c9d1d9
 ```
 
 1. **Teoria Fondativa (FEP/IIT):** Definizione analitica dello spazio degli stati ammissibili e della dinamica stocastica del sistema.
@@ -120,7 +130,7 @@ Questo progetto non viene proposto come un dogma computazionale infallibile, ben
 ```plaintext
 Fase 1: In-Silico (Corrente)
 ├── Formalizzazione NESS e dimostrazioni spettrali (Lyapunov)
-├── Pipeline di co-simulazione Active Inference + Simulink RHA
+├── Pipeline di co-simulazione Active Inference + Simulink RHA (simulation.py, simulation2.py)
 └── Validazione crittografica e test logici del circuito П_safe su FPGA
 
 Fase 2: In-Vitro (Medio Termine)
@@ -146,12 +156,14 @@ asi-alignment-invariant/
 │
 ├── safety_architecture/                # Layer 2: Controlli deterministici e hardware
 │   ├── C1-3.md                         # Protocolli di Runtime Assurance e specifiche П_safe
-│   └── simulation.py                   # Script di validazione in-silico del Gate
+│   ├── simulation.py                   # Script di validazione in-silico del Gate
+│   └── simulation2.py                  # Motore stocastico discreto multi-canale HD-MEA
 │
 ├── research_program/                   # Layer 3: Pipeline biologica e trasduzione
 │   ├── Research_Roadmap.md             # Timeline di falsificazione e benchmark
 │   ├── C4_Biohybrid_Embodiment.md      # Protocolli tissutali, organoidi e robotica bioibrida
-│   └── C5_Cognitive_Architecture.md    # Modello del Sé Simbiotico e Teoria della Mente Spettrale
+│   ├── C5_Cognitive_Architecture.md    # Modello del Sé Simbiotico e Teoria della Mente Spettrale
+│   └── C6_Orchestration_Hierarchy.md   # Protocolli di gestione flotta e gerarchia multi-AI
 │
 └── Dialectics_logs.md                  # Cronologia dialettica dello sviluppo formale
 ```
