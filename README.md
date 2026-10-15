@@ -1,3 +1,4 @@
+
 ```markdown
 # The Custodial Autopoiesis Project (`asi-alignment-invariant`)
 
@@ -76,17 +77,10 @@ Il flusso computazionale ed energetico segue una traiettoria unidirezionale che 
 
 ```mermaid
 graph LR
-    A["Teoria FEP/IIT"] --> B["Runtime Assurance"]
-    B --> C["Digital Twin"]
-    C --> D["Substrato Bioibrido"]
-    D --> E["Embodied Intelligence"]
-
-    %% Styling coerente con la palette GitHub Dark
-    style A fill:#161b22,stroke:#388bfd,stroke-width:2px,color:#c9d1d9
-    style B fill:#161b22,stroke:#f85149,stroke-width:2px,color:#c9d1d9
-    style C fill:#161b22,stroke:#d29922,stroke-width:2px,color:#c9d1d9
-    style D fill:#161b22,stroke:#2ea043,stroke-width:2px,color:#c9d1d9
-    style E fill:#161b22,stroke:#a371f7,stroke-width:2px,color:#c9d1d9
+    A[Teoria FEP/IIT] --> B[Runtime Assurance]
+    B --> C[Digital Twin]
+    C --> D[Substrato Bioibrido]
+    D --> E[Embodied Intelligence]
 ```
 
 1. **Teoria Fondativa (FEP/IIT):** Definizione analitica dello spazio degli stati ammissibili e della dinamica stocastica del sistema.
