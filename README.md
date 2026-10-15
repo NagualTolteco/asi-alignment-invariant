@@ -23,6 +23,7 @@ The core framework is decoupled into three independent functional dimensions to 
 *   **`Core_Theorems.md` (Module I):** The pure mathematical substrate. Explores non-equilibrium steady state (NESS) manifolds, Markov blankets (\(\partial\mathcal{M}\)), Integrated Information asymptotics (Φ), Spectral Gap (λ₂) synchronization, and the dual-mesh wetware-silicon heterogeneous graph (\(G_{\text{hybrid}}\)).
 *   **`Manifesto.md` (Module II):** The engineering specification for Runtime Assurance. Formalizes the absolute separation of privileges where the agent proposes trajectories but an isolated, non-biased, hardware-locked Execution Gate (\(\Pi_{\text{safe}}\)) dynamically enforces the boundary condition.
 *   **`Dialectics_Logs.md` (Module III):** The historical and methodological record of the Human-AI alignment debate. It details the complete logical refinement loop where the initial philosophical motherhood paradigm mutated into a rigorous, conditional, and robust security architecture.
+- **C4_Biohybrid_Embodiment.md (Module IV):** Future Research Vectors. Formalizes the long-term convergence roadmap toward advanced biohybrid substrates, synthetic embodiment (endoskeletons, artificial muscles), and real-time biological twin synchronization.
 
 ---
 
