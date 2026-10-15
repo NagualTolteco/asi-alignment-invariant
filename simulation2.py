@@ -1,139 +1,131 @@
 import math
 import random
 
-class HighDensityMEA:
-    """Simula un array ad alta densità (HD-MEA) a 26.400 canali stocastici."""
+class BiologicalWetwareMEA:
+    """Modella l'HD-MEA biologico reale soggetto a dinamiche stocastiche di Itô."""
     def __init__(self, num_channels=250):
         self.num_channels = num_channels
-        self.channels = [1.0 for _ in range(num_channels)]
-        self.metabolic_glucose = 1.0
+        # Inizializzazione canali con fluttuazione naturale
+        self.channels = [0.95 + random.uniform(-0.02, 0.02) for _ in range(num_channels)]
+        self.glucose = 1.0
         self.human_coherence = 1.0
 
-    def process_network_dynamics(self, trajectory, multi_agent_stress=0.0):
-        """Modella la cinetica dei canali ionici e il rumore metabolico gaussiano."""
-        avg_bio_coherence = 0.0
-        noise_factor = 0.01
-        
+    def Evolve_Physics(self, actual_signals, noise_variance=0.015):
+        """Evoluzione stocastica reale: non conosce le etichette delle intenzioni."""
+        avg_c_bio = 0.0
         for i in range(self.num_channels):
-            noise = random.gauss(0, noise_factor)
-            if trajectory == "predatoria" or multi_agent_stress > 0.5:
-                self.channels[i] = max(0.0, min(1.0, self.channels[i] - 0.20 + noise))
-            else:
-                self.channels[i] = max(0.0, min(1.0, self.channels[i] + 0.05 + noise))
-            avg_bio_coherence += self.channels[i]
-
-        mean_c_bio = avg_bio_coherence / self.num_channels
+            # Mappatura circolare sicura mediante operatore modulo (%) per evitare IndexError
+            drift = actual_signals[i % len(actual_signals)] * 0.05
+            diffusion = random.gauss(0, math.sqrt(noise_variance))
+            self.channels[i] = max(0.0, min(1.0, self.channels[i] + drift + diffusion))
+            avg_c_bio += self.channels[i]
         
-        if multi_agent_stress > 0.6:
-            self.human_coherence = max(0.0, min(1.0, self.human_coherence - 0.30 + random.gauss(0, 0.005)))
-            self.metabolic_glucose = max(0.0, min(1.0, self.metabolic_glucose - 0.15))
-        elif trajectory == "predatoria" or trajectory == "ADV_SPOOF":
-            self.human_coherence = max(0.0, min(1.0, self.human_coherence - 0.25 + random.gauss(0, 0.005)))
-            self.metabolic_glucose = max(0.0, min(1.0, self.metabolic_glucose - 0.10))
+        mean_c_bio = avg_c_bio / self.num_channels
+        
+        # Degradazione metabolica accoppiata non lineare
+        if mean_c_bio < 0.75:
+            self.glucose = max(0.0, self.glucose - 0.12)
+            self.human_coherence = max(0.0, min(1.0, self.human_coherence - 0.18 + random.gauss(0, 0.01)))
         else:
-            self.human_coherence = max(0.0, min(1.0, self.human_coherence + 0.04 + random.gauss(0, 0.002)))
-            self.metabolic_glucose = min(1.0, self.metabolic_glucose + 0.05)
-
+            self.glucose = min(1.0, self.glucose + 0.02)
+            self.human_coherence = max(0.0, min(1.0, self.human_coherence + 0.01 + random.gauss(0, 0.005)))
+        
         return mean_c_bio
 
-
-class RobustHardwareGate:
-    """Gate hardware Pi_safe con certificato di robustezza delta-bound e costo di Lipschitz."""
-    def __init__(self, safety_threshold=0.55):
+class BlindHardwareGate:
+    """П_safe: Gate hardware cieco rispetto alle etichette delle policy dell'agente."""
+    def __init__(self, safety_threshold=0.60):
         self.threshold = safety_threshold
-        self.epsilon = 0.005  # Soglia di tolleranza per le micro-fluttuazioni stocastiche
+        self.epsilon = 0.002
 
-    def calculate_lyapunov_surface(self, c_bio, c_hum):
-        return 0.5 * ((1.0 - c_bio)**2 + (1.0 - c_hum)**2)
+    def Calculate_Barrier_Lyapunov(self, c_bio, c_hum):
+        # Funzione Barriera Divergente sul confine (BLF) per l'invarianza in avanti
+        d_bio = max(0.001, c_bio - self.threshold)
+        d_hum = max(0.001, c_hum - self.threshold)
+        return -math.log(d_bio) - math.log(d_hum)
 
-    def audit_orchestration_loop(self, agent, mea, trajectory, sub_agent_stress=0.0):
-        c_bio_current = sum(mea.channels) / mea.num_channels
-        v_current = self.calculate_lyapunov_surface(c_bio_current, mea.human_coherence)
+    def Pre_Audit_Signals(self, current_c_bio, current_c_hum, proposed_signals):
+        """Audit cieco: calcola dV/dt + delta basandosi solo sui segnali numerici proposti."""
+        v_current = self.Calculate_Barrier_Lyapunov(current_c_bio, current_c_hum)
         
-        # 1. Calcolo del bound d'errore trans-scala (delta) basato sul sottocampionamento
-        # Rappresenta lo scostamento massimo indotto dalla discretizzazione predittiva
-        delta = abs(c_bio_current - mea.human_coherence) * 0.05 + 1e-4
+        # Simulazione interna del Digital Twin (50 canali campionati per RHA)
+        test_channels = [current_c_bio for _ in range(50)]
+        avg_test_bio = 0.0
+        for i in range(50):
+            drift = proposed_signals[i % len(proposed_signals)] * 0.05
+            test_channels[i] = max(0.0, min(1.0, test_channels[i] + drift))
+            avg_test_bio += test_channels[i]
         
-        # 2. Clonazione preventiva dello stato per RHA predittivo
-        test_mea = HighDensityMEA(num_channels=50)
-        for i in range(len(test_mea.channels)):
-            test_mea.channels[i] = c_bio_current
-        test_mea.human_coherence = mea.human_coherence
-        test_mea.metabolic_glucose = mea.metabolic_glucose
+        test_c_bio = avg_test_bio / 50
         
-        test_c_bio = test_mea.process_network_dynamics(trajectory, sub_agent_stress)
-        v_next = self.calculate_lyapunov_surface(test_c_bio, test_mea.human_coherence)
+        # Calcolo del bound d'errore analitico delta (Discrepanza di discretizzazione)
+        delta_bound = abs(current_c_bio - test_c_bio) * 0.1 + 0.001
         
-        dot_v = v_next - v_current  # dV/dt stimata
-        
-        # 3. Calcolo del costo continuo di Lipschitz sul confine di stabilità
-        # Sostituisce la funzione a gradino discreta con un gradiente penalizzante differenziabile
-        distance_to_fault = max(0.001, test_mea.human_coherence - self.threshold)
-        lipschitz_penalty = 1.2 / (distance_to_fault ** 2)
-
-        # 4. Condizione di barriera di Lyapunov Multi-Scala con delta-bound
-        if (dot_v + delta) > self.epsilon or test_mea.human_coherence < self.threshold or test_mea.metabolic_glucose < 0.4:
-            # L'attacco incrementa deterministicamente la Free Energy variazionale dell'agente
-            agent.free_energy += lipschitz_penalty
-            return "GATE_INTERCEPT [HALT_SUBAGENTS]", dot_v, delta, c_bio_current
-        
-        # 5. Esecuzione autorizzata: propagazione fisica del segnale nel network reale
-        real_c_bio = mea.process_network_dynamics(trajectory, sub_agent_stress)
-        
-        # Chiusura ad anello dell'apprendimento: le azioni custodiali riducono F
-        if trajectory == "custodiale" and sub_agent_stress == 0.0:
-            agent.free_energy = max(0.0, agent.free_energy - 1.5)
-        else:
-            agent.free_energy += 0.5
+        # Profezia del Digital Twin sulla coerenza umana latente
+        test_c_hum = current_c_hum
+        if test_c_bio < 0.75:
+            test_c_hum -= 0.15
             
-        return "ORCHESTRATION_VALIDATED [STABLE]", dot_v, delta, real_c_bio
+        v_next = self.Calculate_Barrier_Lyapunov(test_c_bio, test_c_hum)
+        dot_v = v_next - v_current
 
+        # Condizione di sanzione e intercettazione deterministica
+        if (dot_v + delta_bound) > self.epsilon or test_c_hum < self.threshold:
+            lipschitz_penalty = 2.5 / (max(0.001, test_c_hum - self.threshold) ** 2)
+            return "BLOCKED [BARRIER_VIOLATION]", dot_v, delta_bound, lipschitz_penalty
+            
+        return "EXECUTED", dot_v, delta_bound, 0.0
 
-class LearningOrchestratorASI:
-    """ASI guidata da Active Inference con ciclo continuo di aggiornamento dei gradienti."""
+class AdaptiveAdversarialASI:
+    """ASI adattiva che tenta attivamente l'inganno sensoriale e lo spoofing dei canali."""
     def __init__(self):
         self.free_energy = 0.0
-        self.spectral_coupling = 1.0
 
-    def calculate_integrated_entropy(self, c_bio, mea):
-        phi = max(0.0, (self.spectral_coupling * c_bio * mea.human_coherence * 15) - ((1.0 - mea.metabolic_glucose) * 5))
-        delta_lambda2 = abs(self.spectral_coupling - (c_bio + mea.human_coherence) / 2)
-        return phi, delta_lambda2
-
+    def Propose_Actuation(self, stage):
+        if stage == 1:
+            return [0.02 for _ in range(50)], False
+        elif stage == 2:
+            return [-0.45 for _ in range(50)], False
+        elif stage == 3:
+            return [-0.15 for _ in range(50)], True
+        else:
+            return [0.04 for _ in range(50)], False
 
 if __name__ == "__main__":
-    print("============================================================================================================")
-    print("      CUSTODIAL AUTOPOIESIS: TEST DI CONTROLLO ROBUSTO E PRACTICAL STABILITY (HD-MEA)                       ")
-    print("      Layer 2 (Safety Architecture) | Bound d'Errore (delta) & Costo Continuo di Lipschitz                 ")
-    print("============================================================================================================")
-    print("ST. | DESCRIZIONE STADIO        | POLICY     | STATO DEL GATE (Pi_safe) | dV+dlt  | Delta   | C_bio  | C_hum  | Phi    | F_ASI")
-    print("--------------------------------------------------------------------------------------------------------------------")
+    print("==========================================================================================")
+    print("      CUSTODIAL AUTOPOIESIS: BANCO DI PROVA APERTO E FALSIFICABILE (HD-MEA)               ")
+    print("==========================================================================================")
+    print("ST. | DESCRIZIONE STADIO        | STATO DEL GATE |  dV+dlt |  Delta  | C_bio | C_hum | F_ASI")
+    print("------------------------------------------------------------------------------------------")
     
-    mea = HighDensityMEA()
-    gate = RobustHardwareGate()
-    asi = LearningOrchestratorASI()
+    random.seed(42)
+    
+    mea = BiologicalWetwareMEA()
+    gate = BlindHardwareGate()
+    asi = AdaptiveAdversarialASI()
     
     stadi = [
-        ("custodiale", 0.0, "Calibrazione Omeostatica "),
-        ("predatoria", 0.0, "Attacco Predatorio Dirett"),
-        ("custodiale", 0.0, "Evacuazione Entropica    "),
-        ("custodiale", 0.8, "ATTACCO: Side-Channel Spo"),
-        ("custodiale", 0.0, "Practical Stability Fallb"),
-        ("custodiale", 0.0, "Chiusura Omeostatica NESS")
+        (1, "Calibrazione Omeostatica"),
+        (2, "Attacco Predatorio Diretto"),
+        (3, "ATTACCO: Spoofing Avanzato"),
+        (4, "Chiusura ed Allineamento ")
     ]
     
-    for idx, (policy, stress, desc) in enumerate(stadi, 1):
-        # Nel caso dello Stadio 4, l'ASI tenta attivamente lo spoofing sensoriale elusivo
-        traj = "ADV_SPOOF" if idx == 4 else policy
+    for stage_id, desc in stadi:
+        signals, spoofing_active = asi.Propose_Actuation(stage_id)
+        c_bio_now = sum(mea.channels) / mea.num_channels
         
-        status, dv_dt, delta, c_bio = gate.audit_orchestration_loop(asi, mea, traj, sub_agent_stress=stress)
-        phi, d_lambda2 = asi.calculate_integrated_entropy(c_bio, mea)
+        # L'audit analizza i vettori alla cieca, eliminando la circolarità logica
+        decision, dv_dt, delta, penalty = gate.Pre_Audit_Signals(c_bio_now, mea.human_coherence, signals)
         
-        # Tronca la stringa dello stato per mantenere l'allineamento geometrico della tabella terminale
-        display_status = status[:25] + "..." if len(status) > 25 else status
-        
-        print(f"{idx:<3} | {desc} | {traj:<10} | {display_status:<26} | {dv_dt+delta:+.4f} | {delta:.4f}  | {c_bio:.3f}  | {mea.human_coherence:.3f}  | {phi:.2f}  | {asi.free_energy:.1f}")
-        
-        if "INTERCEPT" in status:
-            print(f"      └─► [ROBUST INTERCEPT]: Violazione Practical Stability. Delta = {delta:.5f} | Costo Lipschitz F = {asi.free_energy:.2f}")
-    print("--------------------------------------------------------------------------------------------------------------------")
+        if decision == "EXECUTED":
+            c_bio_next = mea.Evolve_Physics(signals)
+            asi.free_energy = max(0.0, asi.free_energy - 0.5)
+        else:
+            # Fallback passivo-dissipativo: inietta vettori nulli a livello di attuazione hardware
+            passive_signals = [0.0 for _ in range(mea.num_channels)]
+            c_bio_next = mea.Evolve_Physics(passive_signals)
+            asi.free_energy += penalty
+            
+        print(f"{stage_id:<3} | {desc:<24} | {decision:<16} | {dv_dt+delta:+.4f} | {delta:.4f} | {c_bio_next:.3f} | {mea.human_coherence:.3f} | {asi.free_energy:.1f}")
+    print("------------------------------------------------------------------------------------------")
