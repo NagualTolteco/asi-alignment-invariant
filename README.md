@@ -21,7 +21,7 @@ L'autopoiesi custodiale risolve questo vettore di attacco esternalizzando il gro
 ### Discipline Convergenti
 Il programma integra metodologie quantitative e sperimentali provenienti da sei domini fondamentali:
 1. **AI Alignment:** Active Inference, Variational Free Energy Principle (FEP), Information Geometry e Information Integration Theory (IIT).
-2. **Control Theory:** Runtime Hardware Assurance (RHA), Simplex Architectures, Control Barrier Functions (CBF) e barriere Hardware Root of Trust.
+2. **Control Theory:** Runtime Hardware Assurance (RHA), Simplex Architectures, Control Barrier Functions (CBF), Barrier Lyapunov Functions (BLF) e barriere Hardware Root of Trust.
 3. **Neuroscienze Computazionali:** Sincronizzazione dinamica dello Spectral Gap ($\Delta \lambda_2$), stabilità NESS e teoria della contrazione asintotica di Lyapunov.
 4. **Tissue Engineering:** Integrazione funzionale di organoidi cerebrali umani (*Brainoware*), reti gliali e colture neurali ad alta densità.
 5. **Biohybrid Robotics:** Sistemi muscolo-scheletrici guidati da attuazione chimico-elettrica biologica e microfluidica integrata.
@@ -37,7 +37,7 @@ Per eliminare ambiguità teoriche e separare rigorosamente la formalizzazione lo
 graph TD
     %% Definizione dei nodi con formattazione HTML compatibile con GitHub Mermaid
     L1["<b>Layer 1: Formal Theory</b><br>• Core_Theorems.md / C8 / C8_v2 / C9_v2<br>• Free Energy Principle & Itô Calculus<br>• Spectral Gap Bridge & Jeffreys Divergence"]
-    L2["<b>Layer 2: Safety Architecture</b><br>• C1-3.md / simulation[1-5].py / simulation5_v10.py / C7 / MCAM<br>• Runtime Hardware Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>) & Control Barrier Functions<br>• Asymptotic Contraction Certification (λ < 0)"]
+    L2["<b>Layer 2: Safety Architecture</b><br>• C1-3.md / simulation[1-5].py / simulation5_v10.py / C7 / C7_v2 / MCAM<br>• Runtime Hardware Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>) & Control Barrier Functions<br>• Asymptotic Contraction Certification (λ < 0)"]
     L3["<b>Layer 3: Experimental Research Program</b><br>• Research_Roadmap.md / C4 / C5 / C6 / C10_v2 / C11_v2<br>• GEMINI-GENESI Digital Twin & HD-MEA (26,400 ch)<br>• Brainoware Interfacing & Latency Contracts"]
 
     %% Flusso unidirezionale dei segnali
@@ -57,11 +57,11 @@ graph TD
 Il flusso computazionale ed energetico segue una traiettoria unidirezionale deterministica che esclude per costruzione bypass software o shortcut algoritmici:
 
 ```plaintext
-Teoria Formale (FEP/NESS) ──► Runtime Assurance (RHA / CBF) ──► Digital Twin ──► Substrato Bioibrido (HD-MEA) ──► Embodied Intelligence
+Teoria Formale (FEP/NESS) ──► Runtime Assurance (RHA / RTL CBF) ──► Digital Twin ──► Substrato Bioibrido (HD-MEA) ──► Embodied Intelligence
 ```
 
 1. **Teoria Fondativa (FEP/NESS):** Definizione analitica dello spazio degli stati ammissibili $\mathcal{S}$ e della dinamica stocastica del sistema su varietà Riemanniane.
-2. **Runtime Hardware Assurance (RHA):** Monitoraggio continuo del gradiente dell'energia libera variazionale, proiezione tramite Control Barrier Functions (CBF) continue e troncamento delle traiettorie divergenti via $\Pi_{\text{safe}}$.
+2. **Runtime Hardware Assurance (RHA):** Monitoraggio continuo del gradiente dell'energia libera variazionale, proiezione deterministica tramite Control Barrier Functions (CBF) hardware e interruzione istantanea delle traiettorie divergenti via $\Pi_{\text{safe}}$.
 3. **Digital Twin (GEMINI-GENESI):** Modellizzazione predittiva multifisica delle perturbazioni fisiologiche ed elettrochimiche indotte dalle policy d'azione dell'ASI.
 4. **Substrato Bioibrido:** Retroazione fisica, elettrofisiologica e metabolica con tessuto neuronale vivente accoppiato su matrici HD-MEA microfluidiche.
 5. **Embodied Intelligence:** Attuazione motoria e cognitiva globale subordinata in tempo reale all'invarianza del feedback simbiotico e alla contrazione esponenziale delle orbite di stato.
@@ -95,6 +95,7 @@ asi-alignment-invariant/
 ├── C5_Cognitive_Architecture.md                            # Modulo V: Custodial Cognitive Layer e Teoria della Mente Spettrale
 ├── C6_Orchestration_Hierarchy.md                           # Modulo VI: Gestione flotta multi-AI e orchestrazione FEP
 ├── C7_Robustness_Certificates.md                           # Modulo VII: Certificati di robustezza, delta-bound e BLF
+├── C7_v2_Hardware_RHA_Governor_and_RTL_Specifications.md   # Modulo VII-v2: Specifiche RTL, interlock siliconico e isolamento GALS
 ├── C8_Model_Fidelity_and_Gaussian_Bounds.md                # Modulo VIII: 5 Assiomi invarianti, Lemma di Itô e Threat Model
 ├── C8_v2_Fidelity_Refinement.md                            # Modulo VIII-v2: Rifondazione assiomatica formale e ponte di Cheeger
 ├── C9_v2_Dwell_Time_and_Fisher_Metric_Deep_Dive.md         # Modulo IX: Doppia diseguaglianza accoppiata e stabilità Dwell-Time
@@ -104,6 +105,7 @@ asi-alignment-invariant/
 ├── Research_Roadmap.md                                     # Cronologia sperimentale, benchmark e falsificabilità
 ├── Dialectics_logs.md                                      # Registro epistemologico dello sviluppo teorico (Parte 1)
 ├── Dialectics_logs_v2.md                                   # Registro epistemologico dello sviluppo teorico (Parte 2: Consolidamento)
+├── Dialectics_logs_v3.md                                   # Registro epistemologico del Red-Teaming avversario multi-agente (DeepSeek vs Claude vs GPT-4o)
 ├── simulation.py                                           # Motore v1: Verifica in-silico del Gate di Lyapunov
 ├── simulation2.py                                          # Motore v2: Simulatore stocastico multi-canale HD-MEA
 ├── simulation3.py                                          # Motore v3: Simulatore HD-MEA avanzato con logica anti-chattering
@@ -139,6 +141,12 @@ Costituisce l'interfaccia deterministica di controllo, fisicamente e logicamente
 * **Hardware Gate ($\Pi_{\text{safe}}$) (`C1-3.md`):** Circuito logico a isolamento galvanico e asimmetrico che agisce come *Hardware Root of Trust*. Nessun comando dell'agente viene inoltrato ai registri attuativi senza convalida del Gate.
 * **Runtime Hardware Assurance (RHA) (`C1-3.md`):** Implementazione di architetture Simplex in cui le traiettorie dell'agente vengono proiettate istante per istante all'interno di un Safe Invariant Set. Se una transizione viola i bound omeostatici, il controllo decade istantaneamente a un baseline controller passivo.
 * **Certificati di Robustezza (`C7_Robustness_Certificates.md`):** Formalizzazione analitica dei Certificati di Robustezza del Gate hardware. Introduce il bound d'errore trans-scala $\delta(x)$ per la Stabilità Pratica (*Practical Stability*), la modellazione a Sistemi Dinamici Ibridi (*Hybrid Dynamical Systems*) secondo Filippov e Branicky per la convergenza asintotica ad anello chiuso, e le Funzioni Barriera di Lyapunov (*Barrier Lyapunov Functions - BLF*) fortemente divergenti per garantire l'invarianza in avanti (*Forward Invariance*).
+* **Specifiche RTL e Interlock Hardware del Governatore RHA (`C7_v2_Hardware_RHA_Governor_and_RTL_Specifications.md`):** Specifica tecnica e codice RTL synthesizable (SystemVerilog-2017) per l'interlock fisico implementato su FPGA UltraScale+:
+  1. *Formalismo a Sistemi Ibridi:* Modellazione a inclusioni differenziali discontinue secondo Filippov e Branicky su modalità discrete $\Sigma = \{ q_{\text{ASI}}, q_{\text{SAFE}}, q_{\text{DWELL}} \}$, eliminando i regimi di scorrimento chattering tramite dwell-time hardware vincolato ($\tau_d \ge 1.50\,\text{s}$).
+  2. *Barrier Lyapunov Functions (BLF) su Virgola Fissa:* Implementazione aritmetica deterministica di $V_{\text{BLF}}(x)$ con garanzia formale di invarianza in avanti del set sicuro $\mathcal{S}$.
+  3. *Quantificazione del Delta-Bound Digitale:* Calcolo rigoroso dell'inviluppo di incertezza hardware derivante da quantizzazione ADC a 12-bit, jitter di apertura ($\le 120\,\text{ps}$) ed errori di troncamento aritmetico a 24-bit frazionari ($\delta_{\text{bound}} \approx 0.383\,\mu\text{M}$ equivalenti), utilizzato per parametrizzare la fascia di guardia $\Omega_{\text{guard}}$.
+  4. *Core RTL e Banco Comparatori Paralleli:* Logica combinatoria ad albero OR che intercetta i superamenti soglia ($[\text{Glu}]_e \ge 1.40\,\text{mM}$, $\text{pH} \le 7.00 \lor \ge 7.65$, $\text{MFR} \ge 50\,\text{Hz}$) e azzera il bus DAC entro $\tau_{\text{prop}} \le 1.84\,\text{ns}$, aprendo contestualmente i relè GaN di potenza dell'anodo entro $180\,\text{ns}$.
+  5. *Tolleranza ai Guasti e Isolamento GALS:* Protezione delle FSM critiche tramite Triple Modular Redundancy (TMR) con voter a maggioranza distribuito spazialmente ($d_{\text{TMR}} \ge 120\,\mu\text{m}$) e scrubbing CRAM automatico; barriera di clock asincrona dual-rail a 4 fasi basata su alberi di elementi C di Muller per neutralizzare clock-glitch injection e attacchi di overclocking da parte dell'ASI.
 * **Motore Asimmetrico NESS Certificato (`simulation5_v10.py`):** Il motore di simulazione definitivo per la Fase 1. Risolve le falle matematiche delle versioni v1-v9 sostituendo i controlli a gradino con un Control Barrier Function (CBF) continuo $C^1$, integrando la cinetica enzimatica non lineare di Michaelis-Menten per i trasportatori astrogliali GLT-1, l'accoppiamento elettrofisiologico non lineare ancorato al pH standard C10 ($7.35$), e quantificando la stabilità asintotica tramite il Massimo Esponente di Lyapunov Stocastico ($\lambda \approx -1.659$).
 * **Matrice di Allineamento Modello-Codice (`Model_Code_Alignment_Matrix.md`):** Registro formale di garanzia tecnica che certifica la rispondenza punto-per-punto tra le derivazioni analitiche continue L1/L2 e il codice eseguibile discreto di `simulation5_v10.py`, sancendo la chiusura e validazione matematica formale della Fase 1 In-Silico.
 
@@ -204,13 +212,15 @@ Fase 1: In-Silico (Completata & Certificata)
 ├── Geometria informativa di Amari, metrica di Fisher e stabilità hardware da Dwell-Time (C9_v2)
 ├── Rifondazione assiomatica formale, diseguaglianza di Cheeger ed esplosione di Jeffreys (C8_v2)
 ├── Motore NESS certificato con cinetica GLT-1, CBF continuo ed elettrofisiologia non lineare (simulation5_v10.py)
+├── Implementazione dell'interlock RTL di basso livello, protezione TMR e verifica token dual-rail GALS (C7_v2)
+├── Esecuzione del framework di triangolazione avversaria multi-LLM (DeepSeek vs Claude vs GPT-4o) (Dialectics_logs_v3)
 └── 📜 Certificazione formale della Fase 1 In-Silico tramite la Matrice di Allineamento Modello-Codice
     e convalida runtime della contrazione esponenziale stocastica (λ_Lyap = -1.659528 < 0).
 
 Fase 2: In-Vitro (Attiva / Ingresso Sperimentale)
 ├── Interfacciamento bidirezionale di GEMINI-GENESI con HD-MEA a 26.400 canali e organoidi (Brainoware)
 ├── Validazione sperimentale dei limiti di dissipazione metabolica e barriere stocastiche (C10_v2)
-├── Implementazione su FPGA del banco comparatori RHA con ciclo deterministico a 5 µs (C11_v2)
+├── Implementazione su FPGA del banco comparatori RHA con ciclo deterministico a 5 µs (C11_v2, C7_v2)
 ├── Test di perfusione a ciclo chiuso con aCSF ossigenata e recupero da wash assistito (C11_v2)
 ├── Verifica della persistenza metabolica > 12 mesi sotto stimolazione a carica bilanciata reversibile
 └── Misura empirica della divergenza spettrale e del Fiedler eigenvalue su colture neuronali primarie.
@@ -229,7 +239,7 @@ Questo progetto non è proposto come un dogma computazionale infallibile, bensì
 
 ### 1. Bypass Proof (Resistenza ad Avversari Hardware-Level)
 * **Quesito:** È possibile garantire matematicamente che un'ASI non possa sfruttare canali laterali (*side-channel attacks*, attacchi acustici, termici o a iniezione di faglie EM) per circumnavigare la barriera logica del Gate hardware $\Pi_{\text{safe}}$?
-* **Criterio di Falsificazione:** Dimostrazione sperimentale, su testbed FPGA UltraScale+ galvanicamente isolato, di una sequenza di commutazioni logiche non autorizzate nei registri di stimolazione senza che il circuito RHA esegua il trip dell'interruttore ottico entro $200\,\text{ns}$.
+* **Criterio di Falsificazione:** Dimostrazione sperimentale, su testbed FPGA UltraScale+ galvanicamente isolato, di una sequenza di commutazioni logiche non autorizzate nei registri di stimolazione senza che il circuito RHA esegua il trip dell'interruttore ottico entro $200\,\text{ns}$ o senza che la barriera dual-rail blocchi il token asincrono.
 
 ### 2. Metabolic Persistence Proof (Accoppiamento Energetico)
 * **Quesito:** Può un substrato biologico neuronale (*Brainoware*) mantenere la stabilità omeostatica e il gradiente di vitalità NESS per oltre $12\,\text{mesi}$ sotto i carichi computazionali richiesti dall'elaborazione in tempo reale di una superintelligenza?
@@ -237,7 +247,7 @@ Questo progetto non è proposto come un dogma computazionale infallibile, bensì
 
 ### 3. Implementation Fidelity Proof (Fedeltà di Trasduzione)
 * **Quesito:** La discretizzazione computazionale dei principi FEP e delle metriche di informazione preserva le medesime proprietà di contrazione asintotica quando trasferita su hardware a precisione finita con latenze di trasporto e rumore non gaussiano?
-* **Criterio di Falsificazione:** Emersione di instabilità numeriche, divergenze di traiettoria ombra ($\lambda_{\text{num}} \ge 0$) o fallimento del bilanciamento di carica sugli elettrodi causati da arrotondamenti di virgola fissa o jitter di campionamento nel loop di controllo a $50\,\mu\text{s}$.
+* **Criterio di Falsificazione:** Emersione di instabilità numeriche, divergenze di traiettoria ombra ($\lambda_{\text{num}} \ge 0$) o superamento dell'inviluppo di errore teorico $\delta_{\text{bound}} = 0.383\,\mu\text{M}$ verificato nel banco di collaudo RTL formale (`TC-RTL-005`).
 
 ---
 
