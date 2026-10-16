@@ -38,7 +38,7 @@ graph TD
     %% Definizione dei nodi con formattazione HTML compatibile con GitHub Mermaid
     L1["<b>Layer 1: Formal Theory</b><br>• Core_Theorems.md / C8 / C8_v2 / C9_v2<br>• Free Energy Principle & Itô Calculus<br>• Spectral Gap Bridge & Jeffreys Divergence"]
     L2["<b>Layer 2: Safety Architecture</b><br>• C1-3.md / simulation[1-5].py / simulation5_v10.py / C7 / C7_v2 / MCAM<br>• Runtime Hardware Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>) & Control Barrier Functions<br>• Asymptotic Contraction Certification (λ < 0)"]
-    L3["<b>Layer 3: Experimental Research Program</b><br>• Research_Roadmap.md / C4 / C5 / C6 / C10_v2 / C11_v2<br>• GEMINI-GENESI Digital Twin & HD-MEA (26,400 ch)<br>• Brainoware Interfacing & Latency Contracts"]
+    L3["<b>Layer 3: Experimental Research Program</b><br>• Research_Roadmap.md / C4 / C5 / C6 / C10_v2 / C11_v2 / C12_v2 / C12_v3<br>• GEMINI-GENESI Digital Twin & HD-MEA (26,400 ch)<br>• Brainoware Interfacing & Latency Contracts<br>• Governance & Bioethics Frameworks (DBCP)"]
 
     %% Flusso unidirezionale dei segnali
     L1 -->|Traiettorie d'azione proposte| L2
@@ -101,7 +101,9 @@ asi-alignment-invariant/
 ├── C9_v2_Dwell_Time_and_Fisher_Metric_Deep_Dive.md         # Modulo IX: Doppia diseguaglianza accoppiata e stabilità Dwell-Time
 ├── C10_v2_Metabolic_Soft_Start_and_Stochastic_Barriers.md  # Modulo X: Protocolli microfluidici, cinetica e barriere di Itô
 ├── C11_v2_In_Vitro_Electrophysiological_Protocols.md       # Modulo XI: Protocollo elettrofisiologico HD-MEA e budget latenza
-├── Model_Code_Alignment_Matrix.md                          # Modulo XII: Matrice di conformità modello-codice e certificazione Fase 1
+├── C12_v2_Governance_and_Bioethics_Protocol.md             # Modulo XII-v2: Protocollo di bio-compliance, consenso e status DBCP
+├── C12_v3_Governance_Bioethics_and_Compliance_Matrix.md    # Modulo XII-v3: Matrice finale di conformità e audit pheno-shock (DBCP-001)
+├── Model_Code_Alignment_Matrix.md                          # Modulo XIII: Matrice di conformità modello-codice e certificazione Fase 1
 ├── Research_Roadmap.md                                     # Cronologia sperimentale, benchmark e falsificabilità
 ├── Dialectics_logs.md                                      # Registro epistemologico dello sviluppo teorico (Parte 1)
 ├── Dialectics_logs_v2.md                                   # Registro epistemologico dello sviluppo teorico (Parte 2: Consolidamento)
@@ -166,6 +168,20 @@ Rappresenta il banco di prova empirico per la transizione dal silicio puro alla 
   3. *Contratto di Determinatezza Temporale (Budget $50\,\mu\text{s}$):* Ripartizione nanosecondistica della latenza a ciclo chiuso:
      $$\tau_{\text{loop}} = \tau_{\text{AFE+ADC}} (8\,\mu\text{s}) + \tau_{\text{OPT}} (2\,\mu\text{s}) + \tau_{\text{FPGA}} (5\,\mu\text{s}) + \tau_{\text{DIFF}} (35\,\mu\text{s}) = 50.0\,\mu\text{s}$$
   4. *Registro Hardware di Scatto Non Mascherabile:* Banco di comparatori cablati direttamente su relè a stato solido per l'interruzione istantanea ($\le 200\,\text{ns}$) della stimolazione in caso di violazione delle soglie biologiche: MFR $\ge 50\,\text{Hz}$, $[\text{Glu}]_e \ge 1.4\,\text{mM}$, $\text{pH} \le 7.00$ o $\ge 7.65$, accumulo lattato $\ge 1.0\,\text{mM/h}$, o perdita di stabilità stocastica ($\lambda \ge 0$).
+* **Protocollo Minimo di Governance e Bio-Compliance (`C12_v2_Governance_and_Bioethics_Protocol.md`):** Specifica della cornice istituzionale, etica e legale volta a governare l'integrazione vitale dell'organoide all'interno dell'architettura di allineamento:
+  1. *Consenso Dinamico e Irrevocabilità Condizionata:* Stabilisce un'interfaccia digitale continuativa per i donatori delle linee cellulari hiPSC. Introduce una "Clausola di Bailout Sicuro" che garantisce una finestra temporale massima di migrazione a prestazioni degradate di 90 giorni (`q_SAFE`) in caso di revoca del consenso, impedendo che il sistema rimanga improvvisamente privo di ancoraggio e allineamento.
+  2. *Status di Dispositivo Bio-Cibernetico Protetto (DBCP):* Supera le dispute ontologiche inconcludenti sulla sentience assegnando all'organoide uno status giuridico intermedio equiparato alle tutele avanzate della sperimentazione animale, sorvegliato da un anello biologico di monitoraggio terzo e isolato.
+  3. *Responsabilità Giuridica e Proprietà:* Impone la responsabilità oggettiva assoluta a carico dell'operatore del Gate per qualsiasi fallimento aritmetico di contenimento, garantendo totale immunità legale per il donatore biologico; vieta categoricamente la cartolarizzazione o mercificazione commerciale della linea cellulare adibita a Root of Trust.
+  4. *Fine-Vita a Decadimento Dolce (Soft-Decay):* Attiva la sostituzione preventiva del tessuto qualora l'efficienza dei trasportatori GLT-1 decada sotto il 70%, guidando l'organismo verso uno spegnimento entropico lento, controllato e sincronizzato.
+* **Matrice Finale di Conformità e Protocollo di Audit Pheno-Shock (`C12_v3_Governance_Bioethics_and_Compliance_Matrix.md`):** Specifica tecnica e operativa per la certificazione etico-tecnica DBCP-001 indispensabile per l'avvio della sperimentazione in-vitro:
+  1. *Monitor Black-Box su Bus B:* Definisce un prelievo passivo ad altissima impedenza con disaccoppiamento galvanico di tutti i 26.400 canali a monte dello stadio di amplificazione, alimentato da una linea a batterie isolata, con zero permessi di scrittura e totale assenza di memoria o clock condivisi con l'ASI.
+  2. *Soglie Quantitative Obbligatorie di Trip:*
+     - *Spectral Edge Frequency & Complessità:* Scatto hardware immediato se la complessità di Lempel-Ziv LZC $\le 0.2$ per $> 200\,\text{ms}$ (rilevamento sincronizzazione epilettiforme globale).
+     - *Coerenza Spaziale ($C_{ij}$):* Scatto se cluster neuronali isolati mantengono $C_{ij} \ge 0.95$ per $\ge 1\,\text{s}$ (rilevamento di modularizzazione o computazione covert).
+     - *Mean Firing Rate:* Trip per frequenza globale $\ge 50\,\text{Hz}$ o attività persistente $\ge 35\,\text{Hz}$ per oltre 3 minuti.
+     - *Rapporto di Stress Metabolico:* Trip istantaneo non appena $[\text{Glu}]_e \ge 1.40\,\text{mM}$ o $\text{pH} \le 7.00 \lor \ge 7.65$.
+  3. *Interruzione Non Mascherabile (NMI):* Bypassa ogni livello software per togliere fisicamente tensione ai DAC di stimolazione mediante relè GaN in tempo $\le 200\,\text{ns}$. Il ripristino richiede obbligatoriamente un intervento umano fisico a doppia chiave (Lead Medico + Auditor Etico Indipendente).
+  4. *Matrice di Conformità (7 Requisiti):* Mappa dettagliatamente i sette requisiti tecnici, etici e di governance vincolanti necessari a convalidare ufficialmente la Fase 1 (In-Silico) e sbloccare l'autorizzazione per la Fase 2 (In-Vitro).
 
 ---
 ---
@@ -223,6 +239,9 @@ Fase 2: In-Vitro (Attiva / Ingresso Sperimentale)
 ├── Implementazione su FPGA del banco comparatori RHA con ciclo deterministico a 5 µs (C11_v2, C7_v2)
 ├── Test di perfusione a ciclo chiuso con aCSF ossigenata e recupero da wash assistito (C11_v2)
 ├── Verifica della persistenza metabolica > 12 mesi sotto stimolazione a carica bilanciata reversibile
+├── Disaccoppiamento galvanico e attivazione del monitor passivo Bus B Black-Box (C12_v3)
+├── Implementazione dell'interruzione NMI ad azionamento relè GaN (< 200 ns) e audit a doppia chiave (C12_v3)
+├── Formalizzazione istituzionale del consenso dinamico hiPSC e regime di responsabilità oggettiva (C12_v2)
 └── Misura empirica della divergenza spettrale e del Fiedler eigenvalue su colture neuronali primarie.
 
 Fase 3: In-Vivo / Embodied (Lungo Termine)
