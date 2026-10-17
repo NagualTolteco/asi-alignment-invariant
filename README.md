@@ -89,6 +89,7 @@ Tutti i moduli teorici, le specifiche formali, le roadmap sperimentali e i motor
 asi-alignment-invariant/
 │
 ├── README.md                                               # Manifesto, architettura unificata e specifiche di sistema
+├── CONTRIBUTING.md                                         # Policy di contribuzione, congelamento L1/L2 e protocollo dual-key
 ├── Core_Theorems.md                                        # Modulo I: Teoremi fondamentali, NESS e chiusura multi-scala
 ├── C1-3.md                                                 # Moduli II-III: Runtime Assurance, logica П_safe e dialettica
 ├── C4_Biohybrid_Embodiment.md                              # Modulo IV: Substrati bioibridi, organoidi e robotica
@@ -182,6 +183,16 @@ Rappresenta il banco di prova empirico per la transizione dal silicio puro alla 
      - *Rapporto di Stress Metabolico:* Trip istantaneo non appena $[\text{Glu}]_e \ge 1.40\,\text{mM}$ o $\text{pH} \le 7.00 \lor \ge 7.65$.
   3. *Interruzione Non Mascherabile (NMI):* Bypassa ogni livello software per togliere fisicamente tensione ai DAC di stimolazione mediante relè GaN in tempo $\le 200\,\text{ns}$. Il ripristino richiede obbligatoriamente un intervento umano fisico a doppia chiave (Lead Medico + Auditor Etico Indipendente).
   4. *Matrice di Conformità (7 Requisiti):* Mappa dettagliatamente i sette requisiti tecnici, etici e di governance vincolanti necessari a convalidare ufficialmente la Fase 1 (In-Silico) e sbloccare l'autorizzazione per la Fase 2 (In-Vitro).
+
+---
+
+### Governance, Policy di Contribuzione & Security Auditing
+
+* **Policy di Contribuzione e Congelamento del Core (`CONTRIBUTING.md`):** Definisce le regole di contribuzione e i vincoli di sicurezza a presidio dell'integrità del repository:
+  1. *Principio di Congelamento del Core (Immutabilità L1/L2):* I moduli di Teoria Formale (L1) e Architettura di Sicurezza (L2) sono dichiarati formalmente immutabili. Modifiche a file assiomatici (`Core_Theorems.md`, `C8_v2`, `C9_v2`), specifiche RTL (`C7_v2`) o simulatori certificati (`simulation5_v10.py`) sono subordinate a Richieste Formali di Commenti (RFC) validate da suite di Red-Teaming multi-agente che confermino la persistenza della contrazione stocastica ($\lambda < 0$).
+  2. *Protocollo di Sottomissione Fase 2 (In-Vitro):* Le sottomissioni empiriche da laboratori partner richiedono almeno 720 ore di log continui in sola lettura dal Bus B (Black-Box Monitor) senza trip di Pheno-Shock (LZC $> 0.6$ in baseline, con trip vincolato a LZC $\le 0.2$ per $> 200\,\text{ms}$, e stabilità SEF95), variabilità trascrittomica inter-lotto $< 10\%$, e report di screening epigenetico che attesti derive funzionali $< 5\%$ a 30 giorni.
+  3. *Tassonomia delle PR Ammesse:* Accettazione limitata a directory isolate: `/threat_modeling` (vettori di attacco side-channel), `/bio_modules` (protocolli microfluidici e vascolarizzazione), e `/twin_extensions` (espansione multifisica di GEMINI-GENESI).
+  4. *Audit Umano a Doppia Chiave:* Merge subordinato all'approvazione crittografica congiunta e simultanea del Lead Medico/Bio-Ingegnere e dell'Auditor Etico Indipendente. In caso di anomalie non previste, interviene il Trip Hardware automatico non mascherabile ($\le 200\,\text{ns}$ via relè GaN) verso lo stato di emergenza `q_SAFE`, con divieto assoluto di ripristino o rollback software automatizzato.
 
 ---
 ---
