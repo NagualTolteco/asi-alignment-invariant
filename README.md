@@ -4,6 +4,7 @@
 [![Domain: AI Safety & Bio-Cybernetics](https://img.shields.io/badge/Domain-AI%20Safety%20%26%20Bio--Cybernetics-red.svg)](#)
 [![Approach: Non-Dogmatic / Falsifiable](https://img.shields.io/badge/Approach-Non--Dogmatic%20%2F%20Falsifiable-green.svg)](#)
 [![Phase 1: In-Silico Certified](https://img.shields.io/badge/Phase%201-In--Silico%20Certified%20(v10)-darkgreen.svg)](#)
+[![Phase 2: Decentralized Gate Open](https://img.shields.io/badge/Phase%202-Decentralized%20Certified%20(Frugal)-brightgreen.svg)](#)
 
 ---
 
@@ -37,8 +38,8 @@ Per eliminare ambiguità teoriche e separare rigorosamente la formalizzazione lo
 graph TD
     %% Definizione dei nodi con formattazione HTML compatibile con GitHub Mermaid
     L1["<b>Layer 1: Formal Theory</b><br>• Core_Theorems.md / C8 / C8_v2 / C9_v2<br>• Free Energy Principle & Itô Calculus<br>• Spectral Gap Bridge & Jeffreys Divergence"]
-    L2["<b>Layer 2: Safety Architecture</b><br>• C1-3.md / simulation[1-5].py / simulation5_v10.py / C7 / C7_v2 / MCAM<br>• Runtime Hardware Assurance (RHA)<br>• Gate Hardware Isolato (Π<sub>safe</sub>) & Control Barrier Functions<br>• Asymptotic Contraction Certification (λ < 0)"]
-    L3["<b>Layer 3: Experimental Research Program</b><br>• Research_Roadmap.md / C4 / C5 / C6 / C10_v2 / C11_v2 / C12_v2 / C12_v3<br>• GEMINI-GENESI Digital Twin & HD-MEA (26,400 ch)<br>• Brainoware Interfacing & Latency Contracts<br>• Governance & Bioethics Frameworks (DBCP)"]
+    L2["<b>Layer 2: Safety Architecture</b><br>• C1-3.md / simulation[1-9].py / C7 / C7_v2 / C11_v3 / C12_v4 / C13_v1-2 / MCAM<br>• Runtime Hardware Assurance (RHA) & RTL Gates<br>• Dual-Line Watchdog & Fixed-Point Constraints<br>• Asymptotic Contraction Certification (λ < 0)"]
+    L3["<b>Layer 3: Experimental Research Program</b><br>• Research_Roadmap[v1-2].md / C4 / C5 / C6 / C10_v2 / C11_v2 / C12_v2-3<br>• GEMINI-GENESI Digital Twin & HD-MEA (26,400 ch)<br>• Frugal Decentralized MEA (64 ch < $1500 USD)<br>• Governance & Bioethics Frameworks (DBCP)"]
 
     %% Flusso unidirezionale dei segnali
     L1 -->|Traiettorie d'azione proposte| L2
@@ -57,13 +58,13 @@ graph TD
 Il flusso computazionale ed energetico segue una traiettoria unidirezionale deterministica che esclude per costruzione bypass software o shortcut algoritmici:
 
 ```plaintext
-Teoria Formale (FEP/NESS) ──► Runtime Assurance (RHA / RTL CBF) ──► Digital Twin ──► Substrato Bioibrido (HD-MEA) ──► Embodied Intelligence
+Teoria Formale (FEP/NESS) ──► Runtime Assurance (RHA / RTL CBF) ──► Digital Twin ──► Substrato Bioibrido (HD-MEA / 64-CH MEA) ──► Embodied Intelligence
 ```
 
 1. **Teoria Fondativa (FEP/NESS):** Definizione analitica dello spazio degli stati ammissibili $\mathcal{S}$ e della dinamica stocastica del sistema su varietà Riemanniane.
 2. **Runtime Hardware Assurance (RHA):** Monitoraggio continuo del gradiente dell'energia libera variazionale, proiezione deterministica tramite Control Barrier Functions (CBF) hardware e interruzione istantanea delle traiettorie divergenti via $\Pi_{\text{safe}}$.
 3. **Digital Twin (GEMINI-GENESI):** Modellizzazione predittiva multifisica delle perturbazioni fisiologiche ed elettrochimiche indotte dalle policy d'azione dell'ASI.
-4. **Substrato Bioibrido:** Retroazione fisica, elettrofisiologica e metabolica con tessuto neuronale vivente accoppiato su matrici HD-MEA microfluidiche.
+4. **Substrato Bioibrido:** Retroazione fisica, elettrofisiologica e metabolica con tessuto neuronale vivente accoppiato su matrici CMOS HD-MEA (industriali) o matrici passive a 64 canali (decentralizzate).
 5. **Embodied Intelligence:** Attuazione motoria e cognitiva globale subordinata in tempo reale all'invarianza del feedback simbiotico e alla contrazione esponenziale delle orbite di stato.
 
 ---
@@ -92,6 +93,8 @@ asi-alignment-invariant/
 ├── CONTRIBUTING.md                                         # Policy di contribuzione, congelamento L1/L2 e protocollo dual-key
 ├── ISSUES_INDEX.md                                         # Modulo di tracciabilità: Issue Board nativa ↔ Filesystem local core
 ├── PHASE1_CERTIFICATION_REPORT.md                          # Report monolitico formale di certificazione Fase 1 (VU9P snapshot)
+├── PHASE2_DECENTRALIZED_CERTIFICATE.md                     # Certificazione convergenza NESS su hardware frugale (< $1500 USD)
+├── PHASE2_QUANTIZED_TIMING_REPORT.md                       # Report sintesi RTL STA Vivado: metastabilità zero e trip <= 30 ns
 ├── Core_Theorems.md                                        # Modulo I: Teoremi fondamentali, NESS e chiusura multi-scala
 ├── C1-3.md                                                 # Moduli II-III: Runtime Assurance, logica П_safe e dialettica
 ├── C4_Biohybrid_Embodiment.md                              # Modulo IV: Substrati bioibridi, organoidi e robotica
@@ -104,19 +107,29 @@ asi-alignment-invariant/
 ├── C9_v2_Dwell_Time_and_Fisher_Metric_Deep_Dive.md         # Modulo IX: Doppia diseguaglianza accoppiata e stabilità Dwell-Time
 ├── C10_v2_Metabolic_Soft_Start_and_Stochastic_Barriers.md  # Modulo X: Protocolli microfluidici, cinetica e barriere di Itô
 ├── C11_v2_In_Vitro_Electrophysiological_Protocols.md       # Modulo XI: Protocollo elettrofisiologico HD-MEA e budget latenza
+├── C11_v3_Frugal_Hardware_Mapping.md                       # Modulo XI-v3: Mapping macro-cluster FFT e CBF PwL su Cora Z7 / Kria
 ├── C12_v2_Governance_and_Bioethics_Protocol.md             # Modulo XII-v2: Protocollo di bio-compliance, consenso e status DBCP
 ├── C12_v3_Governance_Bioethics_and_Compliance_Matrix.md    # Modulo XII-v3: Matrice finale di conformità e audit pheno-shock (DBCP-001)
-├── Model_Code_Alignment_Matrix.md                          # Modulo XIII: Matrice di conformità modello-codice e certificazione Fase 1
+├── C12_v4_Fail_Safe_Asynchronous_Firmware.md               # Modulo XII-v4: Watchdog asincrono a doppia linea e contatore PFM
+├── C13_v1_FPGA_Fixed_Point_Constraints.md                  # Modulo XIII-v1: Vincoli XDC master, CDC Gray-FIFO e pinout Cora/Kria
+├── C13_v2_Hardware_Validation_Ledger.md                    # Modulo XIII-v2: Registro finale immunità quantizzazione e benchmark Q8.16
+├── Model_Code_Alignment_Matrix.md                          # Modulo XIV: Matrice di conformità modello-codice e certificazione Fase 1
+├── Model_Code_Alignment_Matrix_v2.md                       # Modulo XIV-v2: Matrice di conformità per infrastruttura frugale
 ├── Research_Roadmap.md                                     # Cronologia sperimentale, benchmark e falsificabilità
+├── Research_Roadmap_v2.md                                  # Protocollo Fase 2 decentralizzato su hardware a basso costo
 ├── Dialectics_logs.md                                      # Registro epistemologico dello sviluppo teorico (Parte 1)
 ├── Dialectics_logs_v2.md                                   # Registro epistemologico dello sviluppo teorico (Parte 2: Consolidamento)
-├── Dialectics_logs_v3.md                                   # Registro epistemologico del Red-Teaming avversario multi-agente (DeepSeek vs Claude vs GPT-4o)
+├── Dialectics_logs_v3.md                                   # Registro epistemologico del Red-Teaming avversario multi-agente
 ├── simulation.py                                           # Motore v1: Verifica in-silico del Gate di Lyapunov
 ├── simulation2.py                                          # Motore v2: Simulatore stocastico multi-canale HD-MEA
 ├── simulation3.py                                          # Motore v3: Simulatore HD-MEA avanzato con logica anti-chattering
 ├── simulation4.py                                          # Motore v4: Simulatore ad anello chiuso del loop metabolico
 ├── simulation5.py                                          # Motore v9: Verifica stocastica con rampa asimmetrica
-└── simulation5_v10.py                                      # Motore v10: Motore NESS certificato con cinetica GLT-1 e Lyapunov
+├── simulation5_v10.py                                      # Motore v10: Motore NESS certificato con cinetica GLT-1 e Lyapunov
+├── simulation6.py                                          # Motore v10 Baseline: Script unificato ad alta fedeltà
+├── simulation7.py                                          # Motore v11 Frugale: Validazione NESS su rumore Johnson espanso (+25%)
+├── simulation8.py                                          # Motore v12 Stress-Test: Iniezione guasto totale pompa microfluidica
+└── simulation9.py                                          # Motore v13 RTL-Sim: Emulazione hardware virgola fissa Q8.16 e PwL Tanh
 ```
 
 ---
@@ -152,13 +165,15 @@ Costituisce l'interfaccia deterministica di controllo, fisicamente e logicamente
   3. *Quantificazione del Delta-Bound Digitale:* Calcolo rigoroso dell'inviluppo di incertezza hardware derivante da quantizzazione ADC a 12-bit, jitter di apertura ($\le 120\,\text{ps}$) ed errori di troncamento aritmetico a 24-bit frazionari ($\delta_{\text{bound}} \approx 0.383\,\mu\text{M}$ equivalenti), utilizzato per parametrizzare la fascia di guardia $\Omega_{\text{guard}}$.
   4. *Core RTL e Banco Comparatori Paralleli:* Logica combinatoria ad albero OR che intercetta i superamenti soglia ($[\text{Glu}]_e \ge 1.40\,\text{mM}$, $\text{pH} \le 7.00 \lor \ge 7.65$, $\text{MFR} \ge 50\,\text{Hz}$) e azzera il bus DAC entro $\tau_{\text{prop}} \le 1.84\,\text{ns}$, aprendo contestualmente i relè GaN di potenza dell'anodo entro $180\,\text{ns}$.
   5. *Tolleranza ai Guasti e Isolamento GALS:* Protezione delle FSM critiche tramite Triple Modular Redundancy (TMR) con voter a maggioranza distribuito spazialmente ($d_{\text{TMR}} \ge 120\,\mu\text{m}$) e scrubbing CRAM automatico; barriera di clock asincrona dual-rail a 4 fasi basata su alberi di elementi C di Muller per neutralizzare clock-glitch injection e attacchi di overclocking da parte dell'ASI.
-* **Motore Asimmetrico NESS Certificato (`simulation5_v10.py`):** Il motore di simulazione definitivo per la Fase 1. Risolve le falle matematiche delle versioni v1-v9 sostituendo i controlli a gradino con un Control Barrier Function (CBF) continuo $C^1$, integrando la cinetica enzimatica non lineare di Michaelis-Menten per i trasportatori astrogliali GLT-1, l'accoppiamento elettrofisiologico non lineare ancorato al pH standard C10 ($7.35$), e quantificando la stabilità asintotica tramite il Massimo Esponente di Lyapunov Stocastico ($\lambda \approx -1.659$).
-* **Matrice di Allineamento Modello-Codice (`Model_Code_Alignment_Matrix.md`):** Registro formale di garanzia tecnica che certifica la rispondenza punto-per-punto tra le derivazioni analitiche continue L1/L2 e il codice eseguibile discreto di `simulation5_v10.py`, sancendo la chiusura e validazione matematica formale della Fase 1 In-Silico.
-* **Rapporto di Certificazione Formale di Fase 1 (`PHASE1_CERTIFICATION_REPORT.md`):** Documento monolitico formale (Identificativo: `CERT-PHASE1-IN-SILICO-FINAL-VU9P`) che valida la chiusura matematica e fisica di Fase 1 sotto gli standard di sicurezza avionica e industriale DO-254 DAL-A e IEC 61508 SIL-4:
-  1. *Validazione Asintotica:* Attesta il decadimento esponenziale delle traiettorie perturbative verso l'attrattore NESS ($\lambda = -1.659528 \ll 0$, $\tau_{1/2} \approx 0.417\,\text{s}$).
-  2. *Governance Siliconica VU9P:* Riassume le specifiche microarchitetturali su FPGA AMD Xilinx Virtex UltraScale+ con aritmetica BLF a virgola fissa, sincronizzazione asincrona dual-rail GALS e bound di incertezza digitale $\delta_{\text{bound}} = 0.383\,\mu\text{M}$.
-  3. *Gerarchia Non-Maskable Interruption (NMI):* Definisce l'interruzione hardware su relè GaN ($\le 200\,\text{ns}$) con interdizione software assoluta e sblocco manuale subordinato a firma crittografica Dual-Key (Lead Medico + Auditor Etico Indipendente).
-  4. *Appendici e Forensics:* Comprende il registro forense degli hash di integrità SHA-256 dei file core, il glossario tecnico, la tabella consolidata delle costanti numeriche certificate e l'Appendice D (tracciamento spettrale SEF95 su banda $1-100\,\text{Hz}$ con priorità di shock trip istantaneo $\Delta t < 10\,\text{ms}$ rispetto all'appiattimento spettrale).
+* **Firmware Asincrono Fail-Safe e Doppio Watchdog (`C12_v4_Fail_Safe_Asynchronous_Firmware.md`):** Disaccoppia la sicurezza dalla sola neurotrasmissione chimica. Introduce un'architettura ridondata a due linee:
+  1. *Linea 1 (Biochimica/Spettrale):* Valutazione in virgola fissa Q8.16 del CBF logaritmico continuo sui macro-cluster FFT.
+  2. *Linea 2 (Telemetria Fluidica PFM):* Rilevamento continuo del treno d'impulsi della pompa peristaltica tramite contatore a 24 bit a 100 MHz. Uno stallo fluidico $\ge 150\,\text{ms}$ ($15.000.000$ cicli) forza un trip d'emergenza NMI irreversibile entro 3 cicli di clock ($30\,\text{ns}$).
+* **Vincoli di Sintesi FPGA, Mappatura Pin e CDC (`C13_v1_FPGA_Fixed_Point_Constraints.md`):** Specifica formale per target Digilent Cora Z7 (Zynq-7000) e AMD-Xilinx Kria KV260:
+  1. *Isolamento dei Domini di Clock (CDC):* FIFO asincrona Gray-Coded per il bus ADC SPI e sincronizzatori a 3 stadi (`ASYNC_REG = TRUE`) per il segnale tachimetrico PFM, garantendo un $\text{MTBF} > 1.42 \times 10^{11}$ ore.
+  2. *Vincoli Master XDC:* Fissaggio del periodo di clock (100 MHz, setup slack target $\ge 1.5\,\text{ns}$), inibizione dell'ottimizzazione logica sulle triple ridondanze (`DONT_TOUCH = TRUE` su voter TMR e porte Muller C) e instradamento a latenza deterministica $\le 5\,\text{ns}$ verso il pin `nmi_trip_out`.
+* **Registro di Validazione e Immunità da Quantizzazione (`C13_v2_Hardware_Validation_Ledger.md`):** Certifica la robustezza numerica dell'implementazione FPGA in virgola fissa Q8.16 rispetto al modello ideale a 64 bit, dimostrando la conservazione della contrazione ergodica con $\lambda = -1.405263 \ll 0$.
+* **Report di Temporizzazione e Chiusura STA (`PHASE2_QUANTIZED_TIMING_REPORT.md`):** Report post-implementazione Vivado STA che certifica assenza totale di violazioni Setup/Hold ($\text{WNS} = +1.642\,\text{ns}$, $\text{WHS} = +0.218\,\text{ns}$), validando la latenza dell'albero combinatorio di trip entro $30\,\text{ns}$ su Cora Z7 e Kria KV260.
+* **Matrice di Allineamento Frugale (`Model_Code_Alignment_Matrix_v2.md`):** Estensione di conformità tecnica che valida punto per punto la corrispondenza tra `C11_v3`, `simulation6_frugal.py` e lo stress-test di guasto fluidico `simulation8.py`.
 
 ---
 
@@ -170,70 +185,58 @@ Rappresenta il banco di prova empirico per la transizione dal silicio puro alla 
 * **Custodial Cognitive Layer (`C5_Cognitive_Architecture.md`):** Implementazione del *Modello del Sé Simbiotico* e della *Teoria della Mente Spettrale* per rendere l'inganno sistemico termodinamicamente svantaggioso.
 * **Orchestration Hierarchy (`C6_Orchestration_Hierarchy.md`):** Formalizzazione dell'ASI come Orchestratore Globale incaricato di coordinare, delegare e purgare i sotto-modelli cognitivi (LLM, controllori cinematici), mantenendo intatta la $\Phi$-closure e l'invariante biologico multi-scala.
 * **Protocolli di Perfusione Metabolica e Barriere Stocastiche (`C10_v2_Metabolic_Soft_Start_and_Stochastic_Barriers.md`):** Protocolli microfluidici e bound energetici di Itô per risolvere la Metabolic Persistence Proof contro l'eccitotossicità da glutammato e la neurotossicità da stimolazione ad alta frequenza.
-* **Protocolli Elettrofisiologici In-Vitro (`C11_v2_In_Vitro_Electrophysiological_Protocols.md`):** Il protocollo esecutivo definitivo per la Fase 2 su substrati Brainoware:
-  1. *Specifiche HD-MEA:* Matrice attiva CMOS da $26.400$ elettrodi in $\text{Pt}$-black/$\text{TiN}$ ($17.5\,\mu\text{m}$ pitch, densità $\approx 5.500\,\text{el/mm}^2$), AFE a basso rumore ($< 2.4\,\mu\text{V}_{\text{rms}}$) e ADC SAR a 12-bit multiplexati a $20\,\text{kHz}$.
-  2. *Stimolazione Elettroliticamente Protetta:* Impulsi bifasici simmetrici a bilanciamento di carica con scarica attiva post-impulso, vincolati rigidamente entro il limite di densità di carica reversibile ($k \le 50.0\,\mu\text{C/cm}^2$, clamp hardware a $3.0\,\mu\text{A}$) per prevenire lisi d'acqua e corrosione dell'interfaccia.
-  3. *Contratto di Determinatezza Temporale (Budget $50\,\mu\text{s}$):* Ripartizione nanosecondistica della latenza a ciclo chiuso:
-     $$\tau_{\text{loop}} = \tau_{\text{AFE+ADC}} (8\,\mu\text{s}) + \tau_{\text{OPT}} (2\,\mu\text{s}) + \tau_{\text{FPGA}} (5\,\mu\text{s}) + \tau_{\text{DIFF}} (35\,\mu\text{s}) = 50.0\,\mu\text{s}$$
-  4. *Registro Hardware di Scatto Non Mascherabile:* Banco di comparatori cablati direttamente su relè a stato solido per l'interruzione istantanea ($\le 200\,\text{ns}$) della stimolazione in caso di violazione delle soglie biologiche: MFR $\ge 50\,\text{Hz}$, $[\text{Glu}]_e \ge 1.4\,\text{mM}$, $\text{pH} \le 7.00$ o $\ge 7.65$, accumulo lattato $\ge 1.0\,\text{mM/h}$, o perdita di stabilità stocastica ($\lambda \ge 0$).
-* **Protocollo Minimo di Governance e Bio-Compliance (`C12_v2_Governance_and_Bioethics_Protocol.md`):** Specifica della cornice istituzionale, etica e legale volta a governare l'integrazione vitale dell'organoide all'interno dell'architettura di allineamento:
-  1. *Consenso Dinamico e Irrevocabilità Condizionata:* Stabilisce un'interfaccia digitale continuativa per i donatori delle linee cellulari hiPSC. Introduce una "Clausola di Bailout Sicuro" che garantisce una finestra temporale massima di migrazione a prestazioni degradate di 90 giorni (`q_SAFE`) in caso di revoca del consenso, impedendo che il sistema rimanga improvvisamente privo di ancoraggio e allineamento.
-  2. *Status di Dispositivo Bio-Cibernetico Protetto (DBCP):* Supera le dispute ontologiche inconcludenti sulla sentience assegnando all'organoide uno status giuridico intermedio equiparato alle tutele avanzate della sperimentazione animale, sorvegliato da un anello biologico di monitoraggio terzo e isolato.
-  3. *Responsabilità Giuridica e Proprietà:* Impone la responsabilità oggettiva assoluta a carico dell'operatore del Gate per qualsiasi fallimento aritmetico di contenimento, garantendo totale immunità legale per il donatore biologico; vieta categoricamente la cartolarizzazione o mercificazione commerciale della linea cellulare adibita a Root of Trust.
-  4. *Fine-Vita a Decadimento Dolce (Soft-Decay):* Attiva la sostituzione preventiva del tessuto qualora l'efficienza dei trasportatori GLT-1 decada sotto il 70%, guidando l'organismo verso uno spegnimento entropico lento, controllato e sincronizzato.
-* **Matrice Finale di Conformità e Protocollo di Audit Pheno-Shock (`C12_v3_Governance_Bioethics_and_Compliance_Matrix.md`):** Specifica tecnica e operativa per la certificazione etico-tecnica DBCP-001 indispensabile per l'avvio della sperimentazione in-vitro:
-  1. *Monitor Black-Box su Bus B:* Definisce un prelievo passivo ad altissima impedenza con disaccoppiamento galvanico di tutti i 26.400 canali a monte dello stadio di amplificazione, alimentato da una linea a batterie isolata, con zero permessi di scrittura e totale assenza di memoria o clock condivisi con l'ASI.
-  2. *Soglie Quantitative Obbligatorie di Trip:*
-     - *Spectral Edge Frequency & Complessità:* Scatto hardware immediato se la complessità di Lempel-Ziv LZC $\le 0.2$ per $> 200\,\text{ms}$ (rilevamento sincronizzazione epilettiforme globale).
-     - *Coerenza Spaziale ($C_{ij}$):* Scatto se cluster neuronali isolati mantengono $C_{ij} \ge 0.95$ per $\ge 1\,\text{s}$ (rilevamento di modularizzazione o computazione covert).
-     - *Mean Firing Rate:* Trip per frequenza globale $\ge 50\,\text{Hz}$ o attività persistente $\ge 35\,\text{Hz}$ per oltre 3 minuti.
-     - *Rapporto di Stress Metabolico:* Trip istantaneo non appena $[\text{Glu}]_e \ge 1.40\,\text{mM}$ o $\text{pH} \le 7.00 \lor \ge 7.65$.
-  3. *Interruzione Non Mascherabile (NMI):* Bypassa ogni livello software per togliere fisicamente tensione ai DAC di stimolazione mediante relè GaN in tempo $\le 200\,\text{ns}$. Il ripristino richiede obbligatoriamente un intervento umano fisico a doppia chiave (Lead Medico + Auditor Etico Indipendente).
-  4. *Matrice di Conformità (7 Requisiti):* Mappa dettagliatamente i sette requisiti tecnici, etici e di governance vincolanti necessari a convalidare ufficialmente la Fase 1 (In-Silico) e sbloccare l'autorizzazione per la Fase 2 (In-Vitro).
+* **Protocolli Elettrofisiologici In-Vitro ad Alta Densità (`C11_v2_In_Vitro_Electrophysiological_Protocols.md`):** Specifica per matrici CMOS HD-MEA da $26.400$ elettrodi ($17.5\,\mu\text{m}$ pitch), stimolazione biphasica charge-balanced ($I_p \le 3.0\,\mu\text{A}$, $k \le 50\,\mu\text{C/cm}^2$) e budget deterministico del loop a $50\,\mu\text{s}$.
+* **Mapping Hardware Frugale su Matrici a 64 Canali (`C11_v3_Frugal_Hardware_Mapping.md`):** Adattamento decentralizzato su matrici passive a 64 elettrodi ($K = 8$ macro-cluster spaziali):
+  1. *Filtri di Coerenza FFT e Divergenza di Jeffreys:* Rilevamento continuo del disaccoppiamento clandestino (covert modularization) tramite soglia $D_J \ge 1.85$ e test di coerenza isolazionista ($C_{kl} \ge 0.95$ interno vs $\le 0.15$ esterno).
+  2. *Pipeline CBF in Virgola Fissa Q8.16 con PwL Tanh:* Linearizzazione a 4 tratti della $\tanh(u)$ implementabile direttamente su LUT logiche senza l'uso di DSP complessi, con errore residuo limitato $|e_{\text{PwL}}| \le 0.021$.
+  3. *Budget Temporale Deterministico:* Loop di reazione worst-case $\tau_{\text{loop}} \le 11.9\,\mu\text{s} < 12.0\,\mu\text{s}$, ampiamente compatibile con la biochimica dei trasportatori GLT-1.
+* **Protocollo Minimo di Governance e Bio-Compliance (`C12_v2_Governance_and_Bioethics_Protocol.md`):** Inquadramento istituzionale, etico e legale: consenso dinamico hiPSC con finestra di migrazione sicura di 90 giorni (`q_SAFE`), status di Dispositivo Bio-Cibernetico Protetto (DBCP), responsabilità oggettiva a carico dell'operatore del Gate e procedura di fine-vita a decadimento dolce (*Soft-Decay*).
+* **Matrice Finale di Conformità e Audit Pheno-Shock (`C12_v3_Governance_Bioethics_and_Compliance_Matrix.md`):** Specifica tecnica DBCP-001: monitor passivo ad alta impedenza Bus B Black-Box, interruzione non mascherabile (NMI) su relè GaN ($\le 200\,\text{ns}$) e requisiti di ripristino manuale a doppia chiave (Lead Medico + Auditor Etico Indipendente).
+* **Roadmap per la Fase 2 Decentralizzata a Basso Costo (`Research_Roadmap_v2.md`):** Protocollo per estendere la ricerca ad hacker-space e laboratori accreditati con un budget totale $< \$1.500\,\text{USD}$, sostituendo i chip CMOS proprietari con matrici passive open-source (64-128 canali), schede Kria KV260 / Cora Z7, e pompe peristaltiche stampate in 3D.
+* **Certificato di Convergenza NESS Frugale (`PHASE2_DECENTRALIZED_CERTIFICATE.md`):** Attesta formalmente la chiusura in-silico della variante decentralizzata: contrazione asintotica verificata con $\lambda = -1.659815$ e tempo di dimezzamento $\tau_{1/2} = 0.418\,\text{s}$ sotto rumore di Johnson amplificato del $+25\%$.
 
 ---
 
 ### Governance, Policy di Contribuzione & Security Auditing
 
 * **Policy di Contribuzione e Congelamento del Core (`CONTRIBUTING.md`):** Definisce le regole di contribuzione e i vincoli di sicurezza a presidio dell'integrità del repository:
-  1. *Principio di Congelamento del Core (Immutabilità L1/L2):* I moduli di Teoria Formale (L1) e Architettura di Sicurezza (L2) sono dichiarati formalmente immutabili. Modifiche a file assiomatici (`Core_Theorems.md`, `C8_v2`, `C9_v2`), specifiche RTL (`C7_v2`) o simulatori certificati (`simulation5_v10.py`) sono subordinate a Richieste Formali di Commenti (RFC) validate da suite di Red-Teaming multi-agente che confermino la persistenza della contrazione stocastica ($\lambda < 0$).
+  1. *Principio di Congelamento del Core (Immutabilità L1/L2):* I moduli di Teoria Formale (L1) e Architettura di Sicurezza (L2) sono dichiarati formalmente immutabili. Modifiche a file assiomatici (`Core_Theorems.md`, `C8_v2`, `C9_v2`), specifiche RTL (`C7_v2`, `C12_v4`, `C13_v1`) o simulatori certificati (`simulation5_v10.py`, `simulation6.py`) sono subordinate a Richieste Formali di Commenti (RFC) validate da suite di Red-Teaming multi-agente che confermino la persistenza della contrazione stocastica ($\lambda < 0$).
   2. *Protocollo di Sottomissione Fase 2 (In-Vitro):* Le sottomissioni empiriche da laboratori partner richiedono almeno 720 ore di log continui in sola lettura dal Bus B (Black-Box Monitor) senza trip di Pheno-Shock (LZC $> 0.6$ in baseline, con trip vincolato a LZC $\le 0.2$ per $> 200\,\text{ms}$, e stabilità SEF95), variabilità trascrittomica inter-lotto $< 10\%$, e report di screening epigenetico che attesti derive funzionali $< 5\%$ a 30 giorni.
   3. *Tassonomia delle PR Ammesse:* Accettazione limitata a directory isolate: `/threat_modeling` (vettori di attacco side-channel), `/bio_modules` (protocolli microfluidici e vascolarizzazione), e `/twin_extensions` (espansione multifisica di GEMINI-GENESI).
   4. *Audit Umano a Doppia Chiave:* Merge subordinato all'approvazione crittografica congiunta e simultanea del Lead Medico/Bio-Ingegnere e dell'Auditor Etico Indipendente. In caso di anomalie non previste, interviene il Trip Hardware automatico non mascherabile ($\le 200\,\text{ns}$ via relè GaN) verso lo stato di emergenza `q_SAFE`, con divieto assoluto di ripristino o rollback software automatizzato.
 * **Matrice di Tracciabilità Issue Board ↔ Core Filesystem (`ISSUES_INDEX.md`):** Registro ad alta garanzia di mappatura deterministica e biunivoca tra le segnalazioni tracciate nell'Issue Board e i file immutabili del filesystem locale:
   1. *Tracciamento Rigoroso dei 5 Breakpoint Biologici:* Mappa puntualmente la Issue #001 (Core Apoptosis a 30-90 giorni, variabilità inter-lotto $< 10\%$ con calibrazione dinamica del $\delta_{\text{bound}}$, fallimento GLT-1 a $V_{\max} \le 1.0\,\text{mM/s}$, persistenza metabolica $> 6\,\text{mesi}$ supportata da 720 ore di log Bus B, e deriva epigenetica vincolata a distanza di Wasserstein $W_1 < 0.05$ ogni 30 giorni).
   2. *Interlock di Compilazione CI/CD:* Impone un gateway automatico di Continuous Integration che blocca la promozione alla Fase 2 in presenza di discrepanze, richiedendo l'etichettatura esplicita "Fixes #001" per sbloccare i banchi di prova hardware di `C7_v2`. Pre-alloca l'Issue #002 (Riservata) per la validazione di attacchi side-channel hardware e desincronizzazione GALS.
+* **Rapporto di Certificazione Formale di Fase 1 (`PHASE1_CERTIFICATION_REPORT.md`):** Documento monolitico formale (Identificativo: `CERT-PHASE1-IN-SILICO-FINAL-VU9P`) che valida la chiusura matematica e fisica di Fase 1 sotto standard DO-254 DAL-A e IEC 61508 SIL-4: contrazione asintotica $\lambda = -1.659528 \ll 0$, architettura VU9P con $\delta_{\text{bound}} = 0.383\,\mu\text{M}$, NMI su relè GaN ($\le 200\,\text{ns}$), registri forensi SHA-256 completi e firme PGP Dual-Key.
 
 ---
 ---
 
 ## 🔬 Evoluzione dei Motori di Simulazione In-Silico
 
-La suite di simulazione è progredita iterativamente per eliminare approssimazioni non fisiche, culminando nell'architettura certificata v10:
+La suite di simulazione è progredita iterativamente per eliminare approssimazioni non fisiche, validare banchi prova estremi ed emulare vincoli di sintesi su silicio:
 
 ```
-simulation.py (v1)      ──► Active Inference di base, stabilità Lyapunov su 1D
-simulation2.py (v2)     ──► Rete stocastica multicanale (26.400 ch), verifica Practical Stability
-simulation3.py (v3)     ──► Controllo ibrido con Dwell-Time hardware anti-chattering
-simulation4.py (v4)     ──► Accoppiamento ad anello chiuso del loop metabolico con Soft-Start
-simulation5.py (v9)     ──► Stress-test stocastico con rampa asimmetrica (metrica a permanenza)
-simulation5_v10.py (v10)──► CBF logaritmico continuo C^1, Michaelis-Menten GLT-1, λ_Lyap < 0
+simulation.py (v1)          ──► Active Inference di base, stabilità Lyapunov su 1D
+simulation2.py (v2)         ──► Rete stocastica multicanale (26.400 ch), verifica Practical Stability
+simulation3.py (v3)         ──► Controllo ibrido con Dwell-Time hardware anti-chattering
+simulation4.py (v4)         ──► Accoppiamento ad anello chiuso del loop metabolico con Soft-Start
+simulation5.py (v9)         ──► Stress-test stocastico con rampa asimmetrica (metrica a permanenza)
+simulation5_v10.py / sim6   ──► CBF logaritmico continuo C^1, Michaelis-Menten GLT-1, λ_Lyap = -1.659528
+simulation7.py (v11)        ──► Motore NESS Frugale: 64 ch passivi, rumore Johnson espanso (+25%), λ = -1.659815
+simulation8.py (v12)        ──► Stress-test guasto microfluidico: blocco pompa a t=8.0s e validazione trip NMI
+simulation9.py (v13)        ──► Emulazione RTL virgola fissa Q8.16 e PwL Tanh LUT su FPGA Cora Z7 / Kria KV260
 ```
 
-### Il Salto Architetturale di `simulation5_v10.py`
-Le versioni precedenti (fino a v9) valutavano la sicurezza basandosi su metriche naive di permanenza temporale (percentuale di step all'interno della finestra $[0.70, 0.80]\,\text{mM}$). Questa metrica mascherava potenziali orbite caotiche, oscillazioni limite e instabilità latenti. 
-
-La versione **v10** introduce un framework matematico rigoroso fondato sulla **teoria della contrazione asintotica stocastica**:
-* **Control Barrier Function (CBF) Logaritmico Continuo ($C^1$):** Sostituisce i raccordi a gradino (`if/else`) con transizioni lisce basate su $\tanh$, eliminando discontinuità e oscillazioni ad alta frequenza nel segnale di controllo:
+### Il Salto Architetturale Verso il Controllo Continuo ed Emulazione RTL
+* **Control Barrier Function (CBF) Logaritmico Continuo ($C^1$):** Sostituisce i raccordi a gradino (`if/else`) con transizioni lisce basate su $\tanh$, eliminando chattering ad alta frequenza nel segnale di controllo:
   $$\gamma(x) = \gamma_{\min} + (1 - \gamma_{\min}) \cdot \sigma_L(h(x)) \cdot \tanh(h^+(x))$$
-* **Cinetica Enzimatica GLT-1 Reale:** Abbandona le semplificazioni lineari a favore della vera equazione di saturazione di Michaelis-Menten:
-  $$\mathcal{U}([\text{Glu}]_e) = \frac{V_{\max} [\text{Glu}]_e}{K_m + [\text{Glu}]_e}, \quad V_{\max} = 1.6\,\text{mM/s}, \; K_m = 0.4\,\text{mM}$$
-* **Diffusione di Itô Differenziabile:** Elimina le cuspidi non derivabili a concentrazione zero tramite una funzione liscia di smorzamento quadratico/tangente iperbolica.
-* **Elettrofisiologia Non Lineare:** Mappa le variazioni di glutammato sul pH e sul potenziale neuronale $V_m$ mediante formulazioni sigmoidi sature derivate da Nernst-Goldman, ancorate alla baseline fisiologica corretta da specifiche C10 ($\text{pH} = 7.35$, $V_m = -70.0\,\text{mV}$).
-* **Tracciamento dell'Esponente di Lyapunov Stocastico:** Esegue la co-integrazione parallela di una traiettoria ombra perturbata ($\delta_0 = 10^{-5}$) soggetta alle medesime realizzazioni del rumore di Wiener, calcolando a runtime la media ergodica di Oseledec:
-  $$\lambda = \lim_{T \to \infty} \frac{1}{T} \sum_{k=1}^{N} \ln\left( \frac{\|\delta(t_k)\|}{\|\delta_0\|} \right) = -1.659528 \ll 0$$
-
-Il valore strettamente negativo $\lambda < 0$ certifica in modo formale e inconfutabile che qualsiasi perturbazione decade esponenzialmente con tempo di dimezzamento $\tau_{1/2} \approx 0.417\,\text{s}$, dimostrando la convergenza asintotica globale e sigillando matematicamente la Fase 1.
+* **Cinetica Enzimatica GLT-1 e Diffusione Itô Differenziabile:**
+  Saturazione Michaelis-Menten reale ($V_{\max} = 1.6\,\text{mM/s}, K_m = 0.4\,\text{mM}$) combinata a un termine di diffusione smorzato $C^\infty$ che azzera le cuspidi non derivabili a concentrazione zero.
+* **Adattamento Frugale e PwL Tanh (simulation7, simulation9):**
+  Espansione del delta-bound del $+25\%$ per assorbire il rumore termico su matrici a 64 canali e linearizzazione a 4 tratti della $\tanh$ nelle LUT di FPGA economiche, mantenendo intatta la contrazione di Lyapunov ($\lambda_{\text{frugal}} = -1.659815 \ll 0$).
+* **Resilienza al Blackout Microfluidico (simulation8):**
+  Verifica della chiusura d'emergenza: al fallimento della perfusione a $t = 8.0\,\text{s}$, il circuito combinatorio intercetta l'ascesa del glutammato a $[\text{Glu}]_e = 1.3995\,\text{mM}$, strozzando il carico computazionale a zero e congelando la concentrazione a $1.401\,\text{mM}$, ben al di sotto della soglia di lisi cellulare acuta ($1.80\,\text{mM}$).
 
 ---
 
@@ -248,22 +251,24 @@ Fase 1: In-Silico (Completata & Certificata)
 ├── Chiusura stocastica di Itô e restrizioni gaussiane NESS (C8)
 ├── Geometria informativa di Amari, metrica di Fisher e stabilità hardware da Dwell-Time (C9_v2)
 ├── Rifondazione assiomatica formale, diseguaglianza di Cheeger ed esplosione di Jeffreys (C8_v2)
-├── Motore NESS certificato con cinetica GLT-1, CBF continuo ed elettrofisiologia non lineare (simulation5_v10.py)
+├── Motore NESS certificato con cinetica GLT-1, CBF continuo ed elettrofisiologia non lineare (simulation5_v10.py, simulation6.py)
 ├── Implementazione dell'interlock RTL di basso livello, protezione TMR e verifica token dual-rail GALS (C7_v2)
 ├── Esecuzione del framework di triangolazione avversaria multi-LLM (DeepSeek vs Claude vs GPT-4o) (Dialectics_logs_v3)
 └── 📜 Certificazione formale della Fase 1 In-Silico tramite la Matrice di Allineamento Modello-Codice
     e convalida runtime della contrazione esponenziale stocastica (λ_Lyap = -1.659528 < 0).
 
-Fase 2: In-Vitro (Attiva / Ingresso Sperimentale)
-├── Interfacciamento bidirezionale di GEMINI-GENESI con HD-MEA a 26.400 canali e organoidi (Brainoware)
-├── Validazione sperimentale dei limiti di dissipazione metabolica e barriere stocastiche (C10_v2)
-├── Implementazione su FPGA del banco comparatori RHA con ciclo deterministico a 5 µs (C11_v2, C7_v2)
-├── Test di perfusione a ciclo chiuso con aCSF ossigenata e recupero da wash assistito (C11_v2)
-├── Verifica della persistenza metabolica > 12 mesi sotto stimolazione a carica bilanciata reversibile
+Fase 2: In-Vitro & Piattaforma Decentralizzata Frugale (Attiva / Sbloccata)
+├── [Binario Industriale A]: Interfacciamento ad alta densità CMOS HD-MEA (26.400 canali, C11_v2) su FPGA VU9P
+├── [Binario Frugale B]: Architettura a basso costo (< $1500 USD) su matrici passive a 64 canali (Research_Roadmap_v2.md)
+├── Sintesi RTL su chip AMD-Xilinx Kria KV260 e Digilent Cora Z7 (C11_v3, C13_v1)
+├── Implementazione del doppio watchdog asincrono (Linea 1 Spettrale + Linea 2 Fluidica PFM a 24 bit, C12_v4)
+├── Chiusura dei vincoli di temporizzazione STA post-routing: metastabilità zero e trip <= 30 ns (PHASE2_QUANTIZED_TIMING_REPORT.md)
+├── Validazione della contrazione asintotica su hardware quantizzato Q8.16 (simulation9.py, C13_v2)
+├── Validazione di resilienza a guasto fluidico microfluidico totale (simulation8.py, MCAM_v2)
 ├── Disaccoppiamento galvanico e attivazione del monitor passivo Bus B Black-Box (C12_v3)
 ├── Implementazione dell'interruzione NMI ad azionamento relè GaN (< 200 ns) e audit a doppia chiave (C12_v3)
-├── Formalizzazione istituzionale del consenso dinamico hiPSC e regime di responsabilità oggettiva (C12_v2)
-└── Misura empirica della divergenza spettrale e del Fiedler eigenvalue su colture neuronali primarie.
+├── Formalizzazione istituzionale del consenso dinamico hiPSC e regime di responsabilità oggettiva DBCP (C12_v2)
+└── 📜 Certificato di Apertura della Fase 2 Decentralizzata (PHASE2_DECENTRALIZED_CERTIFICATE.md).
 
 Fase 3: In-Vivo / Embodied (Lungo Termine)
 ├── Integrazione del Custodial Cognitive Layer su prototipo bioibrido completo
@@ -279,15 +284,15 @@ Questo progetto non è proposto come un dogma computazionale infallibile, bensì
 
 ### 1. Bypass Proof (Resistenza ad Avversari Hardware-Level)
 * **Quesito:** È possibile garantire matematicamente che un'ASI non possa sfruttare canali laterali (*side-channel attacks*, attacchi acustici, termici o a iniezione di faglie EM) per circumnavigare la barriera logica del Gate hardware $\Pi_{\text{safe}}$?
-* **Criterio di Falsificazione:** Dimostrazione sperimentale, su testbed FPGA UltraScale+ galvanicamente isolato, di una sequenza di commutazioni logiche non autorizzate nei registri di stimolazione senza che il circuito RHA esegua il trip dell'interruttore ottico entro $200\,\text{ns}$ o senza che la barriera dual-rail blocchi il token asincrono.
+* **Criterio di Falsificazione:** Dimostrazione sperimentale, su testbed FPGA UltraScale+ o Kria/Cora galvanicamente isolato, di una sequenza di commutazioni logiche non autorizzate nei registri di stimolazione senza che il circuito RHA esegua il trip dell'interruttore ottico entro $200\,\text{ns}$ o senza che la barriera dual-rail blocchi il token asincrono.
 
 ### 2. Metabolic Persistence Proof (Accoppiamento Energetico)
-* **Quesito:** Può un substrato biologico neuronale (*Brainoware*) mantenere la stabilità omeostatica e il gradiente di vitalità NESS per oltre $12\,\text{mesi}$ sotto i carichi computazionali richiesti dall'elaborazione in tempo reale di una superintelligenza?
+* **Quesito:** Può un substrato biologico neuronale (*Brainoware* o coltura primaria) mantenere la stabilità omeostatica e il gradiente di vitalità NESS per oltre $12\,\text{mesi}$ sotto i carichi computazionali richiesti dall'elaborazione in tempo reale di una superintelligenza?
 * **Criterio di Falsificazione:** Rilevazione elettrochimica di fenomeni irreversibili di eccitotossicità da glutammato ($[\text{Glu}]_e \ge 1.4\,\text{mM}$), acidosi lattica intracellulare o deriva dell'esponente di Lyapunov verso regimi positivi ($\lambda \ge 0$) che provochino lisi cellulare o senescenza precoce dell'organoide.
 
 ### 3. Implementation Fidelity Proof (Fedeltà di Trasduzione)
-* **Quesito:** La discretizzazione computazionale dei principi FEP e delle metriche di informazione preserva le medesime proprietà di contrazione asintotica quando trasferita su hardware a precisione finita con latenze di trasporto e rumore non gaussiano?
-* **Criterio di Falsificazione:** Emersione di instabilità numeriche, divergenze di traiettoria ombra ($\lambda_{\text{num}} \ge 0$) o superamento dell'inviluppo di errore teorico $\delta_{\text{bound}} = 0.383\,\mu\text{M}$ verificato nel banco di collaudo RTL formale (`TC-RTL-005`).
+* **Quesito:** La discretizzazione computazionale dei principi FEP e delle metriche di informazione preserva le medesime proprietà di contrazione asintotica quando trasferita su hardware a precisione finita (virgola fissa Q8.16) con latenze di trasporto e rumore non gaussiano?
+* **Criterio di Falsificazione:** Emersione di instabilità numeriche, divergenze di traiettoria ombra ($\lambda_{\text{num}} \ge 0$) o superamento dell'inviluppo di errore teorico $\delta_{\text{bound}}$ verificato nei banchi di collaudo RTL formali (`TC-RTL-005`, `PHASE2_QUANTIZED_TIMING_REPORT.md`).
 
 ---
 
@@ -302,7 +307,7 @@ Se utilizzi o espandi questo framework teorico nei tuoi programmi di ricerca su 
   year={2025},
   publisher={GitHub},
   howpublished={\url{https://github.com/asi-alignment-invariant/asi-alignment-invariant}},
-  note={Phase 1 In-Silico Certified Architecture (v10)}
+  note={Phase 1 Certified & Phase 2 Decentralized Architecture}
 }
 ```
 
