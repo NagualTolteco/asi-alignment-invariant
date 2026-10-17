@@ -90,6 +90,8 @@ asi-alignment-invariant/
 │
 ├── README.md                                               # Manifesto, architettura unificata e specifiche di sistema
 ├── CONTRIBUTING.md                                         # Policy di contribuzione, congelamento L1/L2 e protocollo dual-key
+├── ISSUES_INDEX.md                                         # Modulo di tracciabilità: Issue Board nativa ↔ Filesystem local core
+├── PHASE1_CERTIFICATION_REPORT.md                          # Report monolitico formale di certificazione Fase 1 (VU9P snapshot)
 ├── Core_Theorems.md                                        # Modulo I: Teoremi fondamentali, NESS e chiusura multi-scala
 ├── C1-3.md                                                 # Moduli II-III: Runtime Assurance, logica П_safe e dialettica
 ├── C4_Biohybrid_Embodiment.md                              # Modulo IV: Substrati bioibridi, organoidi e robotica
@@ -152,6 +154,11 @@ Costituisce l'interfaccia deterministica di controllo, fisicamente e logicamente
   5. *Tolleranza ai Guasti e Isolamento GALS:* Protezione delle FSM critiche tramite Triple Modular Redundancy (TMR) con voter a maggioranza distribuito spazialmente ($d_{\text{TMR}} \ge 120\,\mu\text{m}$) e scrubbing CRAM automatico; barriera di clock asincrona dual-rail a 4 fasi basata su alberi di elementi C di Muller per neutralizzare clock-glitch injection e attacchi di overclocking da parte dell'ASI.
 * **Motore Asimmetrico NESS Certificato (`simulation5_v10.py`):** Il motore di simulazione definitivo per la Fase 1. Risolve le falle matematiche delle versioni v1-v9 sostituendo i controlli a gradino con un Control Barrier Function (CBF) continuo $C^1$, integrando la cinetica enzimatica non lineare di Michaelis-Menten per i trasportatori astrogliali GLT-1, l'accoppiamento elettrofisiologico non lineare ancorato al pH standard C10 ($7.35$), e quantificando la stabilità asintotica tramite il Massimo Esponente di Lyapunov Stocastico ($\lambda \approx -1.659$).
 * **Matrice di Allineamento Modello-Codice (`Model_Code_Alignment_Matrix.md`):** Registro formale di garanzia tecnica che certifica la rispondenza punto-per-punto tra le derivazioni analitiche continue L1/L2 e il codice eseguibile discreto di `simulation5_v10.py`, sancendo la chiusura e validazione matematica formale della Fase 1 In-Silico.
+* **Rapporto di Certificazione Formale di Fase 1 (`PHASE1_CERTIFICATION_REPORT.md`):** Documento monolitico formale (Identificativo: `CERT-PHASE1-IN-SILICO-FINAL-VU9P`) che valida la chiusura matematica e fisica di Fase 1 sotto gli standard di sicurezza avionica e industriale DO-254 DAL-A e IEC 61508 SIL-4:
+  1. *Validazione Asintotica:* Attesta il decadimento esponenziale delle traiettorie perturbative verso l'attrattore NESS ($\lambda = -1.659528 \ll 0$, $\tau_{1/2} \approx 0.417\,\text{s}$).
+  2. *Governance Siliconica VU9P:* Riassume le specifiche microarchitetturali su FPGA AMD Xilinx Virtex UltraScale+ con aritmetica BLF a virgola fissa, sincronizzazione asincrona dual-rail GALS e bound di incertezza digitale $\delta_{\text{bound}} = 0.383\,\mu\text{M}$.
+  3. *Gerarchia Non-Maskable Interruption (NMI):* Definisce l'interruzione hardware su relè GaN ($\le 200\,\text{ns}$) con interdizione software assoluta e sblocco manuale subordinato a firma crittografica Dual-Key (Lead Medico + Auditor Etico Indipendente).
+  4. *Appendici e Forensics:* Comprende il registro forense degli hash di integrità SHA-256 dei file core, il glossario tecnico, la tabella consolidata delle costanti numeriche certificate e l'Appendice D (tracciamento spettrale SEF95 su banda $1-100\,\text{Hz}$ con priorità di shock trip istantaneo $\Delta t < 10\,\text{ms}$ rispetto all'appiattimento spettrale).
 
 ---
 
@@ -193,6 +200,9 @@ Rappresenta il banco di prova empirico per la transizione dal silicio puro alla 
   2. *Protocollo di Sottomissione Fase 2 (In-Vitro):* Le sottomissioni empiriche da laboratori partner richiedono almeno 720 ore di log continui in sola lettura dal Bus B (Black-Box Monitor) senza trip di Pheno-Shock (LZC $> 0.6$ in baseline, con trip vincolato a LZC $\le 0.2$ per $> 200\,\text{ms}$, e stabilità SEF95), variabilità trascrittomica inter-lotto $< 10\%$, e report di screening epigenetico che attesti derive funzionali $< 5\%$ a 30 giorni.
   3. *Tassonomia delle PR Ammesse:* Accettazione limitata a directory isolate: `/threat_modeling` (vettori di attacco side-channel), `/bio_modules` (protocolli microfluidici e vascolarizzazione), e `/twin_extensions` (espansione multifisica di GEMINI-GENESI).
   4. *Audit Umano a Doppia Chiave:* Merge subordinato all'approvazione crittografica congiunta e simultanea del Lead Medico/Bio-Ingegnere e dell'Auditor Etico Indipendente. In caso di anomalie non previste, interviene il Trip Hardware automatico non mascherabile ($\le 200\,\text{ns}$ via relè GaN) verso lo stato di emergenza `q_SAFE`, con divieto assoluto di ripristino o rollback software automatizzato.
+* **Matrice di Tracciabilità Issue Board ↔ Core Filesystem (`ISSUES_INDEX.md`):** Registro ad alta garanzia di mappatura deterministica e biunivoca tra le segnalazioni tracciate nell'Issue Board e i file immutabili del filesystem locale:
+  1. *Tracciamento Rigoroso dei 5 Breakpoint Biologici:* Mappa puntualmente la Issue #001 (Core Apoptosis a 30-90 giorni, variabilità inter-lotto $< 10\%$ con calibrazione dinamica del $\delta_{\text{bound}}$, fallimento GLT-1 a $V_{\max} \le 1.0\,\text{mM/s}$, persistenza metabolica $> 6\,\text{mesi}$ supportata da 720 ore di log Bus B, e deriva epigenetica vincolata a distanza di Wasserstein $W_1 < 0.05$ ogni 30 giorni).
+  2. *Interlock di Compilazione CI/CD:* Impone un gateway automatico di Continuous Integration che blocca la promozione alla Fase 2 in presenza di discrepanze, richiedendo l'etichettatura esplicita "Fixes #001" per sbloccare i banchi di prova hardware di `C7_v2`. Pre-alloca l'Issue #002 (Riservata) per la validazione di attacchi side-channel hardware e desincronizzazione GALS.
 
 ---
 ---
