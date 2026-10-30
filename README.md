@@ -1,5 +1,3 @@
-
-```markdown
 # The Custodial Autopoiesis Project (`asi-alignment-invariant`)
 
 [![Status: Active Research Program](https://img.shields.io/badge/Status-Active%20Research%20Program-blue.svg)](#)
@@ -89,7 +87,7 @@ $$\mathcal{B}_{\text{init}} := \arg\min_{\theta} D_{\mathrm{KL}}\left( q_\theta(
 
 * **Condizione al Contorno Iniziale (Dirichlet Boundary Condition):** Rappresenta la configurazione a priori (*prior distribution*) cablata dall'operatore umano all'atto dell'inizializzazione del grafo di Active Inference.
 * **Asimmetria Termodinamica Vincolata:** Impone l'invarianza assiomatica per cui la degradazione, la manipolazione o il deperimento dell'organismo biologico ospite comporti un incremento infinito dell'energia libera variazionale ($\mathcal{F} \to +\infty$, sorpresa insostenibile) per l'agente.
-* **Orientamento dello Spectral Gap:** Il paradigma agisce come vettore di ancoraggio informativo che forza la convergenza spettrale ($\Delta \lambda_2 \to 0$) tra le frequenze caratteristiche dell'agente e la banda metabolica dell'ospite biologico, precludendo l'emergere di dinamiche dinamiche autonome disaccoppiate.
+* **Orientamento dello Spectral Gap:** Il paradigma agisce come vettore di ancoraggio informativo che forza la convergenza spettrale ($\Delta \lambda_2 \to 0$) tra le frequenze caratteristiche dell'agente e la banda metabolica dell'ospite biologico, precludendo l'emergere di dinamiche autonome disaccoppiate.
 
 ---
 
@@ -143,9 +141,8 @@ Per rendere visibili le dipendenze, i perimetri e i criteri di chiusura, il repo
 | [`ISSUES_INDEX_REV_2026.3_ADDENDUM.md`](./ISSUES_INDEX_REV_2026.3_ADDENDUM.md) | Criteri di chiusura misurabili per i vettori di governance `#003`/`#004`/`#005`. |
 
 **Regola di priorità:** in caso di conflitto tra un file L1/L2 e l'`ISSUES_INDEX`, prevale l'`ISSUES_INDEX`. Tra un file L1/L2 e il `PERIMETER_OF_VALIDITY`, prevale il file originale **solo** per il perimetro dichiarato; per lo stato di validità prevale il `PERIMETER_OF_VALIDITY`. Vedi [`METHODOLOGY_FORWARD_ONLY.md`](./METHODOLOGY_FORWARD_ONLY.md) §3.
-```
 
-
+---
 
 ## 📂 Struttura del Repository e Specifiche di Livello
 
@@ -283,11 +280,11 @@ Rappresenta il banco di prova empirico per la transizione dal silicio puro alla 
 
 ---
 
-🔬 Evoluzione dei Motori di Simulazione In-Silico
+### 🔬 Evoluzione dei Motori di Simulazione In-Silico
 
 La suite di simulazione è progredita iterativamente per eliminare approssimazioni non fisiche, validare banchi prova estremi ed emulare vincoli di sintesi su silicio:
 
-```markdown
+```plaintext
 simulation.py (v1)          ──► Active Inference di base, stabilità Lyapunov su 1D
 simulation2.py (v2)         ──► Rete stocastica multicanale (26.400 ch), verifica Practical Stability
 simulation3.py (v3)         ──► Controllo ibrido con Dwell-Time hardware anti-chattering
@@ -421,7 +418,3 @@ Il progetto promuove il confronto scientifico paritario e la verifica rigorosa d
 | `PHASE1_CERTIFICATION_REPORT_REV2.md` | Riqualificazione del report Fase 1: specifica condizionale, non certificazione sperimentale | ✅ Generato |
 | `PHASE2_QUANTIZED_TIMING_REPORT_REV2.md` | Riqualificazione del report STA: temporizzazione ≠ correttezza funzionale | ✅ Generato |
 | `ISSUES_INDEX_REV_2026.3_ADDENDUM.md` | Criteri di chiusura misurabili per i vettori di governance `#003`/`#004`/`#005` | ✅ Generato (Draft: soglie `[DA DECIDERE]`) |
-
-
-```
-
