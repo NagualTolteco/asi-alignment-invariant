@@ -1,4 +1,3 @@
-# BLOCCIO 1 di 2 — README `asi-alignment-invariant` (REV. 2026.2)
 
 ```markdown
 # The Custodial Autopoiesis Project (`asi-alignment-invariant`)
