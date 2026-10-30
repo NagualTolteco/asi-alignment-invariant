@@ -219,7 +219,7 @@ Costituisce l'interfaccia deterministica di controllo, fisicamente e logicamente
 * **Vincoli di Sintesi FPGA, Mappatura Pin e CDC (`C13_v1_FPGA_Fixed_Point_Constraints.md`):** Specifica formale per target Digilent Cora Z7 (Zynq-7000) e AMD-Xilinx Kria KV260:
   1. *Isolamento dei Domini di Clock (CDC):* FIFO asincrona Gray-Coded per il bus ADC SPI e sincronizzatori a 3 stadi (`ASYNC_REG = TRUE`) per il segnale tachimetrico PFM, garantendo un $\text{MTBF} > 1.42 \times 10^{11}$ ore.
   2. *Vincoli Master XDC:* Fissaggio del periodo di clock (100 MHz, setup slack target $\ge 1.5\,\text{ns}$), inibizione dell'ottimizzazione logica sulle triple ridondanze (`DONT_TOUCH = TRUE` su voter TMR e porte Muller C) e instradamento a latenza deterministica $\le 5\,\text{ns}$ verso il pin `nmi_trip_out`.
-# BLOCO 2 di 2 — README `asi-alignment-invariant` (REV. 2026.2)
+
 
 ```markdown
 * **Registro di Validazione e Immunità da Quantizzazione (`C13_v2_Hardware_Validation_Ledger.md`):** Certifica la robustezza numerica dell'implementazione FPGA in virgola fissa Q8.16 rispetto al modello ideale a 64 bit, dimostrando la conservazione della contrazione ergodica con $\lambda = -1.405263 \ll 0$. **Stato:** valido per il percorso quantizzato ma subordinato a H-06 (emulazione bit-true effettiva in `simulation9.py`).
