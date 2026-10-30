@@ -145,10 +145,7 @@ Per rendere visibili le dipendenze, i perimetri e i criteri di chiusura, il repo
 **Regola di priorità:** in caso di conflitto tra un file L1/L2 e l'`ISSUES_INDEX`, prevale l'`ISSUES_INDEX`. Tra un file L1/L2 e il `PERIMETER_OF_VALIDITY`, prevale il file originale **solo** per il perimetro dichiarato; per lo stato di validità prevale il `PERIMETER_OF_VALIDITY`. Vedi [`METHODOLOGY_FORWARD_ONLY.md`](./METHODOLOGY_FORWARD_ONLY.md) §3.
 ```
 
-# FILE 7 di 7 — `README.md` (riscrittura finale) — BLOCO 2 di 2
 
-```markdown
----
 
 ## 📂 Struttura del Repository e Specifiche di Livello
 
