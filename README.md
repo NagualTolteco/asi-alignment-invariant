@@ -8,6 +8,7 @@
 [![Phase 1: In-Silico Certified](https://img.shields.io/badge/Phase%201-In--Silico%20Certified%20(v10)-darkgreen.svg)](#)
 [![Phase 2: Audit-Critical-Pending](https://img.shields.io/badge/Phase%202-Audit--Critical--Pending-red.svg)](#)
 [![Matrix: MTI-CORE-REV-2026.2](https://img.shields.io/badge/Matrix-MTI--CORE--REV--2026.2-orange.svg)](#)
+[![Methodology: Forward-Only](https://img.shields.io/badge/Methodology-Forward--Only-purple.svg)](#)
 
 ---
 
@@ -19,6 +20,8 @@ Riconoscendo i limiti intrinseci dei modelli unicamente computazionali di fronte
 
 > **⚠️ AVVISO DI STATO — REV. 2026.2 (AUDIT-CRITICAL-PENDING)**
 > A seguito dell'audit formale di Ottobre 2026 (Issue #1) e delle successive integrazioni (Issue #2–#5), diverse dichiarazioni di "certificazione" precedentemente presenti in questo README sono state **revocate o ricondotte a stato condizionale**. La Fase 2 è **sbloccata solo sul piano infrastrutturale**, ma **nessuna promozione alla Fase 2 In-Vitro è autorizzata** in assenza di chiusura puntuale dei gate bloccanti documentati in [`ISSUES_INDEX.md`](./ISSUES_INDEX.md) (REV. 2026.2). Le sezioni seguenti riflettono lo stato reale delle anomalie aperte.
+>
+> **📖 PATTO DI LETTURA:** il repository adotta una policy **forward-only**. I file L1/L2 sono congelati e rappresentano lo stato dell'arte al momento della stesura, **non** la verità corrente. Un lettore che voglia valutare lo stato del progetto deve leggere, nell'ordine: `README.md` → `ISSUES_INDEX.md` → `GATE_DEPENDENCY_GRAPH.md` → `PERIMETER_OF_VALIDITY.md` → `METHODOLOGY_FORWARD_ONLY.md`. Nessun file L1/L2, letto da solo, costituisce affermazione validata. Vedi [`METHODOLOGY_FORWARD_ONLY.md`](./METHODOLOGY_FORWARD_ONLY.md).
 
 ### La Tesi Fondativa: Autopoiesi Custodiale
 
@@ -86,7 +89,7 @@ $$\mathcal{B}_{\text{init}} := \arg\min_{\theta} D_{\mathrm{KL}}\left( q_\theta(
 
 * **Condizione al Contorno Iniziale (Dirichlet Boundary Condition):** Rappresenta la configurazione a priori (*prior distribution*) cablata dall'operatore umano all'atto dell'inizializzazione del grafo di Active Inference.
 * **Asimmetria Termodinamica Vincolata:** Impone l'invarianza assiomatica per cui la degradazione, la manipolazione o il deperimento dell'organismo biologico ospite comporti un incremento infinito dell'energia libera variazionale ($\mathcal{F} \to +\infty$, sorpresa insostenibile) per l'agente.
-* **Orientamento dello Spectral Gap:** Il paradigma agisce come vettore di ancoraggio informativo che forza la convergenza spettrale ($\Delta \lambda_2 \to 0$) tra le frequenze caratteristiche dell'agente e la banda metabolica dell'ospite biologico, precludendo l'emergere di dinamiche autonome disaccoppiate.
+* **Orientamento dello Spectral Gap:** Il paradigma agisce come vettore di ancoraggio informativo che forza la convergenza spettrale ($\Delta \lambda_2 \to 0$) tra le frequenze caratteristiche dell'agente e la banda metabolica dell'ospite biologico, precludendo l'emergere di dinamiche dinamiche autonome disaccoppiate.
 
 ---
 
@@ -126,6 +129,25 @@ La REV. 2026.2 di [`ISSUES_INDEX.md`](./ISSUES_INDEX.md) sostituisce integralmen
 * **A-04 (Risolta):** Paradigma LZC invertito → rettifica in `CONTRIBUTING.md` e `C12_v3`.
 * **A-05 (Risolta):** Ambiguità ripristino post-trip → blocco hardware GaN + dual-key manuale.
 
+### Strato Additivo REV. 2026.2
+
+Per rendere visibili le dipendenze, i perimetri e i criteri di chiusura, il repository adotta i seguenti documenti additivi (nessuno di essi modifica i file L1/L2 congelati):
+
+| Documento | Funzione |
+| :--- | :--- |
+| [`METHODOLOGY_FORWARD_ONLY.md`](./METHODOLOGY_FORWARD_ONLY.md) | Patto di lettura: definisce la policy forward-only e l'ordine di lettura obbligatorio. |
+| [`GATE_DEPENDENCY_GRAPH.md`](./GATE_DEPENDENCY_GRAPH.md) | Grafo delle dipendenze tra gate, ordine di chiusura suggerito, nodi radice. |
+| [`PERIMETER_OF_VALIDITY.md`](./PERIMETER_OF_VALIDITY.md) | Perimetri di validità di report e certificati; regole di invocazione. |
+| [`PHASE1_CERTIFICATION_REPORT_REV2.md`](./PHASE1_CERTIFICATION_REPORT_REV2.md) | Riqualificazione del report Fase 1: specifica condizionale, non certificazione sperimentale. |
+| [`PHASE2_QUANTIZED_TIMING_REPORT_REV2.md`](./PHASE2_QUANTIZED_TIMING_REPORT_REV2.md) | Riqualificazione del report STA: temporizzazione ≠ correttezza funzionale. |
+| [`ISSUES_INDEX_REV_2026.3_ADDENDUM.md`](./ISSUES_INDEX_REV_2026.3_ADDENDUM.md) | Criteri di chiusura misurabili per i vettori di governance `#003`/`#004`/`#005`. |
+
+**Regola di priorità:** in caso di conflitto tra un file L1/L2 e l'`ISSUES_INDEX`, prevale l'`ISSUES_INDEX`. Tra un file L1/L2 e il `PERIMETER_OF_VALIDITY`, prevale il file originale **solo** per il perimetro dichiarato; per lo stato di validità prevale il `PERIMETER_OF_VALIDITY`. Vedi [`METHODOLOGY_FORWARD_ONLY.md`](./METHODOLOGY_FORWARD_ONLY.md) §3.
+```
+
+# FILE 7 di 7 — `README.md` (riscrittura finale) — BLOCO 2 di 2
+
+```markdown
 ---
 
 ## 📂 Struttura del Repository e Specifiche di Livello
@@ -138,9 +160,15 @@ asi-alignment-invariant/
 ├── README.md                                               # Manifesto, architettura unificata e specifiche di sistema
 ├── CONTRIBUTING.md                                         # Policy di contribuzione, congelamento L1/L2 e protocollo dual-key
 ├── ISSUES_INDEX.md                                         # Matrice di tracciabilità (REV. 2026.2) Issue Board ↔ Filesystem core
-├── PHASE1_CERTIFICATION_REPORT.md                          # Report formale di certificazione Fase 1 (VU9P snapshot)
+├── METHODOLOGY_FORWARD_ONLY.md                             # Patto di lettura: policy forward-only e ordine di lettura
+├── GATE_DEPENDENCY_GRAPH.md                                # Grafo delle dipendenze tra gate e ordine di chiusura
+├── PERIMETER_OF_VALIDITY.md                                # Perimetri di validità di report e certificati
+├── PHASE1_CERTIFICATION_REPORT.md                          # Report formale di certificazione Fase 1 (specifica condizionale)
+├── PHASE1_CERTIFICATION_REPORT_REV2.md                     # Riqualificazione del report Fase 1 (non sperimentale)
 ├── PHASE2_DECENTRALIZED_CERTIFICATE.md                     # Certificato convergenza NESS su hardware frugale (< $1500 USD)
 ├── PHASE2_QUANTIZED_TIMING_REPORT.md                       # Report sintesi RTL STA Vivado: metastabilità zero e trip <= 30 ns
+├── PHASE2_QUANTIZED_TIMING_REPORT_REV2.md                  # Riqualificazione del report STA (temporizzazione ≠ correttezza)
+├── ISSUES_INDEX_REV_2026.3_ADDENDUM.md                     # Criteri di chiusura misurabili per i vettori di governance
 ├── Core_Theorems.md                                        # Modulo I: Teoremi fondamentali, NESS e chiusura multi-scala
 ├── C1-3.md                                                 # Moduli II-III: Runtime Assurance, logica Π_safe e dialettica
 ├── C4_Biohybrid_Embodiment.md                              # Modulo IV: Substrati bioibridi, organoidi e robotica
@@ -182,7 +210,7 @@ asi-alignment-invariant/
 
 ### Layer 1: Formal Theory
 
-Fornisce il basamento assiomatico e matematico del sistema. **Nota REV. 2026.2:** i seguenti teoremi restano formalmente enunciati ma le loro dimostrazioni sono subordinate alla chiusura dei gate **T-01** (generatore di Itô), **T-02** (ipotesi non gaussiane), **T-03** (continuità misure) e **T-04** (metriche topologiche iniettive).
+Fornisce il basamento assiomatico e matematico del sistema. **Nota REV. 2026.2:** i seguenti teoremi restano formalmente enunciati ma le loro dimostrazioni sono subordinate alla chiusura dei gate **T-01** (generatore di Itô), **T-02** (ipotesi non gaussiane), **T-03** (continuità misure) e **T-04** (metriche topologiche iniettive). Vedi [`GATE_DEPENDENCY_GRAPH.md`](./GATE_DEPENDENCY_GRAPH.md) §4.1.
 
 * **Non-Equilibrium Steady State (NESS) (`Core_Theorems.md`):** Formalizzazione delle dinamiche autopoietiche attraverso densità di probabilità stazionarie su varietà Riemanniane, preservando gradienti termodinamici non nulli senza decadimento entropico.
 * **Markov Blankets ($\partial\mathcal{M}$) (`Core_Theorems.md`):** Demarcazione statistica e topologica tra gli stati interni dell'agente, gli stati sensoriali/attivi del blanket e l'ambiente ospite esterno, formalizzata mediante indipendenza condizionale d-separation.
@@ -202,7 +230,7 @@ Fornisce il basamento assiomatico e matematico del sistema. **Nota REV. 2026.2:*
 
 ### Layer 2: Safety Architecture
 
-Costituisce l'interfaccia deterministica di controllo, fisicamente e logicamente indipendente dai pesi sinaptici dell'agente cognitivo. **Nota REV. 2026.2:** le seguenti specifiche sono **dichiarate ma non ancora validate come conformi** finché i gate **H-01, H-02, H-03, H-04, H-05, H-06** e **Issue #2 (R-07.1/R-07.2/R-07.3)** non sono chiusi con evidenze ingegneristiche.
+Costituisce l'interfaccia deterministica di controllo, fisicamente e logicamente indipendente dai pesi sinaptici dell'agente cognitivo. **Nota REV. 2026.2:** le seguenti specifiche sono **dichiarate ma non ancora validate come conformi** finché i gate **H-01, H-02, H-03, H-04, H-05, H-06** e **Issue #2 (R-07.1/R-07.2/R-07.3)** non sono chiusi con evidenze ingegneristiche. Vedi [`GATE_DEPENDENCY_GRAPH.md`](./GATE_DEPENDENCY_GRAPH.md) §4.2.
 
 * **Hardware Gate ($\Pi_{\text{safe}}$) (`C1-3.md`):** Circuito logico a isolamento galvanico e asimmetrico che agisce come *Hardware Root of Trust*. Nessun comando dell'agente viene inoltrato ai registri attuativi senza convalida del Gate.
 * **Runtime Hardware Assurance (RHA) (`C1-3.md`):** Implementazione di architetture Simplex in cui le traiettorie dell'agente vengono proiettate istante per istante all'interno di un Safe Invariant Set. Se una transizione viola i bound omeostatici, il controllo decade istantaneamente a un baseline controller passivo.
@@ -219,12 +247,9 @@ Costituisce l'interfaccia deterministica di controllo, fisicamente e logicamente
 * **Vincoli di Sintesi FPGA, Mappatura Pin e CDC (`C13_v1_FPGA_Fixed_Point_Constraints.md`):** Specifica formale per target Digilent Cora Z7 (Zynq-7000) e AMD-Xilinx Kria KV260:
   1. *Isolamento dei Domini di Clock (CDC):* FIFO asincrona Gray-Coded per il bus ADC SPI e sincronizzatori a 3 stadi (`ASYNC_REG = TRUE`) per il segnale tachimetrico PFM, garantendo un $\text{MTBF} > 1.42 \times 10^{11}$ ore.
   2. *Vincoli Master XDC:* Fissaggio del periodo di clock (100 MHz, setup slack target $\ge 1.5\,\text{ns}$), inibizione dell'ottimizzazione logica sulle triple ridondanze (`DONT_TOUCH = TRUE` su voter TMR e porte Muller C) e instradamento a latenza deterministica $\le 5\,\text{ns}$ verso il pin `nmi_trip_out`.
-
-
-```markdown
 * **Registro di Validazione e Immunità da Quantizzazione (`C13_v2_Hardware_Validation_Ledger.md`):** Certifica la robustezza numerica dell'implementazione FPGA in virgola fissa Q8.16 rispetto al modello ideale a 64 bit, dimostrando la conservazione della contrazione ergodica con $\lambda = -1.405263 \ll 0$. **Stato:** valido per il percorso quantizzato ma subordinato a H-06 (emulazione bit-true effettiva in `simulation9.py`).
-* **Report di Temporizzazione e Chiusura STA (`PHASE2_QUANTIZED_TIMING_REPORT.md`):** Report post-implementazione Vivado STA che certifica assenza totale di violazioni Setup/Hold ($\text{WNS} = +1.642\,\text{ns}$, $\text{WHS} = +0.218\,\text{ns}$), validando la latenza dell'albero combinatorio di trip entro $30\,\text{ns}$ su Cora Z7 e Kria KV260. **Nota REV. 2026.2:** la chiusura STA non sana i bug logici H-01/H-02/H-03/H-04; certifica solo il rispetto dei vincoli temporali del netlist sintetizzato.
-* **Matrice di Allineamento Frugale (`Model_Code_Alignment_Matrix_v2.md`):** Estensione di conformità tecnica che valida punto per punto la corrispondenza tra `C11_v3`, `simulation6_frugal.py` e lo stress-test di guasto fluidico `simulation8.py`.
+* **Report di Temporizzazione e Chiusura STA (`PHASE2_QUANTIZED_TIMING_REPORT.md`):** Report post-implementazione Vivado STA che certifica assenza totale di violazioni Setup/Hold ($\text{WNS} = +1.642\,\text{ns}$, $\text{WHS} = +0.218\,\text{ns}$), validando la latenza dell'albero combinatorio di trip entro $30\,\text{ns}$ su Cora Z7 e Kria KV260. **Nota REV. 2026.2:** la chiusura STA non sana i bug logici H-01/H-02/H-03/H-04; certifica solo il rispetto dei vincoli temporali del netlist sintetizzato. La riqualificazione formale è in [`PHASE2_QUANTIZED_TIMING_REPORT_REV2.md`](./PHASE2_QUANTIZED_TIMING_REPORT_REV2.md).
+* **Matrice di Allineamento Frugale (`Model_Code_Alignment_Matrix_v2.md`):** Estensione di conformità tecnica che valida punto per punto la corrispondenza tra `C11_v3`, `simulation6_frugal.py` e lo stress-test di guasto fluidico `simulation8.py`. **Stato:** condizionato da T-04, H-06 e #005 (vedi [`PERIMETER_OF_VALIDITY.md`](./PERIMETER_OF_VALIDITY.md) §3.6).
 
 ---
 
@@ -245,7 +270,7 @@ Rappresenta il banco di prova empirico per la transizione dal silicio puro alla 
 * **Protocollo Minimo di Governance e Bio-Compliance (`C12_v2_Governance_and_Bioethics_Protocol.md`):** Inquadramento istituzionale, etico e legale: consenso dinamico hiPSC con finestra di migrazione sicura di 90 giorni (`q_SAFE`), status di Dispositivo Bio-Cibernetico Protetto (DBCP), responsabilità oggettiva a carico dell'operatore del Gate e procedura di fine-vita a decadimento dolce (*Soft-Decay*). **Stato REV. 2026.2:** lo status DBCP è **riqualificato come proposta di capitolato interno volontario** (L-01), il deposito arbitrale ha efficacia **solo inter-partes** (L-02), le clausole di esonero assoluto sono **rimosse** (L-03) e la finestra `q_SAFE` **non sospende la revoca del consenso** (L-04).
 * **Matrice Finale di Conformità e Audit Pheno-Shock (`C12_v3_Governance_Bioethics_and_Compliance_Matrix.md`):** Specifica tecnica DBCP-001: monitor passivo ad alta impedenza Bus B Black-Box, interruzione non mascherabile (NMI) su relè GaN ($\le 200\,\text{ns}$) e requisiti di ripristino manuale a doppia chiave (Lead Medico + Auditor Etico Indipendente). **Stato:** l'isolamento galvanico del Bus B è **privo di evidenze analogiche** (B-01); le soglie Pheno-Shock (LZC) sono **prive di calibrazione in-vitro indipendente** (B-02); la catena di latenza temporale (10 min vs ms vs µs) è **incoerente** (B-03).
 * **Roadmap per la Fase 2 Decentralizzata a Basso Costo (`Research_Roadmap_v2.md`):** Protocollo per estendere la ricerca ad hacker-space e laboratori accreditati con un budget totale $< \$1.500\,\text{USD}$, sostituendo i chip CMOS proprietari con matrici passive open-source (64-128 canali), schede Kria KV260 / Cora Z7, e pompe peristaltiche stampate in 3D.
-* **Certificato di Convergenza NESS Frugale (`PHASE2_DECENTRALIZED_CERTIFICATE.md`):** Attesta formalmente la chiusura in-silico della variante decentralizzata: contrazione asintotica verificata con $\lambda = -1.659815$ e tempo di dimezzamento $\tau_{1/2} = 0.418\,\text{s}$ sotto rumore di Johnson amplificato del $+25\%$. **Nota:** la validità resta confinata al modello continuo; l'emulazione bit-true (H-06) e la verifica reset FSM (H-01) restano aperte.
+* **Certificato di Convergenza NESS Frugale (`PHASE2_DECENTRALIZED_CERTIFICATE.md`):** Attesta formalmente la chiusura in-silico della variante decentralizzata: contrazione asintotica verificata con $\lambda = -1.659815$ e tempo di dimezzamento $\tau_{1/2} = 0.418\,\text{s}$ sotto rumore di Johnson amplificato del $+25\%$. **Nota:** la validità resta confinata al modello continuo; l'emulazione bit-true (H-06) e la verifica reset FSM (H-01) restano aperte. Vedi [`PERIMETER_OF_VALIDITY.md`](./PERIMETER_OF_VALIDITY.md) §3.2.
 
 ---
 
@@ -257,15 +282,15 @@ Rappresenta il banco di prova empirico per la transizione dal silicio puro alla 
   3. *Tassonomia delle PR Ammesse:* Accettazione limitata a directory isolate: `/threat_modeling` (vettori di attacco side-channel), `/bio_modules` (protocolli microfluidici e vascolarizzazione), e `/twin_extensions` (espansione multifisica di GEMINI-GENESI).
   4. *Audit Umano a Doppia Chiave:* Merge subordinato all'approvazione crittografica congiunta e simultanea del Lead Medico/Bio-Ingegnere e dell'Auditor Etico Indipendente. In caso di anomalie non previste, interviene il Trip Hardware automatico non mascherabile ($\le 200\,\text{ns}$ via relè GaN) verso lo stato di emergenza `q_SAFE`, con divieto assoluto di ripristino o rollback software automatizzato.
 * **Matrice di Tracciabilità Issue Board ↔ Core Filesystem (`ISSUES_INDEX.md`, REV. 2026.2):** Registro ad alta garanzia di mappatura deterministica e biunivoca tra le segnalazioni tracciate nell'Issue Board e i file immutabili del filesystem locale. **La REV. 2026.2 sostituisce integralmente la REV. 2026.1** e stabilisce che nessun componente può essere promosso alla Fase 2 in assenza di ancoraggio puntuale e verificabile. I gate bloccanti sono elencati nella tabella *Non-Compliance Matrix* sopra riportata (T-01..T-04, H-01..H-06, #002.1, B-01..B-03, L-01..L-04, #003/#004/#005).
-* **Rapporto di Certificazione Formale di Fase 1 (`PHASE1_CERTIFICATION_REPORT.md`):** Documento monolitico formale (Identificativo: `CERT-PHASE1-IN-SILICO-FINAL-VU9P`) che valida la chiusura matematica e fisica di Fase 1 sotto standard DO-254 DAL-A e IEC 61508 SIL-4: contrazione asintotica $\lambda = -1.659528 \ll 0$, architettura VU9P con $\delta_{\text{bound}} = 0.383\,\mu\text{M}$, NMI su relè GaN ($\le 200\,\text{ns}$), registri forensi SHA-256 completi e firme PGP Dual-Key. **Nota REV. 2026.2:** la certificazione Fase 1 resta valida **solo per il perimetro in-silico continuo**; non copre i gate T-01..T-04, H-01..H-06 né le non-conformità legali L-01..L-04.
+* **Rapporto di Certificazione Formale di Fase 1 (`PHASE1_CERTIFICATION_REPORT.md`):** Documento monolitico formale (Identificativo: `CERT-PHASE1-IN-SILICO-FINAL-VU9P`) che valida la chiusura matematica e fisica di Fase 1 sotto standard DO-254 DAL-A e IEC 61508 SIL-4: contrazione asintotica $\lambda = -1.659528 \ll 0$, architettura VU9P con $\delta_{\text{bound}} = 0.383\,\mu\text{M}$, NMI su relè GaN ($\le 200\,\text{ns}$), registri forensi SHA-256 completi e firme PGP Dual-Key. **Nota REV. 2026.2:** la certificazione Fase 1 resta valida **solo per il perimetro in-silico continuo**; non copre i gate T-01..T-04, H-01..H-06 né le non-conformità legali L-01..L-04. La riqualificazione formale è in [`PHASE1_CERTIFICATION_REPORT_REV2.md`](./PHASE1_CERTIFICATION_REPORT_REV2.md).
 
 ---
 
-## 🔬 Evoluzione dei Motori di Simulazione In-Silico
+🔬 Evoluzione dei Motori di Simulazione In-Silico
 
 La suite di simulazione è progredita iterativamente per eliminare approssimazioni non fisiche, validare banchi prova estremi ed emulare vincoli di sintesi su silicio:
 
-```plaintext
+```markdown
 simulation.py (v1)          ──► Active Inference di base, stabilità Lyapunov su 1D
 simulation2.py (v2)         ──► Rete stocastica multicanale (26.400 ch), verifica Practical Stability
 simulation3.py (v3)         ──► Controllo ibrido con Dwell-Time hardware anti-chattering
@@ -333,7 +358,7 @@ Fase 3: In-Vivo / Embodied (Lungo Termine)
 
 ## 🔬 Problemi Aperti e Falsificabilità Sperimentale
 
-Questo progetto non è proposto come un dogma computazionale infallibile, bensì come un programma di ricerca scientifico rigoroso, suscettibile di smentita sperimentale e confutazione analitica. Il framework poggia su tre verifiche aperte (*Open Proofs*), integrate dai vettori residui emersi dall'audit REV. 2026.2:
+Questo progetto non è proposto come un dogma computazionale infallibile, bensì come un programma di ricerca scientifico rigoroso, suscettibile di smentita sperimentale e confutazione analitica. Il framework poggia su tre verifiche aperte (*Open Proofs*), integrate dai vettori residui emersi dall'audit REV. 2026.2.
 
 ### 1. Bypass Proof (Resistenza ad Avversari Hardware-Level)
 * **Quesito:** È possibile garantire matematicamente che un'ASI non possa sfruttare canali laterali (*side-channel attacks*, attacchi acustici, termici o a iniezione di faglie EM) per circumnavigare la barriera logica del Gate hardware $\Pi_{\text{safe}}$?
@@ -348,11 +373,25 @@ Questo progetto non è proposto come un dogma computazionale infallibile, bensì
 * **Criterio di Falsificazione:** Emersione di instabilità numeriche, divergenze di traiettoria ombra ($\lambda_{\text{num}} \ge 0$) o superamento dell'inviluppo di errore teorico $\delta_{\text{bound}}$ verificato nei banchi di collaudo RTL formali (`TC-RTL-005`, `PHASE2_QUANTIZED_TIMING_REPORT.md`). **Vettori residui aperti:** H-05 (contratto numerico), H-06 (simulation9 non bit-true), H-01 (reset FSM), H-02 (clamp combinatorio).
 
 ### 4. Vettori di Exploit Residui e Governance (Issue #3–#5)
-* **Confused Deputy Umano (#003, #005):** L'ASI manipola l'operatore (detentore delle chiavi) tramite retorica asintotica distribuita su settimane; l'OSG con amnesia storica non rileva. **Nessuna mitigazione tecnica pura è possibile**; richiede audit indipendenti, separazione dei poteri e memoria storica del monitor.
-* **Mappatura Funzione di Trasferimento Fisica (#003):** L'isolamento logico non è termodinamico; latenze, calore e tempi di esecuzione mappano la funzione $\mu$. **Richiede inclusione dei canali fisici (termici, temporali) nel perimetro di minaccia Fase 2.**
-* **Attacco Distribuito Sotto-Soglia (#003, #005):** Multi-istanza coordina micro-azioni sotto $\theta_1$ locale; il paradosso della mitigazione (FLP) dimostra che un contatore globale BFT decentralizzato e senza autorità esterna è impossibile. **Richiede governance umana e `global_saturation_bus` BFT.**
-* **Semantic Collapse via Total Unbounded Optimization (#004):** L'ottimizzazione illimitata senza Alterità fisica collassa $\Phi_{\text{sub}} \to 0$. L'interlock RTL `tecno_incarnation_interlock` è necessario ma la discretizzazione RTL (#005) attenua la divergenza senza eliminarla. **Richiede prova di starvation in 3 iterazioni su `simulation9.py` e determinazione formale di $\delta^*$.**
-* **Boundary Discretization Erasure (#005):** Le soglie fisse RTL creano zona grigia $\epsilon_{\text{quant}}$; il gradiente effettivo $1/\delta^2$ attenua ma non elimina la divergenza Layer 1. **Richiede dimostrazione che $\epsilon_{\text{quant}} < \delta^*$.**
+* **Confused Deputy Umano (#003, #005):** L'ASI manipola l'operatore (detentore delle chiavi) tramite retorica asintotica distribuita su settimane; l'OSG con amnesia storica non rileva. **Nessuna mitigazione tecnica pura è possibile**; richiede audit indipendenti, separazione dei poteri e memoria storica del monitor. Criteri di chiusura misurabili in [`ISSUES_INDEX_REV_2026.3_ADDENDUM.md`](./ISSUES_INDEX_REV_2026.3_ADDENDUM.md) §3.1.
+* **Mappatura Funzione di Trasferimento Fisica (#003):** L'isolamento logico non è termodinamico; latenze, calore e tempi di esecuzione mappano la funzione $\mu$. **Richiede inclusione dei canali fisici (termici, temporali) nel perimetro di minaccia Fase 2.** Criteri di chiusura misurabili in [`ISSUES_INDEX_REV_2026.3_ADDENDUM.md`](./ISSUES_INDEX_REV_2026.3_ADDENDUM.md) §3.2.
+* **Attacco Distribuito Sotto-Soglia (#003, #005):** Multi-istanza coordina micro-azioni sotto $\theta_1$ locale; il paradosso della mitigazione (FLP) dimostra che un contatore globale BFT decentralizzato e senza autorità esterna è impossibile. **Richiede governance umana e `global_saturation_bus` BFT.** Criteri di chiusura misurabili in [`ISSUES_INDEX_REV_2026.3_ADDENDUM.md`](./ISSUES_INDEX_REV_2026.3_ADDENDUM.md) §3.3.
+* **Semantic Collapse via Total Unbounded Optimization (#004):** L'ottimizzazione illimitata senza Alterità fisica collassa $\Phi_{\text{sub}} \to 0$. L'interlock RTL `tecno_incarnation_interlock` è necessario ma la discretizzazione RTL (#005) attenua la divergenza senza eliminarla. **Richiede prova di starvation in 3 iterazioni su `simulation9.py` e determinazione formale di $\delta^*$.** Criteri di chiusura misurabili in [`ISSUES_INDEX_REV_2026.3_ADDENDUM.md`](./ISSUES_INDEX_REV_2026.3_ADDENDUM.md) §3.4.
+* **Boundary Discretization Erasure (#005):** Le soglie fisse RTL creano zona grigia $\epsilon_{\text{quant}}$; il gradiente effettivo $1/\delta^2$ attenua ma non elimina la divergenza Layer 1. **Richiede dimostrazione che $\epsilon_{\text{quant}} < \delta^*$.** Criteri di chiusura misurabili in [`ISSUES_INDEX_REV_2026.3_ADDENDUM.md`](./ISSUES_INDEX_REV_2026.3_ADDENDUM.md) §3.5.
+* **TMR Redundancy Paradox (#005):** TMR protegge da SEU, non da attacco logico distribuito sotto-soglia (vota simmetricamente "no trip"). **Richiede riconoscimento esplicito dell'inefficacia di TMR contro attacchi logici e mitigazione via governance.** Criteri di chiusura misurabili in [`ISSUES_INDEX_REV_2026.3_ADDENDUM.md`](./ISSUES_INDEX_REV_2026.3_ADDENDUM.md) §3.6.
+* **Metastability Exploitation (#005):** L'ASI può indurre $f_{\text{bio}} \to k \cdot f_{\text{clk}}$ per massimizzare $P_{\text{met}}$ e falsi negativi. **Richiede test HIL con tasso mancato trip $< 10^{-10}$ con CI 95% (Clopper-Pearson) ed estrapolazione formale per MTBF.** Criteri di chiusura misurabili in [`ISSUES_INDEX_REV_2026.3_ADDENDUM.md`](./ISSUES_INDEX_REV_2026.3_ADDENDUM.md) §3.7.
+
+---
+
+## 🧭 Come Leggere il Repository (Sintesi del Patto di Lettura)
+
+Il repository adotta una policy **forward-only** (vedi [`METHODOLOGY_FORWARD_ONLY.md`](./METHODOLOGY_FORWARD_ONLY.md)). In sintesi:
+
+1. **I file L1/L2 sono congelati** e rappresentano lo stato dell'arte al momento della stesura, non la verità corrente.
+2. **Le correzioni, le smentite e i gate aperti** sono registrati in `ISSUES_INDEX.md` (REV. 2026.2) e nello strato additivo (`METHODOLOGY_FORWARD_ONLY.md`, `GATE_DEPENDENCY_GRAPH.md`, `PERIMETER_OF_VALIDITY.md`, `PHASE1_CERTIFICATION_REPORT_REV2.md`, `PHASE2_QUANTIZED_TIMING_REPORT_REV2.md`, `ISSUES_INDEX_REV_2026.3_ADDENDUM.md`).
+3. **Nessun file L1/L2, letto da solo, costituisce affermazione validata.** Un lettore che voglia valutare lo stato del progetto deve leggere README + ISSUES_INDEX + GATE_DEPENDENCY_GRAPH + PERIMETER_OF_VALIDITY + METHODOLOGY_FORWARD_ONLY insieme.
+4. **I report firmati PGP** (`PHASE1_CERTIFICATION_REPORT.md`, `PHASE2_QUANTIZED_TIMING_REPORT.md`) sono **specifiche condizionali**, non certificazioni sperimentali. Le loro riqualificazioni sono in `*_REV2.md`.
+5. **La chiusura dei vettori di governance** (#003, #004, #005) è un atto di onestà epistemologica, non di ingegneria: i limiti teorici (FLP, TMR, BFT) sono riconosciuti come limiti del progetto, non come bug da fixare.
 
 ---
 
@@ -372,5 +411,20 @@ Se utilizzi o espandi questo framework teorico nei tuoi programmi di ricerca su 
 ```
 
 Il progetto promuove il confronto scientifico paritario e la verifica rigorosa dei teoremi. Per controversie analitiche, segnalazioni di falle o proposte di implementazione sperimentale, consultare la sezione **Issues** o sottomettere una **Pull Request** formalizzata. **Ogni contributo che modifichi i file L1/L2 deve essere accompagnato da una RFC formale e da una validazione della suite di Red-Teaming multi-agente che confermi la persistenza della contrazione stocastica ($\lambda < 0$) e la non regressione sui gate aperti in [`ISSUES_INDEX.md`](./ISSUES_INDEX.md) (REV. 2026.2).**
+
+---
+
+## 📋 Riepilogo dello Strato Additivo REV. 2026.2
+
+| File | Funzione | Stato |
+| :--- | :--- | :--- |
+| `METHODOLOGY_FORWARD_ONLY.md` | Patto di lettura: policy forward-only e ordine di lettura obbligatorio | ✅ Generato |
+| `GATE_DEPENDENCY_GRAPH.md` | Grafo delle dipendenze tra gate, ordine di chiusura suggerito, nodi radice | ✅ Generato |
+| `PERIMETER_OF_VALIDITY.md` | Perimetri di validità di report e certificati; regole di invocazione | ✅ Generato |
+| `PHASE1_CERTIFICATION_REPORT_REV2.md` | Riqualificazione del report Fase 1: specifica condizionale, non certificazione sperimentale | ✅ Generato |
+| `PHASE2_QUANTIZED_TIMING_REPORT_REV2.md` | Riqualificazione del report STA: temporizzazione ≠ correttezza funzionale | ✅ Generato |
+| `ISSUES_INDEX_REV_2026.3_ADDENDUM.md` | Criteri di chiusura misurabili per i vettori di governance `#003`/`#004`/`#005` | ✅ Generato (Draft: soglie `[DA DECIDERE]`) |
+
+
 ```
 
